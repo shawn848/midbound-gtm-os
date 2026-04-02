@@ -1,0 +1,16 @@
+# MidBound Blog
+> Person-level GTM insights from the founders of MidBound
+
+MidBound provides person-level website visitor identification for B2B companies.
+This blog contains insights on GTM strategy, ABM evolution, and B2B sales.
+
+## Authors
+- Sebastian Obadia, Co-Founder & CRO
+- Eli Freedman, Co-Founder & CEO
+
+## Topics
+- Person-based marketing (PBM)
+- Account-based marketing (ABM) evolution
+- Website visitor identification
+- B2B sales strategy
+- Startup founder lessons

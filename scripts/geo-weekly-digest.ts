@@ -16,7 +16,7 @@ import * as path from "path";
 // Config
 // ---------------------------------------------------------------------------
 
-const SUBREDDITS = ["SEO", "bigseo", "digital_marketing", "marketing", "SaaS"];
+const SUBREDDITS = ["SEO", "bigseo", "digital_marketing", "marketing", "SaaS", "sales"];
 
 const SEARCH_TERMS = [
   "generative engine optimization",
@@ -26,6 +26,10 @@ const SEARCH_TERMS = [
   "AI search optimization",
   "AI overviews",
   "perplexity SEO",
+  "website visitor identification",
+  "person-level ID",
+  "B2B deanonymization",
+  "visitor tracking tools",
 ];
 
 const MAX_POSTS = 20; // top N posts by upvotes across all searches

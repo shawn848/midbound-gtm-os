@@ -9,7 +9,7 @@
   --color-surface: #161B22;
   --color-border: #27272a;
   --color-text-primary: #ffffff;
-  --color-text-secondary: #d4d4d8;
+  --color-text-secondary: #e4e4e7;
   --color-accent: #3B82F6;
 }
 
@@ -113,7 +113,7 @@ body {
   padding-left: 1em;
   margin-left: 0;
   margin-bottom: 1.25em;
-  color: var(--color-text-secondary);
+  color: var(--color-text-primary);
   font-style: italic;
 }
 
@@ -180,7 +180,7 @@ body {
 .prose td {
   padding: 0.75em 1em;
   border: 1px solid var(--color-border);
-  color: var(--color-text-secondary);
+  color: var(--color-text-primary);
 }
 
 .prose tr:nth-child(even) {
@@ -271,4 +271,23 @@ html {
 [data-theme="light"] .hljs-type,
 [data-theme="light"] .hljs-title.class_ {
   color: #116329;
+}
+
+/* AEO answer blocks */
+.prose .answer-block {
+  border-left: 3px solid var(--color-accent);
+  background-color: var(--color-surface);
+  padding: 1em 1.25em;
+  border-radius: 0 0.5rem 0.5rem 0;
+  margin-bottom: 1.5em;
+  font-size: 0.95rem;
+}
+
+/* CTA glow effect */
+.cta-glow {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+}
+
+.cta-glow:hover {
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.25);
 }

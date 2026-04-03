@@ -1,8 +1,27 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import ThemeToggle from './ThemeToggle';
+
+function NavLink({ href, children, onClick }: { href: string; children: React.ReactNode; onClick?: () => void }) {
+  const pathname = usePathname();
+  const isActive = pathname === href || pathname.startsWith(href + '/');
+  return (
+    <Link
+      href={href}
+      onClick={onClick}
+      className={`text-sm transition-colors ${
+        isActive
+          ? 'text-[var(--color-accent)] font-medium'
+          : 'text-white/80 hover:text-white'
+      }`}
+    >
+      {children}
+    </Link>
+  );
+}
 
 export default function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -21,23 +40,13 @@ export default function Navigation() {
 
           {/* Desktop nav */}
           <div className="hidden sm:flex items-center gap-6">
-            <Link
-              href="/blog"
-              className="text-sm text-[var(--color-text-secondary)] hover:text-white transition-colors"
-            >
-              Blog
-            </Link>
-            <Link
-              href="/glossary"
-              className="text-sm text-[var(--color-text-secondary)] hover:text-white transition-colors"
-            >
-              Glossary
-            </Link>
+            <NavLink href="/blog">Blog</NavLink>
+            <NavLink href="/glossary">Glossary</NavLink>
             <a
               href="https://midbound.ai"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-[var(--color-text-secondary)] hover:text-white transition-colors"
+              className="text-sm text-white/80 hover:text-white transition-colors"
             >
               About
             </a>
@@ -57,7 +66,7 @@ export default function Navigation() {
             <ThemeToggle />
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="w-9 h-9 flex items-center justify-center rounded-lg border border-[var(--color-border)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors cursor-pointer"
+              className="w-9 h-9 flex items-center justify-center rounded-lg border border-[var(--color-border)] text-white/80 hover:text-white transition-colors cursor-pointer"
               aria-label="Toggle menu"
             >
               {mobileOpen ? (
@@ -97,26 +106,14 @@ export default function Navigation() {
         {/* Mobile menu */}
         {mobileOpen && (
           <div className="sm:hidden pb-4 border-t border-[var(--color-border)] pt-4 flex flex-col gap-3">
-            <Link
-              href="/blog"
-              onClick={() => setMobileOpen(false)}
-              className="text-sm text-[var(--color-text-secondary)] hover:text-white transition-colors"
-            >
-              Blog
-            </Link>
-            <Link
-              href="/glossary"
-              onClick={() => setMobileOpen(false)}
-              className="text-sm text-[var(--color-text-secondary)] hover:text-white transition-colors"
-            >
-              Glossary
-            </Link>
+            <NavLink href="/blog" onClick={() => setMobileOpen(false)}>Blog</NavLink>
+            <NavLink href="/glossary" onClick={() => setMobileOpen(false)}>Glossary</NavLink>
             <a
               href="https://midbound.ai"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMobileOpen(false)}
-              className="text-sm text-[var(--color-text-secondary)] hover:text-white transition-colors"
+              className="text-sm text-white/80 hover:text-white transition-colors"
             >
               About
             </a>

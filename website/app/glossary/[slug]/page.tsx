@@ -64,11 +64,25 @@ export default async function GlossaryTermPage({ params }: PageProps) {
     },
   };
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://blog.midbound.ai/' },
+      { '@type': 'ListItem', position: 2, name: 'Glossary', item: 'https://blog.midbound.ai/glossary' },
+      { '@type': 'ListItem', position: 3, name: term.title, item: `https://blog.midbound.ai/glossary/${term.slug}` },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <article className="mx-auto max-w-3xl px-4 sm:px-6 py-12 sm:py-20">
         {/* Back link */}

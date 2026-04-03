@@ -1,15 +1,24 @@
-import Link from 'next/link';
 import type { Metadata } from 'next';
 import {
   getTermsByCategory,
   getCategoryLabel,
   getSortedCategories,
 } from '../lib/glossary';
+import GlossaryGrid from '../components/GlossaryGrid';
 
 export const metadata: Metadata = {
   title: 'Glossary — MidBound Blog',
   description:
-    'Everything B2B teams need to know about website visitor identification, AEO, GEO, person-level marketing, and modern revenue operations. 30+ terms defined.',
+    'Everything B2B teams need to know about website visitor identification, AEO, GEO, person-level marketing, and modern revenue operations. 45+ terms defined.',
+};
+
+const categoryLabelMap: Record<string, string> = {
+  'search-optimization': 'Search & AI Optimization',
+  'analytics-tools': 'Analytics & SEO Tools',
+  'visitor-identification': 'Website Visitor Identification',
+  'b2b-marketing': 'B2B Marketing',
+  'crm-integrations': 'CRM & Integrations',
+  'metrics': 'Metrics & KPIs',
 };
 
 export default function GlossaryPage() {
@@ -20,6 +29,17 @@ export default function GlossaryPage() {
     (sum, terms) => sum + terms.length,
     0,
   );
+
+  // Serialize for client component
+  const serializedGrouped: Record<string, { title: string; slug: string; category: string; short_description: string }[]> = {};
+  for (const cat of categories) {
+    serializedGrouped[cat] = grouped[cat].map((t) => ({
+      title: t.title,
+      slug: t.slug,
+      category: t.category,
+      short_description: t.short_description,
+    }));
+  }
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
@@ -37,44 +57,11 @@ export default function GlossaryPage() {
         </p>
       </section>
 
-      {/* Category jump links */}
-      <nav className="mb-12 flex flex-wrap justify-center gap-2">
-        {categories.map((cat) => (
-          <a
-            key={cat}
-            href={`#${cat}`}
-            className="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-1.5 text-xs font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:border-[var(--color-accent)] transition-colors"
-          >
-            {getCategoryLabel(cat)}
-          </a>
-        ))}
-      </nav>
-
-      {/* Terms by category */}
-      {categories.map((cat) => (
-        <section key={cat} id={cat} className="mb-12 scroll-mt-20">
-          <h2 className="text-xl font-semibold text-[var(--color-text-primary)] mb-6 flex items-center gap-3">
-            <span className="inline-block w-1 h-6 rounded-full bg-[var(--color-accent)]" />
-            {getCategoryLabel(cat)}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {grouped[cat].map((term) => (
-              <Link
-                key={term.slug}
-                href={`/glossary/${term.slug}`}
-                className="group block rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 shadow-sm transition-all hover:border-[var(--color-accent)] hover:shadow-md"
-              >
-                <h3 className="text-base font-semibold text-[var(--color-text-primary)] mb-1.5 group-hover:text-[var(--color-accent)] transition-colors">
-                  {term.title}
-                </h3>
-                <p className="text-sm text-[var(--color-text-secondary)] line-clamp-2">
-                  {term.short_description}
-                </p>
-              </Link>
-            ))}
-          </div>
-        </section>
-      ))}
+      <GlossaryGrid
+        grouped={serializedGrouped}
+        categories={categories}
+        categoryLabels={categoryLabelMap}
+      />
 
       {/* Bottom CTA */}
       <section className="mt-16 rounded-xl border border-[var(--color-accent)]/30 bg-[var(--color-accent)]/5 p-8 text-center">

@@ -1,0 +1,91 @@
+# MidBound Hermes Agent Configuration
+# See README.md for architecture details
+
+agent:
+  name: "MidBound Hermes"
+  description: "GTM operations agent for MidBound"
+  version: "0.1.0"
+
+# LLM Provider
+# Option A: Claude Code subscription (OAuth, no cost)
+# Option B: Anthropic API key (pay-per-token)
+# Option C: OpenRouter (multi-model, cost routing)
+provider:
+  type: "anthropic"
+  model: "claude-sonnet-4-6"
+  # api_key: ${ANTHROPIC_API_KEY}  # uncomment for API key auth
+  max_tokens: 4096
+
+# Discord Gateway
+discord:
+  # bot_token: ${DISCORD_BOT_TOKEN}
+  channels:
+    gtm_updates:
+      name: "gtm-updates"
+      purpose: "Content pipeline status, calendar reminders"
+      permissions: ["read", "write"]
+    visitor_alerts:
+      name: "visitor-alerts"
+      purpose: "High-ICP visitor notifications via webhook"
+      permissions: ["read", "write"]
+    content_pipeline:
+      name: "content-pipeline"
+      purpose: "Draft reviews, voice DNA checks, publish approvals"
+      permissions: ["read", "write"]
+    ask_hermes:
+      name: "ask-hermes"
+      purpose: "General product and competitive questions"
+      permissions: ["read", "write"]
+
+# Knowledge Sources
+knowledge:
+  product:
+    - "knowledge/what-is-midbound.md"
+    - "knowledge/how-deanonymization-works.md"
+    - "knowledge/person-vs-company-level.md"
+    - "knowledge/integrations.md"
+    - "knowledge/use-cases.md"
+  competitive:
+    - "knowledge/competitor-landscape.md"
+    - "knowledge/midbound-vs-competitors-detailed.md"
+  seo:
+    - "knowledge/what-is-aeo.md"
+    - "knowledge/what-is-geo.md"
+    - "knowledge/what-is-deanonymization.md"
+    - "knowledge/seo-tools-reference.md"
+  voice:
+    - "skills/tier-1-voice-dna/sebastian-voice.md"
+    - "skills/tier-1-voice-dna/eli-voice.md"
+    - "skills/tier-1-voice-dna/anti-slop.md"
+    - "skills/tier-1-voice-dna/safety-filters.md"
+  gtm:
+    - "gtm-os/demand/icp.md"
+    - "gtm-os/demand/positioning.md"
+    - "gtm-os/messaging/angles.md"
+
+# Content Calendar
+calendar:
+  source: "calendar/content-calendar.md"
+  reminder_days_before: 1
+
+# Voice Routing
+voice_routing:
+  product_questions: "eli"       # Analytical, structured
+  competitive_queries: "sebastian"  # Direct, aggressive
+  educational_content: "eli"     # Analogy-driven teaching
+  quick_answers: "neutral"       # Concise, data-forward
+
+# Session Management
+sessions:
+  max_context_tokens: 100000
+  compression_threshold: 80000
+  memory_backend: "sqlite"
+  memory_path: "data/hermes-memory.db"
+  reset_policy: "time"
+  reset_after_minutes: 480  # 8 hours
+
+# Safety Filters (inherited from MidBound CLAUDE.md)
+safety:
+  load_filters: "skills/tier-1-voice-dna/safety-filters.md"
+  anti_slop: "skills/tier-1-voice-dna/anti-slop.md"
+  max_slop_flags_before_rewrite: 3

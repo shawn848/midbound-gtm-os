@@ -63,8 +63,20 @@ export default async function BlogPostPage({ params }: PageProps) {
       '@type': 'Organization',
       name: 'MidBound',
       url: 'https://midbound.ai',
+      description: 'Person-level website visitor identification',
     },
     keywords: post.keywords.join(', '),
+    mainEntityOfPage: `https://blog.midbound.ai/blog/${post.slug}`,
+  };
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://blog.midbound.ai/' },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://blog.midbound.ai/blog' },
+      { '@type': 'ListItem', position: 3, name: post.title, item: `https://blog.midbound.ai/blog/${post.slug}` },
+    ],
   };
 
   // Extract FAQ section from HTML content for FAQ schema
@@ -110,6 +122,10 @@ export default async function BlogPostPage({ params }: PageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {faqJsonLd && (
         <script

@@ -31,6 +31,24 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://blog.midbound.ai/blog/midbound-vs-obviously-ai</loc>
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://blog.midbound.ai/blog/midbound-vs-rb2b</loc>
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://blog.midbound.ai/blog/midbound-vs-vector</loc>
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://blog.midbound.ai/blog/person-level-intent-abm-upgrade</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>monthly</changefreq>
@@ -51,6 +69,12 @@
   <url>
     <loc>https://blog.midbound.ai/blog/abm-without-person-level-data-is-blind</loc>
     <lastmod>2026-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://blog.midbound.ai/blog/best-visitor-identification-tools-2026</loc>
+    <lastmod>2026-04-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -103,6 +127,18 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://blog.midbound.ai/glossary/backlinks</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://blog.midbound.ai/glossary/bounce-rate</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://blog.midbound.ai/glossary/buying-committee</loc>
     <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
@@ -116,6 +152,18 @@
   </url>
   <url>
     <loc>https://blog.midbound.ai/glossary/company-level-identification</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://blog.midbound.ai/glossary/content-freshness</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://blog.midbound.ai/glossary/conversion-rate</loc>
     <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -139,6 +187,18 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://blog.midbound.ai/glossary/demand-generation</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://blog.midbound.ai/glossary/domain-authority</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://blog.midbound.ai/glossary/e-e-a-t</loc>
     <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
@@ -146,6 +206,12 @@
   </url>
   <url>
     <loc>https://blog.midbound.ai/glossary/faq-schema</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://blog.midbound.ai/glossary/first-party-data</loc>
     <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -205,6 +271,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://blog.midbound.ai/glossary/lead-scoring</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://blog.midbound.ai/glossary/net-revenue-retention</loc>
     <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
@@ -223,6 +295,30 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://blog.midbound.ai/glossary/retargeting</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://blog.midbound.ai/glossary/robots-txt</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://blog.midbound.ai/glossary/schema-markup</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://blog.midbound.ai/glossary/search-intent</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://blog.midbound.ai/glossary/semrush</loc>
     <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
@@ -235,7 +331,25 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://blog.midbound.ai/glossary/sitemap</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://blog.midbound.ai/glossary/speed-to-lead</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://blog.midbound.ai/glossary/structured-data</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://blog.midbound.ai/glossary/topic-clusters</loc>
     <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

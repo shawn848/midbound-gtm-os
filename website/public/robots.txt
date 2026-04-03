@@ -1,4 +1,35 @@
+# MidBound Blog — robots.txt
+# https://blog.midbound.ai
+
 User-agent: *
 Allow: /
+Allow: /blog/
+Allow: /glossary/
 
+# Sitemaps
 Sitemap: https://blog.midbound.ai/sitemap.xml
+
+# AI Crawlers — welcome
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# LLM info
+# See /llms.txt for structured information about this site

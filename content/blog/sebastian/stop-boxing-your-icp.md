@@ -10,6 +10,8 @@ excerpt: "Your ICP framework might be the thing killing your pipeline. A $30K de
 seo_title: "Ideal Customer Profile B2B: Stop Boxing Your ICP"
 seo_description: "A real story about how rigid ICP targeting killed pipeline. The $30K B2B deal that closed from an analyst nobody would have prospected."
 keywords: ["ideal customer profile B2B", "ICP targeting", "B2B pipeline", "account based marketing"]
+keyword_cluster: "founder-insights"
+related_posts: ["how-we-built-midbound-from-zero", "what-success-actually-means", "go-vertical-win-deeply"]
 reading_time: 7
 ---
 
@@ -114,3 +116,29 @@ But it adds up. And six months later, your team is sitting in a pipeline review 
 The answer might be simpler than you think. You boxed your ICP so tight that the real buyers couldn't get through.
 
 Open the box. See who's actually on your site. Talk to the people who are showing up, not just the people who match the spreadsheet.
+
+## Frequently Asked Questions
+
+### What is an ideal customer profile in B2B?
+
+An ICP is your definition of who your best customers are. Title, company size, industry, tech stack. It's supposed to focus your sales team. The problem is when teams turn it into a hard gate instead of a guide. They filter out everyone who doesn't match perfectly and kill pipeline in the process.
+
+### Why does rigid ICP targeting hurt B2B pipeline?
+
+Because buying has changed. The person signing the contract isn't the person doing the research. An analyst running the evaluation has more influence than the VP who rubber-stamps it. When your ICP filter only targets VP and above, you delete the people who actually drive deals. Pipeline dies in the margins.
+
+### How should B2B teams tier their ICP for better results?
+
+Three tiers. Tier 1: perfect fit on every criteria. White glove treatment. Tier 2: close enough. Right company, wrong title. Right title, wrong size. Still gets attention. Tier 3: anyone showing real intent on your site regardless of how they match the matrix. Behavior beats demographics.
+
+### What role do non-obvious stakeholders play in B2B buying?
+
+A massive role. Buying committees have 6-10 people. The analyst doing the evaluation. The ops person who'll own the tool. The technical lead assessing integrations. Your ICP model probably excludes all of them. But they're the ones on your website doing the actual research. Ignore them and deals die.
+
+### How does person-level identification solve the ICP problem?
+
+It shows you who's actually on your site. Not who matches your spreadsheet. When an analyst is on your pricing page for 3 minutes comparing features, you see them. Their name, title, email, LinkedIn. You decide whether to engage based on behavior, not just firmographics. A $30K deal came from exactly that.
+
+### Can you identify website visitors who don't match your ICP?
+
+Yes. MidBound identifies all visitors who can be matched, regardless of whether they fit your ICP criteria. You set the filters for what gets surfaced to your team. But the data is there. So when a non-ICP visitor shows strong buying behavior, you see it and can act on it instead of losing the deal.

@@ -19,7 +19,7 @@ export default function PostCard({ post }: PostCardProps) {
           </span>
         </div>
 
-        <h3 className="text-lg font-semibold text-[var(--color-text-primary)] mb-2 group-hover:text-[var(--color-accent)] transition-colors line-clamp-2">
+        <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-[var(--color-accent)] transition-colors line-clamp-2">
           {post.title}
         </h3>
 

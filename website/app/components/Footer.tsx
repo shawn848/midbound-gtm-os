@@ -6,20 +6,26 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-6">
-            <span className="text-sm font-semibold text-[var(--color-text-primary)]">
+            <span className="text-sm font-semibold text-white">
               MidBound
             </span>
             <Link
               href="/blog"
-              className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+              className="text-sm text-[var(--color-text-secondary)] hover:text-white transition-colors"
             >
               Blog
+            </Link>
+            <Link
+              href="/glossary"
+              className="text-sm text-[var(--color-text-secondary)] hover:text-white transition-colors"
+            >
+              Glossary
             </Link>
             <a
               href="https://midbound.ai"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+              className="text-sm text-[var(--color-text-secondary)] hover:text-white transition-colors"
             >
               midbound.ai
             </a>

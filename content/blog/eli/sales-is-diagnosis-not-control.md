@@ -10,6 +10,8 @@ excerpt: "If you went to a doctor who asked one question then handed you a presc
 seo_title: "B2B Sales Strategy: Sales is Diagnosis Not Control"
 seo_description: "Most people think sales is about control. It's not. The best B2B sales strategy mirrors diagnosis. Three principles for selling like a doctor."
 keywords: ["B2B sales strategy", "sales process", "consultative selling", "buying process"]
+keyword_cluster: "sales-strategy"
+related_posts: ["stop-boxing-your-icp", "abm-without-person-level-data-is-blind"]
 reading_time: 7
 ---
 
@@ -122,3 +124,29 @@ The best sales teams I've seen using MidBound treat every identified visitor as 
 Deals don't follow a selling process. They follow a buying process. Your job is to understand where the buyer is and help them get to the next step. That's it.
 
 Everything else is noise.
+
+## Frequently Asked Questions
+
+### What does "sales is diagnosis" mean in B2B?
+
+It means the best salespeople operate like doctors. They don't start by prescribing a solution. They start by understanding the problem. They ask open questions, listen without rushing, and build a complete picture of the prospect's situation before proposing anything. Diagnosis creates trust. Pitching creates resistance.
+
+### How does consultative selling differ from traditional sales methods?
+
+Traditional methods like MEDDIC and Challenger emphasize seller control. Consultative selling shifts the focus to understanding the buyer's process. Instead of controlling the conversation, you create space for honest answers. Instead of pushing for next steps, you assume forward progress naturally. The result is prospects who feel understood rather than managed.
+
+### Why do deals follow buying processes instead of selling processes?
+
+By the time a prospect talks to you, they've already researched your product, compared alternatives, and talked to colleagues. They're not starting from zero. Your job isn't to educate from scratch. It's to understand where they are in their process and meet them there. Sellers who impose their own timeline lose to sellers who align with the buyer's journey.
+
+### What are the three principles of diagnostic selling?
+
+First, set the stage for real conversation by telling the prospect what to expect and asking what they want to cover. Second, assume forward progress without pushing by stating next steps confidently rather than asking permission. Third, lean into hard questions early about budget, timeline, and decision-makers. These save time and build trust.
+
+### How does website visitor identification support a diagnostic sales approach?
+
+When you identify someone who visited your site, you know what they were researching. Their pages viewed and time spent give you diagnostic context before the first conversation. Outreach becomes "I noticed you were looking at our integrations page. What tools are you running today?" That's a doctor asking a follow-up question, not a salesperson delivering a script.
+
+### Why should sales reps ask hard questions early in the process?
+
+Questions about budget, decision-makers, and competitive evaluations feel risky but they surface reality. A deal built on avoided questions collapses during procurement. Asking early signals seriousness about finding genuine fit, not just chasing a close. Prospects trust reps who are direct about these topics rather than tiptoeing around them.

@@ -14,6 +14,8 @@ export interface Post {
   seo_title: string;
   seo_description: string;
   keywords: string[];
+  keyword_cluster: string;
+  related_posts: string[];
   reading_time: number;
   content: string;
 }
@@ -48,6 +50,8 @@ export function getAllPosts(): Post[] {
         seo_title: data.seo_title,
         seo_description: data.seo_description,
         keywords: data.keywords || [],
+        keyword_cluster: data.keyword_cluster || '',
+        related_posts: data.related_posts || [],
         reading_time: data.reading_time,
         content,
       });

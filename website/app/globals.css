@@ -3,13 +3,13 @@
 /* MidBound Design Tokens */
 @theme {
   --font-sans: 'Space Grotesk', sans-serif;
-  --font-mono: 'Space Mono', monospace;
+  --font-mono: 'JetBrains Mono', monospace;
 
   --color-canvas: #0D1117;
   --color-surface: #161B22;
   --color-border: #27272a;
-  --color-text-primary: #fafafa;
-  --color-text-secondary: #a1a1aa;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #d4d4d8;
   --color-accent: #3B82F6;
 }
 
@@ -151,6 +151,51 @@ body {
   border-color: var(--color-border);
   margin-top: 2em;
   margin-bottom: 2em;
+}
+
+/* FAQ section styling */
+.prose h2:has(+ h3) {
+  border-top: 1px solid var(--color-border);
+  padding-top: 2em;
+}
+
+/* Tables */
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  font-size: 0.875rem;
+}
+
+.prose th {
+  background-color: var(--color-surface);
+  font-weight: 700;
+  text-align: left;
+  padding: 0.75em 1em;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+}
+
+.prose td {
+  padding: 0.75em 1em;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+}
+
+.prose tr:nth-child(even) {
+  background-color: var(--color-surface);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background-color: var(--color-accent);
+  color: white;
 }
 
 /* Code highlighting (highlight.js GitHub Dark compatible) */

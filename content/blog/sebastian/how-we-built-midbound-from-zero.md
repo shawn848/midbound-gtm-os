@@ -10,6 +10,8 @@ excerpt: "$70K from friends and family. Cold called 10 founders a day. Killed tw
 seo_title: "How We Built MidBound from Zero: A Founding Story"
 seo_description: "The raw story of building MidBound from nothing. $70K F&F round, two failed products, and 10 cold calls a day before finding product-market fit."
 keywords: ["startup founding story", "B2B SaaS startup", "pivot story", "MidBound origin"]
+keyword_cluster: "founder-insights"
+related_posts: ["what-success-actually-means", "stop-boxing-your-icp", "go-vertical-win-deeply"]
 reading_time: 8
 ---
 
@@ -126,3 +128,33 @@ That's it. That's what all of this built.
 $70K from friends and family. Two dead products. Hundreds of cold calls. One product that works.
 
 I'd do every part of it again.
+
+## Frequently Asked Questions
+
+### How did MidBound get started?
+
+$70K from friends and family. Not VCs. Not angels. People who trusted us. We built an auto-prospecting tool first. Market got commoditized overnight. Killed it. I cold called 10 founders a day until we found the real problem: nobody knew who was visiting their website. That became MidBound.
+
+### What was MidBound's first product before the pivot?
+
+An auto-prospecting tool. Automate finding leads, writing emails, building lists. We thought we were early. We weren't. Every startup on Product Hunt launched the same thing within months. AI SDRs everywhere. The space was commoditized before we could blink. We killed it and moved on.
+
+### How did MidBound achieve six figures in revenue so quickly?
+
+Three people. $0 in customer acquisition cost. Zero paid ads. Every customer came from outbound we did ourselves, content that resonated, or word of mouth. We stayed small and scrappy. Six figures in five months. Not because we had a shortcut. Because we had a product that solved a real problem.
+
+### What does MidBound do as a product?
+
+MidBound identifies the actual humans visiting your website. Not companies. People. You get their name, title, company, LinkedIn profile, validated email, and the pages they viewed. We integrate with Slack, HubSpot, and custom webhooks. We match visitors against your ICP automatically.
+
+### How important is pivoting for early-stage startups?
+
+Critical. We pivoted twice before landing on deanonymization. The first product had users. It had potential. But potential doesn't beat a commoditized market. Kill fast. If the market is telling you something, listen. The speed of that kill saved us. Most founders hold on too long.
+
+### What is the best way to find product-market fit?
+
+Cold calls. Not warm intros. Not surveys. Cold. 10 founders a day. People who don't owe you anything tell you the truth. The answer kept coming back to the same problem: "We spend money driving traffic and have no idea who's visiting." That's how we found it. Raw conversations.
+
+### How did MidBound raise its first funding round?
+
+$70K friends and family round. People with names on that money. People I grew up with. People Eli grew up with. That money changed how we operated. Every dollar felt personal because it was. Later, Fusion VC backed us in batch 16. But the revenue was already there before that happened.

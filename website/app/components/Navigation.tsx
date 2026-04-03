@@ -14,7 +14,7 @@ export default function Navigation() {
           {/* Logo */}
           <Link
             href="/"
-            className="text-lg font-bold tracking-tight text-[var(--color-text-primary)]"
+            className="text-lg font-bold tracking-tight text-white"
           >
             MidBound
           </Link>
@@ -23,17 +23,31 @@ export default function Navigation() {
           <div className="hidden sm:flex items-center gap-6">
             <Link
               href="/blog"
-              className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+              className="text-sm text-[var(--color-text-secondary)] hover:text-white transition-colors"
             >
               Blog
+            </Link>
+            <Link
+              href="/glossary"
+              className="text-sm text-[var(--color-text-secondary)] hover:text-white transition-colors"
+            >
+              Glossary
             </Link>
             <a
               href="https://midbound.ai"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+              className="text-sm text-[var(--color-text-secondary)] hover:text-white transition-colors"
             >
               About
+            </a>
+            <a
+              href="https://midbound.ai/register"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-md bg-[var(--color-accent)] px-3 py-1.5 text-xs font-medium text-white hover:opacity-90 transition-opacity"
+            >
+              Start Free Trial
             </a>
             <ThemeToggle />
           </div>
@@ -86,18 +100,34 @@ export default function Navigation() {
             <Link
               href="/blog"
               onClick={() => setMobileOpen(false)}
-              className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+              className="text-sm text-[var(--color-text-secondary)] hover:text-white transition-colors"
             >
               Blog
+            </Link>
+            <Link
+              href="/glossary"
+              onClick={() => setMobileOpen(false)}
+              className="text-sm text-[var(--color-text-secondary)] hover:text-white transition-colors"
+            >
+              Glossary
             </Link>
             <a
               href="https://midbound.ai"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMobileOpen(false)}
-              className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+              className="text-sm text-[var(--color-text-secondary)] hover:text-white transition-colors"
             >
               About
+            </a>
+            <a
+              href="https://midbound.ai/register"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileOpen(false)}
+              className="inline-block rounded-md bg-[var(--color-accent)] px-3 py-1.5 text-xs font-medium text-white hover:opacity-90 transition-opacity w-fit"
+            >
+              Start Free Trial
             </a>
           </div>
         )}

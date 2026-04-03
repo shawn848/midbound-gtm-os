@@ -10,6 +10,8 @@ excerpt: "Revenue doesn't mean profit. Headcount doesn't mean growth. Most found
 seo_title: "What Success Means as a Founder: Real Metrics"
 seo_description: "Revenue doesn't mean profit and headcount doesn't mean growth. A founder's take on what success actually looks like in B2B SaaS."
 keywords: ["founder success", "startup metrics", "B2B SaaS growth", "EBITDA"]
+keyword_cluster: "founder-insights"
+related_posts: ["how-we-built-midbound-from-zero", "stop-boxing-your-icp", "go-vertical-win-deeply"]
 reading_time: 6
 ---
 
@@ -120,3 +122,33 @@ Because the story version is fun for a while. The funding announcement. The head
 But stories don't compound. Margins do. Retention does. Customers who depend on you do.
 
 Figure out which scoreboard you're playing on. Then commit to it.
+
+## Frequently Asked Questions
+
+### What metrics should B2B SaaS founders actually track?
+
+Four numbers. EBITDA. Net revenue retention. Customer dependency (would they fight to keep you?). Cash relative to burn. That's it. Everything else is decoration. Revenue without margins is vanity. Headcount without efficiency is waste. Growth rate without direction is just speed toward a cliff.
+
+### Why is revenue a misleading startup metric?
+
+Revenue is vanity. Profit is sanity. $5M ARR sounds incredible until you learn the company spends $6M to generate it. I know founders doing $20M ARR who can't take a dollar out. I know founders doing $2M ARR who take home more than VPs at public tech companies. The difference is margins.
+
+### How important is EBITDA for early-stage startups?
+
+Critical. If your earnings before interest, taxes, depreciation, and amortization is negative and you don't have a clear, time-bound path to positive, you have a problem. Not a "growth stage." A problem. EBITDA tells you what's actually left after you pay for everything. That's the number that matters.
+
+### Does headcount equal growth in a startup?
+
+No. I've seen 150-person companies get outperformed by 10-person teams. Repeatedly. We built MidBound to six figures in five months with 3 people. Headcount should follow revenue, not precede it. If you're hiring ahead of demand, you're not growing. You're guessing with other people's money.
+
+### What is net revenue retention and why does it matter?
+
+It measures whether your existing customers pay you more over time. If they're churning or contracting, no amount of new business fixes it. You're filling a leaking bucket. High NRR means your product gets more valuable to customers. Low NRR means you're running on a treadmill.
+
+### How should founders think about press and media coverage?
+
+Press is a distribution channel. That's all. If it drives pipeline, great. If it drives LinkedIn likes and inbound from recruiters, it's a distraction. I know founders who spent weeks on a TechCrunch feature. Huge traffic spike. Zero conversions. Meanwhile, a LinkedIn post I wrote in 20 minutes generated 15 demo requests.
+
+### Is bootstrapping better than raising venture capital?
+
+It depends on what you're optimizing for. We raised $70K from friends and family. That money had names on it. Those people need a return. Not a story about our Series B. A real return. That shapes every decision. VC money can feel abstract. Your friend's $5K feels like a promise.

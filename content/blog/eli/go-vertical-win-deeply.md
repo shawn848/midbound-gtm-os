@@ -10,6 +10,8 @@ excerpt: "100+ VCs, angels, and founders in 3 cities. The question in every room
 seo_title: "Startup Go to Market Strategy: Go Vertical Win Deeply"
 seo_description: "Lessons from 100+ VC meetings in NYC, SF, and LA. Go vertical, build proprietary data moats, and win 10 customers who can't live without you."
 keywords: ["startup go to market strategy", "B2B go to market", "startup moat", "vertical SaaS strategy"]
+keyword_cluster: "founder-insights"
+related_posts: ["how-we-built-midbound-from-zero", "what-success-actually-means", "stop-boxing-your-icp"]
 reading_time: 8
 ---
 
@@ -136,3 +138,29 @@ That's the strategy. It's not complicated. But I've learned that the best strate
 I should have opened a daycare in Minnesota. It would have been much simpler.
 
 But this is more fun.
+
+## Frequently Asked Questions
+
+### What does "go vertical" mean for a B2B startup?
+
+Going vertical means committing deeply to one market segment instead of trying to serve everyone. Your product builds features specific to that vertical. Your messaging speaks their language. Your case studies are from their peers. 10 customers who can't live without you is worth more than 100 who kind of like you.
+
+### How do startups build a defensible moat against larger competitors?
+
+Three layers. First, proprietary data that improves with every customer, creating a flywheel competitors can't replicate by building a feature. Second, deep integration into customer workflows (Slack alerts, HubSpot syncs, webhook feeds) that increases switching costs naturally. Third, velocity. A small team that ships in days while large companies plan in quarters.
+
+### What is a proprietary data flywheel and why does it matter?
+
+A proprietary data flywheel is when your product generates data that makes the product better, which attracts more customers, which generates more data. For MidBound, every visitor identification that gets confirmed or corrected improves matching accuracy. Every new website broadens visitor pattern understanding. This compounds over time and can't be purchased or replicated.
+
+### Why do VCs ask "can this be absorbed by a bigger company"?
+
+It's the core question behind every other question investors ask. If an established player can add your functionality as a feature in 3 months, your company is a feature, not a business. The answer needs to be structural. Proprietary data, compounding network effects, or deep vertical expertise that takes years to build.
+
+### When should a startup expand beyond its initial vertical?
+
+After you've won deeply. Not when you have a few customers in a vertical, but when customers would fight to keep you. When your product has been hardened by real usage, your team knows how to onboard and retain, and your data model has seen enough patterns to generalize. Expanding before winning deeply spreads resources thin and weakens everything.
+
+### How does staying small give startups a competitive advantage?
+
+A team of 3 that ships weekly completes the build-learn-adjust loop faster than any large company. When a customer requests something, you ship in days. When a competitor announces a feature, you respond before their version exits beta. That velocity compounds. Over 18 months, a team that ships 2x faster learns 2x faster and course-corrects 2x faster.

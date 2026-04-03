@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Space_Grotesk, Space_Mono } from 'next/font/google';
+import { Space_Grotesk, JetBrains_Mono } from 'next/font/google';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import './globals.css';
@@ -10,10 +10,9 @@ const spaceGrotesk = Space_Grotesk({
   display: 'swap',
 });
 
-const spaceMono = Space_Mono({
-  weight: ['400', '700'],
+const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
-  variable: '--font-space-mono',
+  variable: '--font-jetbrains-mono',
   display: 'swap',
 });
 
@@ -23,7 +22,7 @@ export const metadata: Metadata = {
     template: '%s | MidBound Blog',
   },
   description:
-    'Person-level GTM insights from the founders of MidBound. Strategies for B2B sales, ABM evolution, and website visitor identification.',
+    'Person-level GTM insights from the founders of MidBound. Strategies for B2B sales, ABM evolution, website visitor identification, AEO, and GEO.',
   metadataBase: new URL('https://blog.midbound.ai'),
 };
 
@@ -47,7 +46,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${spaceMono.variable}`}
+      className={`${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <head>

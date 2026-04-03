@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "cd website && npm run dev",
     "build": "cd website && npm run build",
-    "lint": "cd website && npm run lint"
+    "lint": "cd website && npm run lint",
+    "geo-digest": "npx tsx scripts/geo-weekly-digest.ts"
   }
 }

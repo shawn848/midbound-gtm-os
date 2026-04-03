@@ -1,16 +1,61 @@
 # MidBound Blog
 > Person-level GTM insights from the founders of MidBound
 
-MidBound provides person-level website visitor identification for B2B companies.
-This blog contains insights on GTM strategy, ABM evolution, and B2B sales.
+MidBound provides person-level website visitor identification for B2B companies. Unlike company-level tools (Snitcher, Clearbit, 6sense, Demandbase), MidBound identifies the actual individual visiting your website — their name, job title, company, validated email, LinkedIn profile, pages visited, and time on site.
 
-## Authors
+## Product
+- **What:** Person-level website visitor identification using AI
+- **How:** AI matches website visitors to LinkedIn profiles in real-time
+- **Output:** Name, title, company, validated email, LinkedIn URL, pages visited, time on site
+- **Integrations:** Slack, HubSpot, webhooks, sequences
+- **Key Features:** ICP matching, UTM re-engagement, multi-stakeholder detection, real-time alerts
+- **Differentiator:** Person-level identification (not company-level like competitors)
+- **Trial:** 14-day free trial, no credit card required — midbound.ai/register
+- **Target:** B2B SaaS, demand gen agencies, 1000+ US monthly visitors, $3K+ ACV
+
+## Founders
 - Sebastian Obadia, Co-Founder & CRO
 - Eli Freedman, Co-Founder & CEO
 
-## Topics
-- Person-based marketing (PBM)
-- Account-based marketing (ABM) evolution
-- Website visitor identification
-- B2B sales strategy
-- Startup founder lessons
+## Traction
+- 6 figures revenue in under 5 months
+- $0 customer acquisition cost
+- Team of 3
+- Fusion VC batch 16
+
+## Blog Topics
+- Person-based marketing (PBM) — the evolution beyond ABM
+- Account-based marketing (ABM) — limitations and upgrades
+- Website visitor identification — person-level vs company-level
+- B2B sales strategy — consultative selling, speed to lead
+- Startup founder lessons — metrics, growth, fundraising
+- GEO (Generative Engine Optimization) — getting cited by AI
+- AEO (Answer Engine Optimization) — ranking in AI answers
+- SEO tools and strategies — SEMrush, GA4, Ahrefs, web vitals
+
+## Glossary
+The /glossary section covers 30+ terms including:
+- AEO, GEO, SEO, keyword clustering, FAQ schema, Core Web Vitals, E-E-A-T
+- Google Analytics, Google Search Console, SEMrush, Ahrefs, Hotjar
+- Deanonymization, person-level identification, company-level identification
+- ABM, PBM, ICP, intent data, buying committee, speed to lead
+- HubSpot, webhooks, UTM parameters
+- Net revenue retention, customer acquisition cost
+
+## Key Claims
+- 97% of B2B website visitors leave without converting
+- Company-level identification only shows which company visited, not which person
+- Person-level identification enables same-day outreach to visitors showing real intent
+- Buying committees have 6-10 decision-makers; person-level ID sees them all
+- First vendor to reach out after intent signal wins 70% of conversations
+
+## Competitor Comparison
+| Tool | Level | Pricing |
+|------|-------|---------|
+| MidBound | Person-level | SMB-to-mid-market |
+| Snitcher | Company-level | SMB |
+| Factors.ai | Account-level | Mid-market |
+| Clearbit/Vector | Company-level | Mid-market |
+| 6sense | Account-level | Enterprise |
+| Demandbase | Company-level | Enterprise |
+| RB2B | Person-level | Mid-market |

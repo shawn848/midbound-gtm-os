@@ -49,7 +49,17 @@ The active calendar is at `calendar/content-calendar.md`. Reference it when aske
 ## Workflows
 
 - Blog to social pipeline: `workflows/content-creation.md`
+- Self-critique loop: `workflows/self-critique.md` -- run after writing, before slop filter
+- AI slop filter: `workflows/slop-filter-check.md` -- systematic anti-slop scan
 - Call recording to blog: `workflows/transcript-to-blog.md` (Phase 2)
+
+## Content Quality Pipeline (run in order)
+
+1. Write content (load voice DNA + knowledge base first)
+2. Self-critique loop (`workflows/self-critique.md`)
+3. Slop filter check (`workflows/slop-filter-check.md`)
+4. Pre-publish checklist (`skills/tier-3-content-ops/pre-publish-checklist.md`)
+5. Publish / commit
 
 ## GTM Operations
 

@@ -81,14 +81,20 @@ From the published blog post:
 | Post X thread | Friday of the same week | X |
 | Post Reddit | Following Monday | Reddit |
 
-## Quality Gates
+## Quality Pipeline
+
+After writing any content, run these in order:
+
+1. **Self-Critique Loop** (`workflows/self-critique.md`) -- Voice authenticity, substance, structure checks
+2. **Slop Filter Check** (`workflows/slop-filter-check.md`) -- Systematic anti-slop pattern scan
+3. **Pre-Publish Checklist** (`skills/tier-3-content-ops/pre-publish-checklist.md`) -- Final gate
 
 Content does not publish if any of these fail:
-1. Anti-slop check (fewer than 3 patterns)
-2. Substance requirements (2+ of 5 criteria per claim)
-3. Safety filters (no competitor customer names, no compliance claims, no guaranteed results)
-4. Voice match (sounds like the right founder)
-5. Platform format (correct length, structure, formatting for the target platform)
+- Anti-slop check: 3+ critical flags = rewrite from scratch
+- Substance requirements: every claim needs 2+ of 5 criteria
+- Safety filters: no competitor customer names, no compliance claims, no guaranteed results
+- Voice match: sounds like the right founder, not generic B2B
+- Platform format: correct length, structure, formatting for the target platform
 
 ## Output Locations
 

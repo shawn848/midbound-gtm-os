@@ -1,0 +1,11 @@
+{
+  "name": "midbound-gtm",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MidBound GTM content operations system",
+  "scripts": {
+    "dev": "cd website && npm run dev",
+    "build": "cd website && npm run build",
+    "lint": "cd website && npm run lint"
+  }
+}

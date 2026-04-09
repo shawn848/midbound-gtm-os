@@ -19,7 +19,7 @@ reading_time: 7
 
 Company-level ID is broken.
 
-Snitcher. Factors. Clearbit. 6sense. Demandbase. All of them.
+Snitcher. Factors. Breeze Intelligence. 6sense. Demandbase. All of them.
 
 I don't care how nice the dashboard looks. I don't care how many Salesforce integrations they have. If the output is "someone from Google visited your pricing page," you have nothing.
 

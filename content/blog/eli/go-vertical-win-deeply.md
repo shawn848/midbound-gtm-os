@@ -89,7 +89,7 @@ For MidBound, the proprietary data advantage works like this. Every time we iden
 
 This isn't a dataset you can buy from a vendor. It's not public LinkedIn data repackaged. It's a matching intelligence that gets sharper with use.
 
-That's the answer to "what stops Clearbit from building this?" They could build the feature. They can't replicate the data flywheel. Not without a base of customers actively using person-level identification across thousands of websites.
+That's the answer to "what stops HubSpot or a well-funded incumbent from building this?" They could build the feature. They can't replicate the data flywheel. Not without a base of customers actively using person-level identification across thousands of websites.
 
 ## Velocity is a moat
 

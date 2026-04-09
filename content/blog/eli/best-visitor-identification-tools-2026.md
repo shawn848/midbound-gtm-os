@@ -52,7 +52,7 @@ MidBound identifies the individual person visiting your website. Not the company
 
 ## 2. RB2B (Person-Level)
 
-RB2B is the most recognized name in person-level identification, built by Adam Robinson (also behind Retention.com). Bootstrapped to ~$7.8M ARR. Resolves anonymous US visitors to individual profiles with contact details.
+RB2B is the most recognized name in person-level identification, built by Adam Robinson (also behind Retention.com). Bootstrapped to ~$7.8M ARR (per Adam Robinson's public posts). Resolves anonymous US visitors to individual profiles with contact details.
 
 **What you get:** Name, title, company, LinkedIn profile, validated business email (on Pro+ tier), pages visited.
 
@@ -65,7 +65,7 @@ RB2B is the most recognized name in person-level identification, built by Adam R
 
 **Best for:** Teams wanting the most recognized brand in person-level identification with a broad integration ecosystem.
 
-**Pricing:** Free tier (150 company credits/mo, person-level removed Jan 2026). Starter $79/mo (300 resolutions). Pro $149/mo (600 resolutions, emails, all integrations). Pro+ $199/mo (premium 35-45% resolution).
+**Pricing:** Free tier (150 company credits/mo, person-level removed early 2026). Starter $79/mo (300 resolutions). Pro $149/mo (600 resolutions, emails, all integrations). Pro+ $199/mo (premium 35-45% resolution).
 
 **Setup:** Minutes. Script installation.
 
@@ -215,7 +215,7 @@ The decision tree is simpler than vendors want you to believe.
 
 If you need the actual person (name, title, email, LinkedIn), your options are MidBound and RB2B. MidBound if you want ICP scoring, multi-stakeholder detection, and deeper integrations. RB2B if you want a free starting point.
 
-If company-level is enough, Snitcher is the cheapest entry point. Factors adds attribution analytics. Vector works if you're already on HubSpot.
+If company-level is enough, Snitcher is the cheapest entry point. Factors adds attribution analytics. Vector works if you want contact-level advertising and audience building.
 
 If you're an enterprise team with $50K+ budgets and need full ABM orchestration, 6sense or Demandbase are the established platforms. But even then, layering MidBound on top fills the person-level gap that neither platform addresses.
 

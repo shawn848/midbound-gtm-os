@@ -1,5 +1,10 @@
 {
   "buildCommand": "cd website && npm install && npm run build",
   "outputDirectory": "website/out",
-  "installCommand": "echo 'skip global install'"
+  "installCommand": "echo 'skip global install'",
+  "redirects": [
+    { "source": "/blog/midbound-vs-vector", "destination": "/blog/best-visitor-identification-tools-2026", "permanent": true },
+    { "source": "/blog/midbound-vs-rb2b", "destination": "/blog/best-visitor-identification-tools-2026", "permanent": true },
+    { "source": "/blog/midbound-vs-obviously-ai", "destination": "/blog/best-visitor-identification-tools-2026", "permanent": true }
+  ]
 }

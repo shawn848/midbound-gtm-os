@@ -4,6 +4,8 @@
 User-agent: *
 Allow: /
 Allow: /blog/
+Allow: /playbooks/
+Allow: /help-center/
 Allow: /glossary/
 
 # Sitemaps

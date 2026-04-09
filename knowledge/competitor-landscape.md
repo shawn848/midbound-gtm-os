@@ -1,69 +1,79 @@
-# Competitor Landscape
+# Competitor Landscape (Updated April 2026)
 
 ## Overview
 
-The website visitor identification space is crowded with company-level tools. MidBound's differentiator is person-level identification. Most competitors solve a different (and less useful) problem.
+The website visitor identification space has two categories: person-level tools (which identify the individual) and company-level tools (which identify the company). Person-level is a growing category with multiple players. MidBound differentiates on confidence scoring, automated ICP scoring, multi-stakeholder detection, and workflow automation depth.
 
-## Direct Competitors
+## Person-Level / Contact-Level Competitors
+
+### RB2B
+- **What they do:** Person-level website visitor identification. Founded by Adam Robinson. ~$7.8M ARR bootstrapped.
+- **Strength:** Largest brand awareness (Robinson has 125K+ LinkedIn followers). Demandbase partnership for company-level. 50+ integrations. Lower entry price ($79/mo).
+- **Limitation:** No per-match confidence scoring. No multi-stakeholder buying committee detection. Sequence automation via third-party tools. Free tier gutted Jan 2026 (person-level removed from free plan).
+- **MidBound advantage:** Confidence scoring, multi-stakeholder detection, native CRM automation depth, sequence enrollment with cool-down rules.
+
+### Vector
+- **What they do:** Contact-level identification AND contact-level advertising. YC W23 (Joshua Perk + Nick, both ex-Air Force, ex-Drift). Identifies visitors and builds ad audiences by name.
+- **Strength:** Ad audience pushing to LinkedIn/Google/Meta/Reddit. Off-site intent detection (OffsiteID). Strong brand execution.
+- **Limitation:** Higher price ($399/mo+, quarterly billing). Positions as ad platform, not sales tool. Lower enrichment rate (25% per their own comparison page).
+- **MidBound advantage:** Sales activation focus (identify → qualify → outreach). Pricing accessibility. Multi-stakeholder detection. Confidence scoring.
+- **NOTE:** Vector is NOT Clearbit. They are a completely separate company.
+
+### Warmly
+- **What they do:** Person + company-level identification with real-time chat engagement layer.
+- **Strength:** Combines identification with live chat. Good for teams that want immediate website engagement.
+- **Limitation:** Higher price point ($700/mo+). Chat-focused, less suited for pure outbound workflows.
+- **MidBound advantage:** Focused on identification → outreach workflow, not chat. More affordable.
+
+## Company-Level / Account-Level Tools
+
+### Clearbit / Breeze Intelligence (HubSpot)
+- **What they do:** Company-level visitor ID + data enrichment + form shortening. Acquired by HubSpot late 2023, rebranded as Breeze Intelligence.
+- **Strength:** Deep company data. Native HubSpot integration. Good for enriching known contacts.
+- **Limitation:** Company-level only for anonymous visitors. HubSpot-only (no Salesforce, Pipedrive). Enrichment is for known contacts, not unknown visitors.
+- **MidBound advantage:** Person-level vs company-level. Platform independence. These solve different problems and can complement each other.
 
 ### Snitcher
 - **What they do:** Company-level website visitor identification via reverse IP lookup
-- **Strength:** Simple setup, affordable pricing, good for SMBs
-- **Limitation:** Company-level only. You see the company name but not the person. No individual contact resolution.
-- **MidBound advantage:** Person-level identification gives you the actual visitor, not just the company they work for.
+- **Strength:** Simple setup, affordable pricing (~$39/mo), good for SMBs
+- **Limitation:** Company-level only. No individual contact resolution.
+- **MidBound advantage:** Person-level identification gives you the actual visitor, not just the company.
 
 ### Factors.ai
-- **What they do:** Account identification and multi-touch attribution. Reverse IP for visitor identification. Analytics-heavy platform.
-- **Strength:** Strong analytics layer, multi-touch attribution models, intent scoring at account level
-- **Limitation:** Account-level identification. Good at telling you which accounts are engaged. Cannot tell you which individuals visited.
-- **MidBound advantage:** MidBound resolves to the person. Factors resolves to the account. When you need to reach out, you need a person, not an account.
-
-### Clearbit (now part of HubSpot)
-- **What they do:** Clearbit Reveal does company-level identification. Broader Clearbit platform does data enrichment.
-- **Strength:** Deep company data. Strong integration with HubSpot. Large dataset.
-- **Limitation:** Reveal is company-level only. Enrichment works on known contacts, not anonymous visitors. Now bundled into HubSpot, losing standalone identity.
-- **MidBound advantage:** MidBound identifies the unknown visitor. Clearbit enriches contacts you already know. These solve different problems.
+- **What they do:** Account identification and multi-touch attribution. Analytics-heavy platform.
+- **Strength:** Strong analytics layer, multi-touch attribution models
+- **Limitation:** Account-level identification. Cannot tell you which individuals visited.
+- **MidBound advantage:** MidBound resolves to the person. Factors resolves to the account.
 
 ### 6sense
-- **What they do:** Account-based orchestration platform. Intent data. Predictive analytics. Company-level identification.
-- **Strength:** Enterprise-grade. Strong intent data from multiple sources. Predictive models for account readiness.
-- **Limitation:** Company-level identification. Extremely expensive. Complex setup and long implementation cycles. Built for enterprise teams with dedicated ops resources.
-- **MidBound advantage:** Person-level ID at a fraction of the cost. Deploys in minutes, not months. No need for a dedicated team to operate.
+- **What they do:** Enterprise account-based orchestration platform. Intent data. Predictive analytics.
+- **Strength:** Enterprise-grade. Multi-source intent data. Predictive models.
+- **Limitation:** Company-level identification. $50K+/yr. Weeks-to-months implementation.
+- **MidBound advantage:** Person-level ID at a fraction of the cost. Deploys in minutes. Complements 6sense by adding the person-level layer.
 
 ### Demandbase
-- **What they do:** Account-based marketing platform. Company identification. Ad targeting. Intent data.
-- **Strength:** Strong ABM ad targeting. Deep account intelligence. Enterprise integrations.
-- **Limitation:** Company-level identification. Enterprise pricing. Heavy implementation.
-- **MidBound advantage:** Same as 6sense -- person-level ID, faster deployment, lower cost, simpler operation.
-
-## Positioning Against the Landscape
-
-| Capability | Snitcher | Factors | Clearbit | 6sense | Demandbase | MidBound |
-|-----------|----------|---------|----------|--------|------------|----------|
-| Company-level ID | Yes | Yes | Yes | Yes | Yes | Yes |
-| Person-level ID | No | No | No | No | No | Yes |
-| Real-time alerts | Limited | Yes | Limited | Yes | Yes | Yes |
-| LinkedIn profile match | No | No | No | No | No | Yes |
-| Email validation | No | No | Enrichment only | No | No | Yes |
-| Multi-stakeholder detection | No | No | No | Account-level | Account-level | Person-level |
-| Setup time | Minutes | Hours | Hours | Weeks | Weeks | Minutes |
-| Target market | SMB | Mid-market | Mid-market | Enterprise | Enterprise | SMB to Mid-market |
+- **What they do:** Enterprise ABM platform. Company identification. Ad targeting. Intent data.
+- **Strength:** Strong ABM ad targeting. Deep account intelligence. Partners with RB2B for person-level.
+- **Limitation:** Company-level identification. Enterprise pricing ($50K+/yr). Heavy implementation.
+- **MidBound advantage:** Same as 6sense. Also note: Demandbase now partners with RB2B, making them an indirect competitor at the person level.
 
 ## How to Talk About Competitors
 
 **Do:**
-- Name them directly (Snitcher, Factors, Clearbit, 6sense, Demandbase)
-- Explain what they do accurately
-- Highlight the company-level vs. person-level distinction
-- Acknowledge their strengths where relevant
+- Name them directly: RB2B, Vector, Snitcher, Factors, Clearbit/Breeze, 6sense, Demandbase
+- Explain what they do accurately -- verify features against their live websites before publishing
+- Acknowledge their strengths honestly (especially RB2B's brand and Vector's ad platform)
+- Highlight MidBound's specific differentiators: confidence scoring, multi-stakeholder detection, ICP automation, workflow depth
 
 **Do not:**
 - Name their specific customers
 - Claim to know their internal metrics or match rates
 - Make up weaknesses they do not have
-- Be dismissive of their teams or products -- focus on the capability gap
-- Claim MidBound replaces their entire platform (6sense and Demandbase do much more than just identification)
+- Be dismissive of their teams or products
+- Claim MidBound replaces their entire platform (6sense and Demandbase do much more than identification)
+- Claim person-level identification is unique to MidBound (RB2B, Vector, and others also do it)
+- Make specific feature claims about competitors without verifying -- features change rapidly
 
 ## The One-Line Competitive Pitch
 
-"Every other tool in the space tells you which company visited your site. We tell you which person."
+"Person-level identification is the category. MidBound is the one that tells you which visitors to prioritize, which buying committees are forming, and exactly how confident the match is."

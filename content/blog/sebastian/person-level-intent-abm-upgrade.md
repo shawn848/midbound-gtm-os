@@ -45,7 +45,7 @@ You spend $50K a month on ads. You drive 10,000 visitors to your site. Those vis
 
 That's intent. Real, behavioral, undeniable intent.
 
-But 97% of those visitors leave without identifying themselves. They don't fill out a form. They don't book a demo. They browse and they leave.
+But 97% of those visitors leave without identifying themselves (InsideSales research). They don't fill out a form. They don't book a demo. They browse and they leave.
 
 Your ABM tools see that traffic at the company level at best. "Someone from Stripe visited." "Someone from HubSpot visited." So your SDR goes to LinkedIn, picks a name that looks right, and sends a cold email.
 
@@ -63,13 +63,13 @@ Someone hits your pricing page. You get a Slack notification. "Sarah Kim, Head o
 
 Your SDR reaches out while Sarah is still thinking about you. Not tomorrow. Not next week. Right now.
 
-That speed advantage is massive. The first vendor to reach out after someone shows intent wins the conversation 70% of the time. When you can identify the person in real time, you're always first.
+That speed advantage is massive. The first vendor to reach out after someone shows intent has a significant advantage over everyone who follows. When you can identify the person in real time, you're always first.
 
 **Multi-stakeholder detection becomes automatic.**
 
 Traditional ABM treats accounts as monoliths. One account. One sequence. One point of contact.
 
-But buying committees have 6-10 people. When MidBound shows you that three different people from the same company visited your site this week, you're not just seeing an account. You're seeing a buying committee forming in real time.
+But buying committees have 6-10 people (according to Gartner research). When MidBound shows you that three different people from the same company visited your site this week, you're not just seeing an account. You're seeing a buying committee forming in real time.
 
 VP of Sales looked at pricing Monday. Director of RevOps read a case study Wednesday. Head of Marketing browsed the integrations page Friday. That's not three random visits. That's an active evaluation.
 
@@ -83,11 +83,11 @@ Not "this company matches your ICP." This person, at this company, with this tit
 
 ## Real use cases I've seen work
 
-A demand gen agency running $200K in monthly ad spend for clients. Before MidBound, they could show impression data and company-level visits. After MidBound, they showed clients the exact people their ads drove to the site. The agency's retention rate doubled because they could prove ROI at the person level.
+Demand gen agencies using person-level identification can show clients the exact people their ads drove to the site. Instead of reporting impressions and company-level visits, they report actual identified visitors sorted by ICP fit. That shift in reporting quality changes the client conversation entirely.
 
-A mid-market SaaS company with a 45-day sales cycle. Their SDRs were working cold accounts. After plugging in MidBound, they started reaching out to visitors who'd been on the pricing page that same day. Sales cycle dropped to 22 days. Not because they changed their pitch. Because they started talking to people who were already interested.
+Mid-market SaaS companies with long sales cycles see the biggest impact on speed to lead. When SDRs can reach out to visitors who were on the pricing page that same day instead of working cold accounts, conversations start faster and cycles compress. Not because the pitch changes. Because the timing does.
 
-A PLG company with a freemium product. They were getting thousands of signups but couldn't identify which ones were serious. MidBound showed them which signups had also been browsing enterprise features pages. Their enterprise sales team started targeting those users specifically. Average deal size went up 40%.
+PLG companies with freemium products can layer person-level identification on top of their signup flow. When you can see which signups are also browsing enterprise features pages, your enterprise sales team knows exactly who to prioritize. The signal is already there. You just need to see it.
 
 ## How it works without being creepy
 
@@ -135,7 +135,7 @@ Yes. MidBound layers on top of whatever ABM stack you're running. Plug in Slack,
 
 ### How fast can sales teams reach identified website visitors?
 
-Minutes. Someone hits your pricing page. You get a Slack notification with their name, title, company, email, and LinkedIn. Your SDR reaches out while that person is still thinking about you. The first vendor to respond after someone shows intent wins the conversation 70% of the time. You're always first.
+Minutes. Someone hits your pricing page. You get a Slack notification with their name, title, company, email, and LinkedIn. Your SDR reaches out while that person is still thinking about you. The first vendor to respond after someone shows intent has a meaningful advantage over everyone else. You're always first.
 
 ### What is the difference between intent data and person-level intent data?
 

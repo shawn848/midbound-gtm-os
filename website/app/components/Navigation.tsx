@@ -41,6 +41,8 @@ export default function Navigation() {
           {/* Desktop nav */}
           <div className="hidden sm:flex items-center gap-6">
             <NavLink href="/blog">Blog</NavLink>
+            <NavLink href="/playbooks">Playbooks</NavLink>
+            <NavLink href="/help-center">Help Center</NavLink>
             <NavLink href="/glossary">Glossary</NavLink>
             <a
               href="https://midbound.ai"
@@ -107,6 +109,8 @@ export default function Navigation() {
         {mobileOpen && (
           <div className="sm:hidden pb-4 border-t border-[var(--color-border)] pt-4 flex flex-col gap-3">
             <NavLink href="/blog" onClick={() => setMobileOpen(false)}>Blog</NavLink>
+            <NavLink href="/playbooks" onClick={() => setMobileOpen(false)}>Playbooks</NavLink>
+            <NavLink href="/help-center" onClick={() => setMobileOpen(false)}>Help Center</NavLink>
             <NavLink href="/glossary" onClick={() => setMobileOpen(false)}>Glossary</NavLink>
             <a
               href="https://midbound.ai"

@@ -6,30 +6,62 @@ MidBound operates in the website visitor identification space. Most competitors 
 
 ---
 
-## Vector (formerly Clearbit Reveal)
+## Vector (vector.co)
 
 ### What They Do
-Vector (rebranded from Clearbit Reveal after HubSpot acquired Clearbit in late 2023) provides company-level IP-to-company matching. It resolves anonymous website visitors to company names using IP address lookups against a commercial database. The broader Clearbit platform provides data enrichment for known contacts.
+Vector is a YC-backed (W23) contact-level identification and advertising platform. Founded by Joshua Perk (CEO, ex-Air Force intel, ex-Drift) and Nick (ex-Air Force pilot, ex-Drift). Vector identifies individual website visitors at the contact level AND builds ad audiences from identified contacts. They are NOT Clearbit. They are a completely separate company.
 
 ### How They Identify Visitors
-Reverse IP lookup against Clearbit's proprietary IP-to-company database. A script on the website captures visitor IP addresses and matches them to company records.
+Contact-level matching via a lightweight pixel. Identifies specific individuals (name, title, company, LinkedIn profile) visiting your website. Also offers off-site intent detection (OffsiteID) for identifying contacts engaging with content before they visit your site.
 
 ### Identification Level
-Company-level only. You get the company name, industry, employee count, and estimated revenue. You do not get the individual visitor's name, title, or contact information.
+Contact/person-level. You get the individual visitor's name, role, company, and on-site behavior tied to CRM workflows. Match rate: 15-30% of traffic at the contact level.
 
 ### Pricing Tier
-Now bundled into HubSpot. Previously standalone pricing started around $99/month for basic plans. HubSpot integration is included in certain HubSpot tiers. Standalone Clearbit enrichment credits are priced per lookup.
+Starting at $399/month or $4,500/quarter ($15K/year). Add-ons: custom intent topics ($100/mo), email enrichment ($199/mo). Quarterly/annual billing. Higher price point than RB2B or MidBound.
 
 ### Setup Complexity
-Moderate. Requires HubSpot integration or standalone script installation. The Clearbit enrichment API requires developer resources for custom implementations.
+Simple. Five lines of code (lightweight pixel). Similar to MidBound and RB2B setup.
 
 ### Output Format
-Company name, domain, industry, employee count, estimated revenue, technology stack. For enrichment (on known contacts): email verification, role, seniority, social profiles.
+Name, role, company, ICP persona match, on-site behavior. Can push audiences to LinkedIn, Google, Meta, and Reddit for ad targeting.
+
+### Key Differentiator
+Vector combines identification with contact-level advertising. Their pitch is "build ad audiences by name." They are an ad platform, not just an identification tool. This positions them in marketing budgets rather than sales tool budgets.
 
 ### Where MidBound Wins
-- **Person-level vs. company-level:** Vector tells you "someone from Acme Corp visited." MidBound tells you "Sarah Chen, VP of Marketing at Acme Corp, spent 4 minutes on your pricing page."
-- **Independent platform:** Vector is now part of HubSpot's ecosystem. MidBound works with any CRM, any stack.
-- **Visitor identification vs. enrichment:** Clearbit's strength is enriching contacts you already have. MidBound identifies contacts you do not have yet.
+- **Confidence scoring:** MidBound provides confidence scores on every match. Vector emphasizes "verified contacts" but doesn't highlight per-match confidence levels.
+- **Multi-stakeholder detection:** MidBound automatically flags buying committee signals when multiple people from the same company visit. Vector focuses on individual contact identification.
+- **Workflow automation depth:** MidBound auto-creates HubSpot contacts, triggers workflows, enrolls in sequences with cool-down rules. Vector's integrations focus on ad audience activation.
+- **Pricing accessibility:** MidBound is priced for SMB-to-mid-market. Vector's $399/mo+ quarterly billing is 2-3x higher.
+- **Focus:** MidBound is built for sales activation (identify → qualify → outreach). Vector is built for marketing activation (identify → build ad audience → retarget).
+
+---
+
+## Clearbit / Breeze Intelligence (HubSpot)
+
+### What They Do
+Clearbit was acquired by HubSpot in late 2023 and rebranded as Breeze Intelligence. It provides company-level website visitor identification (formerly "Clearbit Reveal"), data enrichment for known contacts, and form shortening. Now operates exclusively within the HubSpot ecosystem.
+
+### How They Identify Visitors
+Reverse IP lookup for company-level identification. Cross-references visitor IP addresses against a database of known company IPs. For known contacts already in your CRM, provides firmographic and demographic enrichment.
+
+### Identification Level
+Company-level only for anonymous visitors. You get the company name, industry, employee count, estimated revenue. Individual contact enrichment works ONLY on contacts already in your database, not anonymous visitors.
+
+### Pricing Tier
+Minimum $75/month ($30 HubSpot Starter + $45 for 100 Breeze Intelligence credits on annual billing). Credits consumed per enrichment. Costs scale with volume.
+
+### Setup Complexity
+Moderate. Best experience within HubSpot. No longer available as a standalone product. If you're on Salesforce or another CRM, Breeze Intelligence is not an option.
+
+### Output Format
+Company name, domain, industry, employee count, estimated revenue, technology stack. For known contacts: email verification, role, seniority.
+
+### Where MidBound Wins
+- **Person-level vs. company-level:** Breeze Intelligence tells you "someone from Acme Corp visited." MidBound tells you the actual person.
+- **Platform independence:** Breeze Intelligence is HubSpot-only. MidBound works with any CRM via Slack, HubSpot, webhooks.
+- **Identification vs. enrichment:** Breeze enriches contacts you already have. MidBound identifies contacts you don't know about yet. These solve different problems and can complement each other.
 
 ---
 
@@ -49,29 +81,44 @@ These are entirely different product categories. Obviously.ai analyzes data you 
 ## RB2B
 
 ### What They Do
-RB2B is a direct competitor that provides person-level website visitor identification. Like MidBound, RB2B resolves anonymous visitors to individual profiles, not just company names.
+RB2B is the most visible direct competitor in person-level website visitor identification. Founded by Adam Robinson (also CEO of Retention.com). Bootstrapped to ~$7.8M ARR. Identifies individual website visitors and delivers contact details via Slack and CRM integrations.
 
 ### How They Identify Visitors
-Person-level matching using a combination of data signals. RB2B identifies visitors and provides individual contact information including name, title, company, and email.
+Combination of 1st and 3rd party cookies, device IDs, and IP addresses. Company-level identification powered by Demandbase partnership (added May 2025). Person-level is US-only.
 
 ### Identification Level
-Person-level. This is the same category as MidBound.
+Person-level (US only) + company-level (global via Demandbase). Claims 40-45% contact-level match rate, though independent testing suggests 5-20% is more realistic for person-level. Combined person + company: claims 70-80%.
 
 ### Pricing Tier
-RB2B offers a free tier with limited features and paid plans for higher volumes and advanced functionality.
+- Free: 150 company credits/mo (person-level removed from free plan Jan 2026)
+- Starter: $79/mo (300 resolutions, LinkedIn to Slack, no email)
+- Pro: $149/mo (600 resolutions, business emails, all integrations)
+- Pro+: $199/mo (premium resolution 35-45% coverage, all features)
 
 ### Setup Complexity
-Simple. Script installation on the website, similar to MidBound's setup process.
+Simple. Script installation. Minutes to first results.
 
 ### Output Format
-Individual name, title, company, email, LinkedIn profile (where available), pages visited.
+Name, title, company, LinkedIn profile, validated business email (Pro+ tier), pages visited. Hot Leads filtering by company revenue, size, seniority, department, category, geography.
+
+### Key Features
+- **Hot Leads:** ICP-like filtering (company revenue, size, seniority, department, category, geography)
+- **Hot Pages:** Custom page tagging for segmentation
+- **50+ integrations:** Salesforce, HubSpot, Slack, Clay, Zapier, Apollo, Instantly, HeyReach, webhooks, CSV
+- **Demandbase partnership:** Company-level ID bundled with paid plans
+- **Identity Graph Waterfall:** Multi-source enrichment
 
 ### Where MidBound Wins
-- **AI matching quality:** MidBound's AI matching engine resolves visitors to LinkedIn profiles with confidence scoring. The accuracy and depth of the match matters as much as doing person-level identification.
-- **ICP scoring built in:** MidBound scores every identified visitor against the customer's Ideal Customer Profile automatically. This means high-value visitors surface first without manual filtering.
-- **Multi-stakeholder detection:** MidBound flags when multiple people from the same company visit, surfacing buying committee signals that single-visitor tools miss.
-- **Integration depth:** Direct Slack alerts, HubSpot contact creation, webhook support, and sequence enrollment are native. Not afterthoughts.
-- **UTM re-engagement:** MidBound connects identified visitors to the campaigns that brought them, tying ad spend to specific people.
+- **Confidence scoring:** MidBound provides confidence scores on every match, so reps know the difference between a high-confidence identification and a "maybe." RB2B does not emphasize per-match confidence levels.
+- **Multi-stakeholder detection:** MidBound automatically flags buying committee signals when multiple people from the same company visit within a defined window. RB2B shows individual visitors without connecting the dots across an account.
+- **CRM automation depth:** MidBound auto-creates HubSpot contacts, populates custom properties, and triggers workflows based on visitor behavior. RB2B integrates with HubSpot but the native workflow depth is less mature.
+- **Sequence enrollment with cool-down rules:** MidBound enrolls visitors into outreach sequences based on ICP + behavior with built-in cool-down rules to prevent over-contacting. RB2B relies on third-party tools (Zapier, Apollo) for sequence automation.
+
+### Where RB2B Has an Advantage
+- **Brand awareness:** Adam Robinson has 125K+ LinkedIn followers. RB2B is the most recognized name in person-level identification.
+- **Demandbase partnership:** Company + person-level coverage in one tool.
+- **Lower entry price:** $79/mo Starter vs MidBound pricing.
+- **Larger integration ecosystem:** 50+ native integrations.
 
 ---
 
@@ -195,20 +242,21 @@ Account identification, intent topics, account scoring, advertising audiences, c
 
 ---
 
-## Quick Comparison Table
+## Quick Comparison Table (Verified April 2026)
 
-| Capability | Vector | RB2B | Snitcher | Factors | 6sense | Demandbase | MidBound |
-|-----------|--------|------|----------|---------|--------|------------|----------|
-| Identification level | Company | Person | Company | Account | Account | Account | Person |
-| LinkedIn profile match | No | Partial | No | No | No | No | Yes |
-| Validated email | Enrichment only | Yes | No | No | No | Database only | Yes |
-| ICP scoring | No | No | No | No | Predictive (account) | Predictive (account) | Yes (person) |
-| Multi-stakeholder detection | No | Limited | No | No | Account-level | Account-level | Person-level |
-| Real-time Slack alerts | No | Yes | Limited | No | Yes | Yes | Yes |
-| HubSpot native integration | Yes (owned by HubSpot) | Yes | Yes | Yes | Yes | Yes | Yes |
-| Setup time | Moderate | Minutes | Minutes | Hours | Weeks | Weeks | Minutes |
-| Target market | Mid-market (HubSpot users) | SMB-Mid | SMB | Mid-market | Enterprise | Enterprise | SMB to Mid-market |
-| Pricing | Bundled with HubSpot | Freemium + paid | ~$39/mo+ | Mid-market | $50K+/yr | $50K+/yr | SMB-Mid pricing |
+| Capability | MidBound | RB2B | Vector | Breeze (Clearbit) | Snitcher | Factors | 6sense | Demandbase |
+|-----------|----------|------|--------|-------------------|----------|---------|--------|------------|
+| Identification level | Person | Person | Person/Contact | Company | Company | Account | Account | Account |
+| Confidence scoring | Yes | No | Not emphasized | No | No | No | No | No |
+| Validated email | Yes | Yes (Pro+) | Yes (add-on) | Enrichment only | No | No | No | Database only |
+| ICP scoring | Yes (automated) | Hot Leads (filtering) | ICP persona matching | No | No | No | Predictive (account) | Predictive (account) |
+| Multi-stakeholder detection | Yes (person-level) | Not highlighted | Not highlighted | No | No | No | Account-level | Account-level |
+| Real-time Slack alerts | Yes | Yes | Yes | Limited | Limited | No | Yes | Yes |
+| Ad audience building | No | No | Yes (LinkedIn, Google, Meta, Reddit) | No | No | No | Yes | Yes |
+| HubSpot integration | Yes | Yes | Yes | Yes (native, HubSpot-only) | Yes | Yes | Yes | Yes |
+| Setup time | Minutes | Minutes | Minutes | Moderate | Minutes | Hours | Weeks | Weeks |
+| Target market | SMB-Mid | SMB-Mid | Mid-Enterprise | HubSpot users | SMB | Mid-market | Enterprise | Enterprise |
+| Pricing | SMB-Mid | $79-199/mo | $399/mo+ | $75/mo+ | ~$39/mo+ | Mid-market | $50K+/yr | $50K+/yr |
 
 ## How to Use This Document
 

@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { getAllPosts } from './lib/posts';
+import { getAllPlaybooks } from './lib/playbooks';
+import { getAllHelpArticles } from './lib/helpCenter';
 import PostCard from './components/PostCard';
 
 const orgJsonLd = {
@@ -16,6 +18,8 @@ const orgJsonLd = {
 
 export default function HomePage() {
   const posts = getAllPosts();
+  const playbooks = getAllPlaybooks();
+  const helpArticles = getAllHelpArticles();
 
   return (
     <>
@@ -43,7 +47,7 @@ export default function HomePage() {
         </section>
 
         {/* Knowledge Engine */}
-        <section className="mb-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <section className="mb-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           <Link
             href="/blog"
             className="group rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 hover:border-[var(--color-accent)] transition-colors"
@@ -69,15 +73,27 @@ export default function HomePage() {
             </p>
           </Link>
           <Link
-            href="/blog/midbound-vs-vector"
+            href="/playbooks"
             className="group rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 hover:border-[var(--color-accent)] transition-colors"
           >
-            <p className="text-xs font-mono uppercase tracking-wider text-[var(--color-accent)] mb-2">Comparisons</p>
-            <p className="text-sm font-semibold text-white mb-1 group-hover:text-[var(--color-accent)] transition-colors">
-              Head-to-Head
+            <p className="text-xs font-mono uppercase tracking-wider text-[var(--color-accent)] mb-2">Playbooks</p>
+            <p className="text-sm font-semibold text-[var(--color-text-primary)] mb-1 group-hover:text-[var(--color-accent)] transition-colors">
+              {playbooks.length} Guides
             </p>
             <p className="text-xs text-[var(--color-text-secondary)]">
-              MidBound vs Vector, RB2B, and more
+              Step-by-step setup, workflows, and CRM automation
+            </p>
+          </Link>
+          <Link
+            href="/help-center"
+            className="group rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 hover:border-[var(--color-accent)] transition-colors"
+          >
+            <p className="text-xs font-mono uppercase tracking-wider text-[var(--color-accent)] mb-2">Help Center</p>
+            <p className="text-sm font-semibold text-[var(--color-text-primary)] mb-1 group-hover:text-[var(--color-accent)] transition-colors">
+              {helpArticles.length} Articles
+            </p>
+            <p className="text-xs text-[var(--color-text-secondary)]">
+              Features, integrations, and troubleshooting
             </p>
           </Link>
           <a
@@ -87,7 +103,7 @@ export default function HomePage() {
             className="group rounded-xl border border-[var(--color-accent)]/30 bg-[var(--color-accent)]/5 p-5 hover:bg-[var(--color-accent)]/10 transition-colors cta-glow"
           >
             <p className="text-xs font-mono uppercase tracking-wider text-[var(--color-accent)] mb-2">Get Started</p>
-            <p className="text-sm font-semibold text-white mb-1">
+            <p className="text-sm font-semibold text-[var(--color-text-primary)] mb-1">
               14-Day Free Trial
             </p>
             <p className="text-xs text-[var(--color-text-secondary)]">

@@ -31,7 +31,7 @@ If you can't answer that with something concrete, the meeting ends politely and 
 
 The VCs who passed on us early on were consistent in their reasoning. Not that the product was bad. Not that the market was small. But that the moat wasn't clear enough yet.
 
-"What stops Clearbit from adding person-level identification?" "What happens when 6sense decides to go downmarket?" "If ZoomInfo builds this, what's your response?"
+"What stops a bigger company from adding person-level identification?" "What happens when 6sense decides to go downmarket?" "If ZoomInfo builds this, what's your response?"
 
 Fair questions. Hard questions. The kind of questions that expose whether you're building a real company or a feature that'll get absorbed by a platform.
 

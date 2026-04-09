@@ -6,7 +6,7 @@ author: "sebastian"
 author_name: "Sebastian Obadia"
 author_role: "Co-Founder & CRO"
 pillar: "contrarian-takes"
-excerpt: "Company-level identification is a scam. Knowing 'someone from Google visited' means nothing when Google has 300K employees."
+excerpt: "Company-level identification is broken. Knowing 'someone from Google visited' means nothing when Google has 300K employees."
 seo_title: "Website Visitor Identification: Why Company-Level ID Fails"
 seo_description: "Company-level website visitor identification is broken. Learn why person-level ID replaced it and how B2B teams are actually closing deals."
 keywords: ["website visitor identification", "person-level identification", "B2B visitor tracking", "deanonymization"]
@@ -17,7 +17,7 @@ reading_time: 7
 
 # Company-Level ID is Dead. Here's What Replaced It.
 
-Company-level ID is a scam.
+Company-level ID is broken.
 
 Snitcher. Factors. Clearbit. 6sense. Demandbase. All of them.
 

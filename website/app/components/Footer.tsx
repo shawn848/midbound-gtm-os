@@ -21,6 +21,18 @@ export default function Footer() {
               Blog
             </Link>
             <Link
+              href="/playbooks"
+              className="text-sm text-white/80 hover:text-white transition-colors"
+            >
+              Playbooks
+            </Link>
+            <Link
+              href="/help-center"
+              className="text-sm text-white/80 hover:text-white transition-colors"
+            >
+              Help Center
+            </Link>
+            <Link
               href="/glossary"
               className="text-sm text-white/80 hover:text-white transition-colors"
             >

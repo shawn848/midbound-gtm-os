@@ -40,7 +40,7 @@ Think old-era Adam Robinson rage-bait. Pre-corporate. Before the brand consultan
 Sebastian's hooks are confrontational. They challenge, provoke, or contradict conventional wisdom.
 
 **Real examples from his posts:**
-- "Company-level ID is a scam. Snitcher. Factors. All of them."
+- "Company-level ID is broken. Snitcher. Factors. All of them."
 - "I see companies box their ICP so tight they kill their own pipeline."
 - "Marketers spending $50K/month on ads with zero clue who visited their site."
 - "Most founders don't fail because of the market."
@@ -64,7 +64,7 @@ Sebastian's hooks are confrontational. They challenge, provoke, or contradict co
 
 - "true story" -- transitions into a real anecdote
 - "zero" -- uses "zero" instead of "no" or "none" for emphasis ("zero clue", "$0 CAC")
-- "scam" -- labels things he disagrees with directly
+- "broken" -- labels things he disagrees with directly
 - Naming competitors by name: "Snitcher. Factors. All of them."
 - Raw numbers inline: "$70K F&F round", "10 founders a day", "6 figures in 5 months"
 - "Most [people/founders/marketers] don't..." -- his setup for contrarian takes

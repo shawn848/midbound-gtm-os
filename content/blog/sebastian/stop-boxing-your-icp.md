@@ -73,7 +73,7 @@ Here's what most teams miss.
 
 Your website is the most honest signal you have. Nobody visits your pricing page by accident. Nobody spends three minutes on your case studies because they're bored. If someone is on your site, they have intent. Real intent. Not "they match our ICP so they probably need us" intent.
 
-The problem is that 97% of website visitors leave without converting. They don't fill out a form. They don't book a demo. They just browse and leave.
+The problem is that 97% of website visitors leave without converting (InsideSales research). They don't fill out a form. They don't book a demo. They just browse and leave.
 
 And your ICP framework can't do anything with anonymous traffic. It can only work on the 3% who raise their hand.
 
@@ -133,7 +133,7 @@ Three tiers. Tier 1: perfect fit on every criteria. White glove treatment. Tier 
 
 ### What role do non-obvious stakeholders play in B2B buying?
 
-A massive role. Buying committees have 6-10 people. The analyst doing the evaluation. The ops person who'll own the tool. The technical lead assessing integrations. Your ICP model probably excludes all of them. But they're the ones on your website doing the actual research. Ignore them and deals die.
+A massive role. Buying committees have 6-10 people (Gartner research). The analyst doing the evaluation. The ops person who'll own the tool. The technical lead assessing integrations. Your ICP model probably excludes all of them. But they're the ones on your website doing the actual research. Ignore them and deals die.
 
 ### How does person-level identification solve the ICP problem?
 

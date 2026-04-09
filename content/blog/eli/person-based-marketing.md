@@ -55,7 +55,7 @@ One of those is a research project. The other is a conversation starter.
 
 **Multi-stakeholder detection in real time.**
 
-B2B buying committees have 6 to 10 people. That's not a theory. That's the consistent data point from every major B2B research firm.
+B2B buying committees have 6 to 10 people, according to Gartner research. That's not a theory. That's the consistent data point across multiple studies.
 
 PBM lets you see the buying committee forming. Three people from the same account visit your site in the same week? That's not a coincidence. That's an active evaluation. You can see who's involved, what each person looked at, and how far along they are.
 

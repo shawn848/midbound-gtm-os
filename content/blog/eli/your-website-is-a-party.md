@@ -25,7 +25,7 @@ People start showing up. The door keeps opening. Guests walk in. Some head strai
 
 Then they leave. Without introducing themselves. Without saying a word. Without even making eye contact.
 
-97% of them. Just gone.
+97% of them (InsideSales research). Just gone.
 
 You're standing there in your own house with no idea who was here, what they thought, or whether they're ever coming back.
 

@@ -77,4 +77,4 @@ Company-level identification treats your website traffic like a corporate direct
 
 ## The Sebastian Framing
 
-"Company-level ID is a scam. Snitcher. Factors. All of them. They tell you a company visited and then you're supposed to just... guess? That's not intelligence. That's a lottery ticket with better branding."
+"Company-level ID is broken. Snitcher. Factors. All of them. They tell you a company visited and then you're supposed to just... guess? That's not intelligence. That's a lottery ticket with better branding."

@@ -2,6 +2,11 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Separator } from '@/components/ui/separator';
+import { Search, ChevronRight } from 'lucide-react';
 import type { HelpArticle } from '@/lib/helpCenter';
 
 interface HelpCenterGridProps {
@@ -14,7 +19,10 @@ export default function HelpCenterGrid({ articles, categories }: HelpCenterGridP
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   const filtered = articles.filter((a) => {
-    const matchSearch = search === '' || a.title.toLowerCase().includes(search.toLowerCase()) || a.short_answer.toLowerCase().includes(search.toLowerCase());
+    const matchSearch =
+      search === '' ||
+      a.title.toLowerCase().includes(search.toLowerCase()) ||
+      a.short_answer.toLowerCase().includes(search.toLowerCase());
     const matchCat = activeCategory === null || a.category === activeCategory;
     return matchSearch && matchCat;
   });
@@ -29,70 +37,73 @@ export default function HelpCenterGrid({ articles, categories }: HelpCenterGridP
 
   return (
     <div>
-      <div className="mb-8">
-        <input
+      {/* Search */}
+      <div className="mb-8 relative max-w-md">
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+        <Input
           type="text"
           placeholder="Search help articles..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full max-w-md rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-2.5 text-sm text-[var(--color-text-primary)] placeholder:text-[var(--color-text-secondary)] focus:border-[var(--color-accent)] focus:outline-none"
+          className="pl-9"
         />
       </div>
 
+      {/* Category filters */}
       <div className="flex flex-wrap gap-2 mb-8">
-        <button
+        <Button
+          variant={activeCategory === null ? 'default' : 'outline'}
+          size="sm"
           onClick={() => setActiveCategory(null)}
-          className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
-            activeCategory === null
-              ? 'bg-[var(--color-accent)] text-white'
-              : 'bg-[var(--color-surface)] text-[var(--color-text-secondary)] border border-[var(--color-border)] hover:text-[var(--color-text-primary)]'
-          }`}
         >
           All
-        </button>
+        </Button>
         {categories.map((cat) => (
-          <button
+          <Button
             key={cat.key}
+            variant={activeCategory === cat.key ? 'default' : 'outline'}
+            size="sm"
             onClick={() => setActiveCategory(cat.key)}
-            className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
-              activeCategory === cat.key
-                ? 'bg-[var(--color-accent)] text-white'
-                : 'bg-[var(--color-surface)] text-[var(--color-text-secondary)] border border-[var(--color-border)] hover:text-[var(--color-text-primary)]'
-            }`}
           >
             {cat.label}
-          </button>
+          </Button>
         ))}
       </div>
 
+      {/* Grouped articles */}
       {orderedCategories.map((cat) => (
         <section key={cat.key} className="mb-10">
-          <h2 className="text-lg font-semibold text-[var(--color-text-primary)] mb-4">
+          <h2 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
+            <span className="h-5 w-1 rounded-full bg-primary" />
             {cat.label}
           </h2>
           <div className="grid gap-3">
             {grouped[cat.key].map((article) => (
-              <Link
-                key={article.slug}
-                href={`/help-center/${article.slug}`}
-                className="block rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-4 hover:border-[var(--color-accent)] transition-colors"
-              >
-                <p className="font-medium text-[var(--color-text-primary)] mb-1">
-                  {article.title}
-                </p>
-                <p className="text-sm text-[var(--color-text-secondary)] line-clamp-2">
-                  {article.short_answer}
-                </p>
+              <Link key={article.slug} href={`/help-center/${article.slug}`}>
+                <Card className="bg-card border-border hover:border-primary/50 transition-all group">
+                  <CardContent className="p-4 flex items-center justify-between">
+                    <div className="flex-1 min-w-0">
+                      <p className="font-medium text-foreground mb-0.5 group-hover:text-primary transition-colors">
+                        {article.title}
+                      </p>
+                      <p className="text-sm text-muted-foreground line-clamp-1">
+                        {article.short_answer}
+                      </p>
+                    </div>
+                    <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-primary shrink-0 ml-3 transition-colors" />
+                  </CardContent>
+                </Card>
               </Link>
             ))}
           </div>
+          <Separator className="mt-8" />
         </section>
       ))}
 
       {filtered.length === 0 && (
-        <p className="text-[var(--color-text-secondary)] text-center py-12">
-          No articles found. Try a different search term.
-        </p>
+        <div className="text-center py-16">
+          <p className="text-muted-foreground">No articles found. Try a different search term.</p>
+        </div>
       )}
     </div>
   );

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { getAllPlaybooks, getPlaybooksByCategory, getSortedCategories, getCategoryLabel } from '../lib/playbooks';
 import PlaybookGrid from '../components/PlaybookGrid';
+import { Badge } from '@/components/ui/badge';
 
 export const metadata: Metadata = {
   title: 'Playbooks — MidBound',
@@ -19,14 +20,14 @@ export default function PlaybooksIndexPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
       <div className="mb-12">
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--color-text-primary)] mb-4">
+        <Badge variant="outline" className="text-primary border-primary/30 mb-3">
+          {playbooks.length} playbooks
+        </Badge>
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-4">
           Playbooks
         </h1>
-        <p className="text-[var(--color-text-secondary)] mb-2">
+        <p className="text-muted-foreground">
           Actionable, step-by-step guides. Set up your tools, build workflows, and start closing deals from identified visitors.
-        </p>
-        <p className="text-sm text-[var(--color-text-secondary)]">
-          {playbooks.length} playbooks
         </p>
       </div>
 

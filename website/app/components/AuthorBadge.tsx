@@ -1,3 +1,5 @@
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+
 interface AuthorBadgeProps {
   name: string;
   role: string;
@@ -11,17 +13,15 @@ export default function AuthorBadge({ name, role }: AuthorBadgeProps) {
     .toUpperCase();
 
   return (
-    <div className="flex items-center gap-3">
-      <div className="w-8 h-8 rounded-full bg-[var(--color-accent)] flex items-center justify-center text-white text-xs font-semibold shrink-0">
-        {initials}
-      </div>
-      <div className="min-w-0">
-        <p className="text-sm font-medium text-[var(--color-text-primary)] truncate">
-          {name}
-        </p>
-        <p className="text-xs text-[var(--color-text-secondary)] truncate">
-          {role}
-        </p>
+    <div className="flex items-center gap-2">
+      <Avatar className="h-6 w-6">
+        <AvatarFallback className="bg-primary/10 text-primary text-[10px] font-semibold">
+          {initials}
+        </AvatarFallback>
+      </Avatar>
+      <div>
+        <p className="text-xs font-medium text-foreground leading-none">{name}</p>
+        <p className="text-[10px] text-muted-foreground leading-none mt-0.5">{role}</p>
       </div>
     </div>
   );

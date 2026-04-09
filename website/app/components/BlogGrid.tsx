@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import PostCard from './PostCard';
+import { Button } from '@/components/ui/button';
 import type { Post } from '@/lib/posts';
 
 interface BlogGridProps {
@@ -27,30 +28,22 @@ export default function BlogGrid({ posts }: BlogGridProps) {
     <>
       {clusters.length > 0 && (
         <div className="flex flex-wrap gap-2 mb-10">
-          <button
+          <Button
+            variant={activeCluster === null ? 'default' : 'outline'}
+            size="sm"
             onClick={() => setActiveCluster(null)}
-            className={`rounded-md border px-3 py-1 text-xs font-medium transition-colors cursor-pointer ${
-              activeCluster === null
-                ? 'bg-[var(--color-accent)] border-[var(--color-accent)] text-white'
-                : 'bg-[var(--color-surface)] border-[var(--color-border)] text-[var(--color-text-secondary)] hover:border-[var(--color-accent)]'
-            }`}
           >
             All
-          </button>
+          </Button>
           {clusters.map((cluster) => (
-            <button
+            <Button
               key={cluster}
-              onClick={() =>
-                setActiveCluster(activeCluster === cluster ? null : cluster)
-              }
-              className={`rounded-md border px-3 py-1 text-xs font-medium transition-colors cursor-pointer ${
-                activeCluster === cluster
-                  ? 'bg-[var(--color-accent)] border-[var(--color-accent)] text-white'
-                  : 'bg-[var(--color-surface)] border-[var(--color-border)] text-[var(--color-text-secondary)] hover:border-[var(--color-accent)]'
-              }`}
+              variant={activeCluster === cluster ? 'default' : 'outline'}
+              size="sm"
+              onClick={() => setActiveCluster(activeCluster === cluster ? null : cluster)}
             >
               {clusterLabels[cluster] || cluster}
-            </button>
+            </Button>
           ))}
         </div>
       )}
@@ -62,7 +55,7 @@ export default function BlogGrid({ posts }: BlogGridProps) {
           ))}
         </div>
       ) : (
-        <p className="text-[var(--color-text-secondary)]">
+        <p className="text-muted-foreground">
           No posts in this cluster yet.
         </p>
       )}

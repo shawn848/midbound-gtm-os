@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Space_Grotesk, JetBrains_Mono } from 'next/font/google';
+import { TooltipProvider } from '@/components/ui/tooltip';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import './globals.css';
@@ -33,7 +34,14 @@ const themeScript = `
     if (!theme) {
       theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
     }
-    document.documentElement.setAttribute('data-theme', theme);
+    if (theme === 'light') {
+      document.documentElement.classList.add('light');
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+    var scheme = localStorage.getItem('color-scheme');
+    if (scheme === 'cloud') {
+      document.documentElement.setAttribute('data-scheme', 'cloud');
+    }
   } catch (e) {}
 })();
 `;
@@ -53,9 +61,11 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="min-h-screen flex flex-col">
-        <Navigation />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <TooltipProvider>
+          <Navigation />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </TooltipProvider>
       </body>
     </html>
   );

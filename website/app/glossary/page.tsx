@@ -1,10 +1,13 @@
 import type { Metadata } from 'next';
 import {
   getTermsByCategory,
-  getCategoryLabel,
   getSortedCategories,
 } from '../lib/glossary';
 import GlossaryGrid from '../components/GlossaryGrid';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent } from '@/components/ui/card';
+import { buttonVariants } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Glossary — MidBound Blog',
@@ -30,7 +33,6 @@ export default function GlossaryPage() {
     0,
   );
 
-  // Serialize for client component
   const serializedGrouped: Record<string, { title: string; slug: string; category: string; short_description: string }[]> = {};
   for (const cat of categories) {
     serializedGrouped[cat] = grouped[cat].map((t) => ({
@@ -45,13 +47,13 @@ export default function GlossaryPage() {
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
       {/* Hero */}
       <section className="mb-16 text-center">
-        <p className="text-sm font-mono tracking-widest uppercase text-[var(--color-accent)] mb-4">
+        <Badge variant="outline" className="text-primary border-primary/30 mb-4">
           {totalTerms} terms
-        </p>
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-[var(--color-text-primary)] mb-4">
+        </Badge>
+        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground mb-4">
           MidBound Glossary
         </h1>
-        <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
           Everything B2B teams need to know about visitor identification, AEO,
           GEO, and modern marketing.
         </p>
@@ -64,21 +66,26 @@ export default function GlossaryPage() {
       />
 
       {/* Bottom CTA */}
-      <section className="mt-16 rounded-xl border border-[var(--color-accent)]/30 bg-[var(--color-accent)]/5 p-8 text-center">
-        <p className="text-lg font-semibold text-[var(--color-text-primary)] mb-2">
-          Ready to see who visits your website?
-        </p>
-        <p className="text-sm text-[var(--color-text-secondary)] mb-4">
-          Person-level identification. 14-day free trial. No credit card.
-        </p>
-        <a
-          href="https://midbound.ai/register"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block rounded-lg bg-[var(--color-accent)] px-5 py-2.5 text-sm font-medium text-white hover:opacity-90 transition-opacity"
-        >
-          Start Free Trial
-        </a>
+      <section className="mt-16">
+        <Card className="bg-primary/5 border-primary/20 glow-card">
+          <CardContent className="p-8 text-center">
+            <p className="text-lg font-semibold text-foreground mb-2">
+              Ready to see who visits your website?
+            </p>
+            <p className="text-sm text-muted-foreground mb-4">
+              Person-level identification. 14-day free trial. No credit card.
+            </p>
+            <a
+              href="https://midbound.ai/register"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={buttonVariants({ size: 'lg', className: 'cta-glow' })}
+            >
+              Start Free Trial
+              <ArrowRight className="h-4 w-4 ml-1" />
+            </a>
+          </CardContent>
+        </Card>
       </section>
     </div>
   );

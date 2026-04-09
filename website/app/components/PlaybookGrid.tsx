@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import PlaybookCard from './PlaybookCard';
+import { Button } from '@/components/ui/button';
 import type { Playbook } from '@/lib/playbooks';
 
 interface PlaybookGridProps {
@@ -19,28 +20,22 @@ export default function PlaybookGrid({ playbooks, categories }: PlaybookGridProp
   return (
     <div>
       <div className="flex flex-wrap gap-2 mb-8">
-        <button
+        <Button
+          variant={activeCategory === null ? 'default' : 'outline'}
+          size="sm"
           onClick={() => setActiveCategory(null)}
-          className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
-            activeCategory === null
-              ? 'bg-[var(--color-accent)] text-white'
-              : 'bg-[var(--color-surface)] text-[var(--color-text-secondary)] border border-[var(--color-border)] hover:text-[var(--color-text-primary)]'
-          }`}
         >
           All
-        </button>
+        </Button>
         {categories.map((cat) => (
-          <button
+          <Button
             key={cat.key}
+            variant={activeCategory === cat.key ? 'default' : 'outline'}
+            size="sm"
             onClick={() => setActiveCategory(cat.key)}
-            className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
-              activeCategory === cat.key
-                ? 'bg-[var(--color-accent)] text-white'
-                : 'bg-[var(--color-surface)] text-[var(--color-text-secondary)] border border-[var(--color-border)] hover:text-[var(--color-text-primary)]'
-            }`}
           >
             {cat.label}
-          </button>
+          </Button>
         ))}
       </div>
 

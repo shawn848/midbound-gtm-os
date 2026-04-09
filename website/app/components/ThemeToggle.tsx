@@ -1,77 +1,99 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { Sun, Moon, Palette } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const [scheme, setScheme] = useState<'platform' | 'cloud'>('platform');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    const stored = localStorage.getItem('theme');
-    if (stored === 'light' || stored === 'dark') {
-      setTheme(stored);
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme === 'light' || storedTheme === 'dark') {
+      setTheme(storedTheme);
     } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
       setTheme('light');
+    }
+    const storedScheme = localStorage.getItem('color-scheme');
+    if (storedScheme === 'cloud') {
+      setScheme('cloud');
     }
   }, []);
 
   useEffect(() => {
-    if (mounted) {
-      document.documentElement.setAttribute('data-theme', theme);
-      localStorage.setItem('theme', theme);
+    if (!mounted) return;
+    const html = document.documentElement;
+    if (theme === 'light') {
+      html.classList.add('light');
+      html.setAttribute('data-theme', 'light');
+    } else {
+      html.classList.remove('light');
+      html.removeAttribute('data-theme');
     }
+    localStorage.setItem('theme', theme);
   }, [theme, mounted]);
 
-  const toggle = () => {
-    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
-  };
+  useEffect(() => {
+    if (!mounted) return;
+    const html = document.documentElement;
+    if (scheme === 'cloud') {
+      html.setAttribute('data-scheme', 'cloud');
+    } else {
+      html.removeAttribute('data-scheme');
+    }
+    localStorage.setItem('color-scheme', scheme);
+  }, [scheme, mounted]);
 
   if (!mounted) {
-    return <button className="w-9 h-9" aria-label="Toggle theme" />;
+    return <div className="flex gap-1"><div className="w-9 h-9" /><div className="w-9 h-9" /></div>;
   }
 
   return (
-    <button
-      onClick={toggle}
-      className="w-9 h-9 flex items-center justify-center rounded-lg border border-[var(--color-border)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:border-[var(--color-text-secondary)] transition-colors cursor-pointer"
-      aria-label="Toggle theme"
-    >
-      {theme === 'dark' ? (
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+    <div className="flex items-center gap-1">
+      <Tooltip>
+        <TooltipTrigger
+          render={
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setScheme(s => s === 'platform' ? 'cloud' : 'platform')}
+              className="h-9 w-9"
+              aria-label="Toggle color scheme"
+            />
+          }
         >
-          <circle cx="12" cy="12" r="5" />
-          <line x1="12" y1="1" x2="12" y2="3" />
-          <line x1="12" y1="21" x2="12" y2="23" />
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-          <line x1="1" y1="12" x2="3" y2="12" />
-          <line x1="21" y1="12" x2="23" y2="12" />
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-        </svg>
-      ) : (
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          <Palette className="h-4 w-4" />
+        </TooltipTrigger>
+        <TooltipContent>
+          {scheme === 'platform' ? 'Platform (Orange)' : 'Cloud (Green)'}
+        </TooltipContent>
+      </Tooltip>
+      <Tooltip>
+        <TooltipTrigger
+          render={
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setTheme(t => t === 'dark' ? 'light' : 'dark')}
+              className="h-9 w-9"
+              aria-label="Toggle theme"
+            />
+          }
         >
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-        </svg>
-      )}
-    </button>
+          {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+        </TooltipTrigger>
+        <TooltipContent>
+          {theme === 'dark' ? 'Light mode' : 'Dark mode'}
+        </TooltipContent>
+      </Tooltip>
+    </div>
   );
 }

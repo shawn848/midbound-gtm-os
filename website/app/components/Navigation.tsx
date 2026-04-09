@@ -3,135 +3,142 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { Menu, BookOpen, FileText, HelpCircle, BookA, ExternalLink } from 'lucide-react';
+import { Button, buttonVariants } from '@/components/ui/button';
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
+import { Separator } from '@/components/ui/separator';
 import ThemeToggle from './ThemeToggle';
 
-function NavLink({ href, children, onClick }: { href: string; children: React.ReactNode; onClick?: () => void }) {
+const sections = [
+  { href: '/blog', label: 'Blog', icon: FileText },
+  { href: '/playbooks', label: 'Playbooks', icon: BookOpen },
+  { href: '/help-center', label: 'Help Center', icon: HelpCircle },
+  { href: '/glossary', label: 'Glossary', icon: BookA },
+];
+
+function SectionTabs() {
   const pathname = usePathname();
-  const isActive = pathname === href || pathname.startsWith(href + '/');
+
   return (
-    <Link
-      href={href}
-      onClick={onClick}
-      className={`text-sm transition-colors ${
-        isActive
-          ? 'text-[var(--color-accent)] font-medium'
-          : 'text-white/80 hover:text-white'
-      }`}
-    >
-      {children}
-    </Link>
+    <div className="flex items-center rounded-lg border border-border bg-secondary/50 p-1">
+      {sections.map(({ href, label, icon: Icon }) => {
+        const isActive = pathname === href || pathname.startsWith(href + '/');
+        return (
+          <Link
+            key={href}
+            href={href}
+            className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium transition-all ${
+              isActive
+                ? 'bg-primary text-primary-foreground shadow-sm'
+                : 'text-muted-foreground hover:text-foreground hover:bg-secondary'
+            }`}
+          >
+            <Icon className="h-3.5 w-3.5" />
+            <span className="hidden lg:inline">{label}</span>
+          </Link>
+        );
+      })}
+    </div>
   );
 }
 
 export default function Navigation() {
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-canvas)]/80 backdrop-blur-md">
+    <nav className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-14 items-center justify-between gap-4">
           {/* Logo */}
-          <Link
-            href="/"
-            className="text-lg font-bold tracking-tight text-white"
-          >
-            MidBound
+          <Link href="/" className="flex items-center gap-2 shrink-0">
+            <div className="h-7 w-7 rounded-md bg-primary flex items-center justify-center">
+              <span className="text-xs font-bold text-primary-foreground">M</span>
+            </div>
+            <span className="text-base font-bold tracking-tight text-foreground">
+              Midbound
+            </span>
+            <span className="text-base font-light text-primary">
+              Blog
+            </span>
           </Link>
 
-          {/* Desktop nav */}
-          <div className="hidden sm:flex items-center gap-6">
-            <NavLink href="/blog">Blog</NavLink>
-            <NavLink href="/playbooks">Playbooks</NavLink>
-            <NavLink href="/help-center">Help Center</NavLink>
-            <NavLink href="/glossary">Glossary</NavLink>
-            <a
-              href="https://midbound.ai"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-white/80 hover:text-white transition-colors"
-            >
-              About
-            </a>
+          {/* Desktop: Section tabs */}
+          <div className="hidden md:flex flex-1 justify-center">
+            <SectionTabs />
+          </div>
+
+          {/* Desktop: Actions */}
+          <div className="hidden md:flex items-center gap-2 shrink-0">
+            <ThemeToggle />
             <a
               href="https://midbound.ai/register"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-md bg-[var(--color-accent)] px-3 py-1.5 text-xs font-medium text-white hover:opacity-90 transition-opacity"
+              className={buttonVariants({ size: 'sm', className: 'cta-glow' })}
             >
               Start Free Trial
             </a>
-            <ThemeToggle />
           </div>
 
-          {/* Mobile controls */}
-          <div className="flex sm:hidden items-center gap-3">
+          {/* Mobile: Toggle + Sheet */}
+          <div className="flex md:hidden items-center gap-2">
             <ThemeToggle />
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="w-9 h-9 flex items-center justify-center rounded-lg border border-[var(--color-border)] text-white/80 hover:text-white transition-colors cursor-pointer"
-              aria-label="Toggle menu"
-            >
-              {mobileOpen ? (
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <line x1="18" y1="6" x2="6" y2="18" />
-                  <line x1="6" y1="6" x2="18" y2="18" />
-                </svg>
-              ) : (
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <line x1="3" y1="12" x2="21" y2="12" />
-                  <line x1="3" y1="6" x2="21" y2="6" />
-                  <line x1="3" y1="18" x2="21" y2="18" />
-                </svg>
-              )}
-            </button>
+            <Sheet open={open} onOpenChange={setOpen}>
+              <SheetTrigger
+                render={<Button variant="ghost" size="icon" className="h-9 w-9" />}
+              >
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Open menu</span>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-72">
+                <SheetTitle className="text-base font-bold">Midbound Blog</SheetTitle>
+                <div className="flex flex-col gap-1 mt-4">
+                  {sections.map(({ href, label, icon: Icon }) => {
+                    const isActive = pathname === href || pathname.startsWith(href + '/');
+                    return (
+                      <Link
+                        key={href}
+                        href={href}
+                        onClick={() => setOpen(false)}
+                        className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors ${
+                          isActive
+                            ? 'bg-primary/10 text-primary font-medium'
+                            : 'text-muted-foreground hover:text-foreground hover:bg-secondary'
+                        }`}
+                      >
+                        <Icon className="h-4 w-4" />
+                        {label}
+                      </Link>
+                    );
+                  })}
+                </div>
+                <Separator className="my-4" />
+                <div className="flex flex-col gap-2">
+                  <a
+                    href="https://midbound.ai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setOpen(false)}
+                    className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                    midbound.ai
+                  </a>
+                  <a
+                    href="https://midbound.ai/register"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setOpen(false)}
+                    className={buttonVariants({ className: 'mx-3 cta-glow' })}
+                  >
+                    Start Free Trial
+                  </a>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
-
-        {/* Mobile menu */}
-        {mobileOpen && (
-          <div className="sm:hidden pb-4 border-t border-[var(--color-border)] pt-4 flex flex-col gap-3">
-            <NavLink href="/blog" onClick={() => setMobileOpen(false)}>Blog</NavLink>
-            <NavLink href="/playbooks" onClick={() => setMobileOpen(false)}>Playbooks</NavLink>
-            <NavLink href="/help-center" onClick={() => setMobileOpen(false)}>Help Center</NavLink>
-            <NavLink href="/glossary" onClick={() => setMobileOpen(false)}>Glossary</NavLink>
-            <a
-              href="https://midbound.ai"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMobileOpen(false)}
-              className="text-sm text-white/80 hover:text-white transition-colors"
-            >
-              About
-            </a>
-            <a
-              href="https://midbound.ai/register"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMobileOpen(false)}
-              className="inline-block rounded-md bg-[var(--color-accent)] px-3 py-1.5 text-xs font-medium text-white hover:opacity-90 transition-opacity w-fit"
-            >
-              Start Free Trial
-            </a>
-          </div>
-        )}
       </div>
     </nav>
   );

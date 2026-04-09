@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { getAllPosts } from '../lib/posts';
 import BlogGrid from '../components/BlogGrid';
+import { Badge } from '@/components/ui/badge';
+import { buttonVariants } from '@/components/ui/button';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -14,10 +16,13 @@ export default function BlogIndexPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
       <div className="mb-12">
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">
+        <Badge variant="outline" className="text-primary border-primary/30 mb-3">
+          {posts.length} posts
+        </Badge>
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-4">
           All Posts
         </h1>
-        <p className="text-[var(--color-text-secondary)] mb-6">
+        <p className="text-muted-foreground">
           Insights on person-level GTM, B2B sales, AEO, GEO, and startup growth.
         </p>
       </div>
@@ -27,7 +32,7 @@ export default function BlogIndexPage() {
       <div className="mt-12 text-center">
         <Link
           href="/glossary"
-          className="inline-block rounded-lg border border-[var(--color-accent)]/30 bg-[var(--color-accent)]/5 px-5 py-2.5 text-sm font-medium text-[var(--color-accent)] hover:bg-[var(--color-accent)]/10 transition-colors"
+          className={buttonVariants({ variant: 'outline' })}
         >
           Browse Glossary (45+ terms)
         </Link>

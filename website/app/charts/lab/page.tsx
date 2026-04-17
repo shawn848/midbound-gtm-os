@@ -2,10 +2,14 @@
 
 import Link from 'next/link';
 import { Suspense } from 'react';
-import FilterURLSync from '../../components/charts/FilterURLSync';
-import FilterBar from '../../components/charts/FilterBar';
-import VisitorGlobe from '../../components/charts/VisitorGlobe';
 import { ArrowLeft } from 'lucide-react';
+import FilterURLSync from '../../components/charts/FilterURLSync';
+import VisitorGlobe from '../../components/charts/VisitorGlobe';
+import IdentificationFunnel from '../../components/lab/IdentificationFunnel';
+import LiveIdFeed from '../../components/lab/LiveIdFeed';
+import VisitToDealFlow from '../../components/lab/VisitToDealFlow';
+import RoiCalculator from '../../components/lab/RoiCalculator';
+import PipelineImpactBars from '../../components/lab/PipelineImpactBars';
 
 export default function ChartsLabPage() {
   return (
@@ -14,18 +18,18 @@ export default function ChartsLabPage() {
         <FilterURLSync />
       </Suspense>
 
-      <div className="mb-6 flex items-start justify-between gap-4 flex-wrap">
+      <header className="mb-10 flex items-start justify-between gap-4 flex-wrap">
         <div>
           <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-[11px] uppercase tracking-wider mb-3">
-            Experimental
+            Pitch demo
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-2">
-            Visitor globe &mdash; lab
+            See a pitch, not a dashboard.
           </h1>
-          <p className="text-muted-foreground max-w-2xl text-sm">
-            Proof-of-concept geo visualization. Not part of the main dashboard &mdash; pins don&apos;t
-            pin cleanly to country geometry on rotate, and clustering doesn&apos;t always tell the
-            story. Iterating here instead.
+          <p className="text-muted-foreground max-w-2xl text-sm sm:text-base">
+            A story in six scrolls &mdash; traffic in, pipeline out. Same mock pool as /charts,
+            reframed around the question anyone actually pays to answer: &ldquo;what is
+            MidBound worth to me?&rdquo;
           </p>
         </div>
         <Link
@@ -35,12 +39,41 @@ export default function ChartsLabPage() {
           <ArrowLeft className="h-4 w-4" />
           Back to /charts
         </Link>
-      </div>
+      </header>
 
-      <FilterBar />
+      <div className="space-y-8 sm:space-y-10">
+        <section id="funnel" className="scroll-mt-20">
+          <IdentificationFunnel />
+        </section>
 
-      <div className="mt-8">
-        <VisitorGlobe />
+        <section id="feed" className="scroll-mt-20">
+          <LiveIdFeed />
+        </section>
+
+        <section id="workflow" className="scroll-mt-20">
+          <VisitToDealFlow />
+        </section>
+
+        <section id="roi" className="scroll-mt-20">
+          <RoiCalculator />
+        </section>
+
+        <section id="impact" className="scroll-mt-20">
+          <PipelineImpactBars />
+        </section>
+
+        <section id="globe" className="scroll-mt-20">
+          <div className="mb-3">
+            <h2 className="text-xl sm:text-2xl font-bold text-foreground">
+              Where your next meeting is coming from
+            </h2>
+            <p className="text-sm text-muted-foreground max-w-2xl">
+              Geography layer over the same pool &mdash; every dot is a session you&rsquo;d see
+              on the live feed. Garnish, not the point.
+            </p>
+          </div>
+          <VisitorGlobe />
+        </section>
       </div>
     </div>
   );

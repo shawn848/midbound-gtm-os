@@ -196,16 +196,7 @@ Demandbase is an enterprise ABM platform providing company identification, accou
 
 ## The full comparison table
 
-| Tool | Level | Names | Emails | ICP Score | Setup | Price Range | Best For |
-|------|-------|-------|--------|-----------|-------|-------------|----------|
-| MidBound | Person | Yes | Yes (validated) | Yes (auto) | Minutes | SMB-Mid | B2B SaaS, agencies |
-| RB2B | Person | Yes | Yes (Pro+) | Hot Leads filtering | Minutes | $79-199/mo | Broad person-level |
-| Snitcher | Company | No | No | No | Minutes | $39/mo+ | Budget SMB |
-| Factors.ai | Account | No | No | No | Hours | Mid-market | Attribution teams |
-| Vector | Person/Contact | Yes | Yes (add-on) | ICP matching | Minutes | $399/mo+ | Contact-level ads |
-| Breeze (Clearbit) | Company | No | Enrichment only | No | Moderate | $75/mo+ | HubSpot users |
-| 6sense | Account | No | Database only | Predictive | Weeks | $50K+/yr | Enterprise ABM |
-| Demandbase | Account | No | Database only | Predictive | Weeks | $50K+/yr | Enterprise ABM |
+<!-- chart:tools-matrix -->
 
 ## How to choose the right tool
 

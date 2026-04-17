@@ -3,6 +3,7 @@ import GeoHeatGrid from './charts/GeoHeatGrid';
 import AreaTrendChart from './charts/AreaTrendChart';
 import BarComparisonChart from './charts/BarComparisonChart';
 import AnimatedCounter from './charts/AnimatedCounter';
+import ComparisonMatrix from './charts/ComparisonMatrix';
 
 interface ChartAwareContentProps {
   html: string;
@@ -96,20 +97,8 @@ function renderChart(token: string): ReactNode {
           layout="vertical"
         />
       );
-    case 'tool-comparison':
-      return (
-        <BarComparisonChart
-          title="What each tool actually surfaces"
-          description="Percent of visits where the tool returned the named field (directional, not a vendor audit)."
-          data={TOOL_COMPARISON}
-          bars={[
-            { dataKey: 'midbound', label: 'Midbound', color: 'var(--primary)' },
-            { dataKey: 'rb2b', label: 'RB2B', color: '#F59E0B' },
-            { dataKey: 'snitcher', label: 'Snitcher', color: '#64748B' },
-            { dataKey: 'factors', label: 'Factors', color: '#94A3B8' },
-          ]}
-        />
-      );
+    case 'tools-matrix':
+      return <ComparisonMatrix />;
     default:
       return null;
   }

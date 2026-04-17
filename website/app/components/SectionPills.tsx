@@ -8,7 +8,7 @@ interface SectionPillsProps {
   max?: number;
 }
 
-export default function SectionPills({ sections, className = '', max = 3 }: SectionPillsProps) {
+export default function SectionPills({ sections, className = '', max = 4 }: SectionPillsProps) {
   if (!sections || sections.length === 0) return null;
   const visible = sections.slice(0, max);
 

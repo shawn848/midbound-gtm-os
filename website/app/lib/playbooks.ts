@@ -18,15 +18,31 @@ export interface Playbook {
   content: string;
 }
 
-function extractSectionTitles(content: string, max = 4): string[] {
+const BOILERPLATE_HEADINGS = new Set([
+  "what you'll have when done",
+  'next steps',
+  'related posts',
+  'privacy and compliance notes',
+  'privacy notes',
+  'compliance notes',
+  'related playbooks',
+  'why clay instead of direct integration',
+]);
+
+function cleanHeading(raw: string): string {
+  return raw.replace(/^Step\s+\d+\s*[:.\-]\s*/i, '').trim();
+}
+
+function extractSectionTitles(content: string, max = 5): string[] {
   const lines = content.split('\n');
   const titles: string[] = [];
   for (const line of lines) {
     const match = /^##\s+(.+?)\s*$/.exec(line);
-    if (match) {
-      titles.push(match[1].trim());
-      if (titles.length >= max) break;
-    }
+    if (!match) continue;
+    const raw = match[1].trim();
+    if (BOILERPLATE_HEADINGS.has(raw.toLowerCase())) continue;
+    titles.push(cleanHeading(raw));
+    if (titles.length >= max) break;
   }
   return titles;
 }

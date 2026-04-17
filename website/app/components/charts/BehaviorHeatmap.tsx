@@ -2,93 +2,146 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { useBehaviorMatrix, useFilterStore } from '@/lib/filterStore';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import type { Seniority } from '@/lib/mockVisitors';
+import { useActivityMatrix, useFilterStore } from '@/lib/filterStore';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from '@/components/ui/card';
 
-const PAGE_BUCKETS = ['1 page', '2-3', '4-6', '7+'];
+function intensityColor(ratio: number): string {
+  if (ratio === 0) return 'rgba(255,255,255,0.04)';
+  const bucket = Math.min(4, Math.floor(ratio * 5));
+  const alpha = [0.18, 0.32, 0.5, 0.7, 0.95][bucket];
+  return `rgba(232, 119, 46, ${alpha.toFixed(2)})`;
+}
 
-function intensityColor(share: number): string {
-  const alpha = Math.min(0.92, 0.06 + share * 1.6);
-  return `rgba(232, 119, 46, ${alpha.toFixed(3)})`;
+function formatShort(d: Date): string {
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 }
 
 export default function BehaviorHeatmap() {
-  const matrix = useBehaviorMatrix();
-  const toggleSeniority = useFilterStore((s) => s.toggleSeniority);
-  const activeSeniorities = useFilterStore((s) => s.seniorities);
+  const { companies, days, counts, max } = useActivityMatrix(8);
+  const selectedCompany = useFilterStore((s) => s.selectedCompany);
+  const setSelectedCompany = useFilterStore((s) => s.setSelectedCompany);
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: '0px 0px -10% 0px' });
 
-  const maxValue = matrix.reduce(
-    (m, row) => Math.max(m, ...row.data.map((c) => c.y)),
-    0
-  );
+  const CELL = 13;
+  const GAP = 3;
 
   return (
     <Card className="bg-card border-border">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-sm font-semibold">
-          Behavior heatmap: seniority × session depth
-        </CardTitle>
-        <CardDescription className="text-xs">
-          Where your real buyers are reading. Darker orange = more visits. Click a row to filter.
-        </CardDescription>
-      </CardHeader>
-      <CardContent ref={ref} className="pt-4 overflow-x-auto">
-        <div className="min-w-[560px]">
-          <div className="grid" style={{ gridTemplateColumns: '110px repeat(4, 1fr)' }}>
-            <div />
-            {PAGE_BUCKETS.map((col) => (
-              <div
-                key={col}
-                className="text-[11px] uppercase tracking-wider text-muted-foreground font-semibold text-center pb-2"
-              >
-                {col}
-              </div>
-            ))}
-            {matrix.map((row, ri) => (
-              <div key={row.id} className="contents">
-                <button
-                  type="button"
-                  onClick={() => toggleSeniority(row.id as Seniority)}
-                  className={`text-[11px] uppercase tracking-wider font-semibold pr-3 py-2 text-right transition-colors ${
-                    activeSeniorities.includes(row.id as Seniority)
-                      ? 'text-primary'
-                      : 'text-muted-foreground hover:text-foreground'
-                  }`}
-                >
-                  {row.id}
-                </button>
-                {row.data.map((cell, ci) => {
-                  const share = maxValue === 0 ? 0 : cell.y / maxValue;
-                  return (
-                    <motion.div
-                      key={`${row.id}-${cell.x}`}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-                      transition={{
-                        delay: (ri + ci) * 0.04,
-                        duration: 0.35,
-                        ease: 'easeOut',
-                      }}
-                      whileHover={{
-                        scale: 1.03,
-                        boxShadow:
-                          '0 0 14px rgba(232, 119, 46, 0.55), 0 0 22px rgba(255,255,255,0.18)',
-                      }}
-                      className="m-1 rounded-lg border border-primary/20 flex items-center justify-center text-sm font-semibold text-foreground cursor-default min-h-[52px]"
-                      style={{ backgroundColor: intensityColor(share) }}
-                      title={`${cell.y} ${row.id} visits · ${cell.x} pages`}
-                    >
-                      {cell.y || ''}
-                    </motion.div>
-                  );
-                })}
-              </div>
-            ))}
-          </div>
+      <CardHeader className="pb-2 flex flex-row items-start justify-between gap-3">
+        <div>
+          <CardTitle className="text-sm font-semibold">Visit density by company &times; day</CardTitle>
+          <CardDescription className="text-xs">
+            Each square is one day. Darker orange = more visits. Click a company name to focus the
+            dashboard on them.
+          </CardDescription>
         </div>
+        {max > 0 && (
+          <div className="flex items-center gap-1.5 pt-1 shrink-0">
+            <span className="text-[10px] uppercase tracking-wider text-muted-foreground">Less</span>
+            {[0.0, 0.25, 0.5, 0.75, 1.0].map((r, i) => (
+              <span
+                key={i}
+                className="inline-block rounded-sm"
+                style={{
+                  width: 10,
+                  height: 10,
+                  backgroundColor: intensityColor(r === 0 ? 0 : r),
+                  border: '1px solid rgba(255,255,255,0.06)',
+                }}
+              />
+            ))}
+            <span className="text-[10px] uppercase tracking-wider text-muted-foreground">More</span>
+          </div>
+        )}
+      </CardHeader>
+      <CardContent ref={ref} className="pt-3 overflow-x-auto">
+        {companies.length === 0 ? (
+          <p className="text-sm text-muted-foreground py-6 text-center">
+            No visits match the current filters.
+          </p>
+        ) : (
+          <div className="min-w-max">
+            <div
+              className="grid mb-2 text-[10px] text-muted-foreground"
+              style={{
+                gridTemplateColumns: `120px repeat(${days.length}, ${CELL}px)`,
+                columnGap: GAP,
+              }}
+            >
+              <div />
+              {days.map((day, i) => (
+                <div
+                  key={day.toISOString()}
+                  className="text-center"
+                  style={{ width: CELL }}
+                >
+                  {i % 7 === 0 ? (
+                    <span className="whitespace-nowrap text-[9px]">{formatShort(day)}</span>
+                  ) : (
+                    ''
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {companies.map((company, rowIdx) => {
+              const isSelected = selectedCompany === company;
+              return (
+                <div
+                  key={company}
+                  className="grid items-center mb-1"
+                  style={{
+                    gridTemplateColumns: `120px repeat(${days.length}, ${CELL}px)`,
+                    columnGap: GAP,
+                  }}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setSelectedCompany(isSelected ? null : company)}
+                    className={`text-left text-xs font-medium pr-2 py-0.5 truncate transition-colors ${
+                      isSelected ? 'text-primary' : 'text-foreground hover:text-primary'
+                    }`}
+                  >
+                    {company}
+                  </button>
+                  {counts[rowIdx].map((c, colIdx) => {
+                    const ratio = max === 0 ? 0 : c / max;
+                    return (
+                      <motion.div
+                        key={`${company}-${colIdx}`}
+                        initial={{ opacity: 0, scale: 0.7 }}
+                        animate={
+                          inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.7 }
+                        }
+                        transition={{
+                          delay: (rowIdx * days.length + colIdx) * 0.002 + rowIdx * 0.03,
+                          duration: 0.25,
+                          ease: 'easeOut',
+                        }}
+                        whileHover={{ scale: 1.6, zIndex: 10 }}
+                        title={`${company} · ${formatShort(days[colIdx])} · ${c} visit${c === 1 ? '' : 's'}`}
+                        className="rounded-[3px] cursor-default"
+                        style={{
+                          width: CELL,
+                          height: CELL,
+                          backgroundColor: intensityColor(ratio),
+                          border: '1px solid rgba(255,255,255,0.05)',
+                        }}
+                      />
+                    );
+                  })}
+                </div>
+              );
+            })}
+          </div>
+        )}
       </CardContent>
     </Card>
   );

@@ -7,14 +7,20 @@ export default function VisitorTrend() {
   const data = useTrendSeries();
 
   return (
-    <AreaTrendChart
-      title="Identified visits over time"
-      description="Filtered by the current selection. Each bar = a time bucket."
-      data={data}
-      areas={[
-        { dataKey: 'identified', label: 'Identified visits', color: 'var(--primary)' },
-        { dataKey: 'anonymous', label: 'Minutes on site', color: '#64748B' },
-      ]}
-    />
+    <div className="space-y-2">
+      <AreaTrendChart
+        title="Identified visits over time"
+        description="Current filter, plotted across the selected date range."
+        data={data}
+        areas={[
+          { dataKey: 'identified', label: 'Identified visits', color: 'var(--primary)' },
+          { dataKey: 'anonymous', label: 'Session minutes', color: '#64748B' },
+        ]}
+      />
+      <p className="text-[11px] text-muted-foreground px-1">
+        Each point is the sum of visits in that time bucket. The Identified-visitors table below is
+        the same set, one row per visit. Filter above and both redraw together.
+      </p>
+    </div>
   );
 }

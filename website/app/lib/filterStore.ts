@@ -4,6 +4,23 @@ import { create } from 'zustand';
 import { useMemo } from 'react';
 import { generateMockVisitors, type Visitor, type Seniority } from './mockVisitors';
 
+function dateKey(ts: number): string {
+  const d = new Date(ts);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+
+function daysBack(n: number): Date[] {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const out: Date[] = [];
+  for (let i = n - 1; i >= 0; i--) {
+    const d = new Date(today);
+    d.setDate(today.getDate() - i);
+    out.push(d);
+  }
+  return out;
+}
+
 export type DateRangeKey = '7d' | '30d' | '90d' | 'all';
 
 interface FilterState {
@@ -104,7 +121,7 @@ export const useFilterStore = create<FilterState>((set, get) => ({
   },
 }));
 
-const ALL_VISITORS = generateMockVisitors(300, 42);
+const ALL_VISITORS = generateMockVisitors(650, 42);
 
 export function getAllVisitors(): Visitor[] {
   return ALL_VISITORS;
@@ -162,14 +179,15 @@ export function useKpis() {
   }, [visitors]);
 }
 
-export function useByCountry() {
-  const visitors = useFilteredVisitors();
+export function useByCountry(filtered = true) {
+  const filteredVisitors = useFilteredVisitors();
+  const source = filtered ? filteredVisitors : ALL_VISITORS;
   return useMemo(() => {
     const counts = new Map<
       string,
       { country: string; country_code: string; lat: number; lng: number; count: number }
     >();
-    for (const v of visitors) {
+    for (const v of source) {
       const existing = counts.get(v.country_code);
       if (existing) existing.count += 1;
       else
@@ -182,7 +200,93 @@ export function useByCountry() {
         });
     }
     return [...counts.values()].sort((a, b) => b.count - a.count);
-  }, [visitors]);
+  }, [source]);
+}
+
+export interface CompanyLocation {
+  company: string;
+  domain: string;
+  country: string;
+  country_code: string;
+  lat: number;
+  lng: number;
+  count: number;
+  seniorities: string[];
+  titles: string[];
+}
+
+export function useCompanyLocations(filtered = false): CompanyLocation[] {
+  const filteredVisitors = useFilteredVisitors();
+  const source = filtered ? filteredVisitors : ALL_VISITORS;
+  return useMemo(() => {
+    const keyed = new Map<string, CompanyLocation>();
+    for (const v of source) {
+      const key = `${v.company}@@${v.country_code}`;
+      const existing = keyed.get(key);
+      if (existing) {
+        existing.count += 1;
+        existing.seniorities.push(v.seniority);
+        existing.titles.push(v.title);
+        existing.lat = (existing.lat * (existing.count - 1) + v.lat) / existing.count;
+        existing.lng = (existing.lng * (existing.count - 1) + v.lng) / existing.count;
+      } else {
+        keyed.set(key, {
+          company: v.company,
+          domain: v.domain,
+          country: v.country,
+          country_code: v.country_code,
+          lat: v.lat,
+          lng: v.lng,
+          count: 1,
+          seniorities: [v.seniority],
+          titles: [v.title],
+        });
+      }
+    }
+    return [...keyed.values()].sort((a, b) => b.count - a.count);
+  }, [source]);
+}
+
+export interface ActivityMatrix {
+  companies: string[];
+  days: Date[];
+  counts: number[][];
+  max: number;
+}
+
+export function useActivityMatrix(topN = 8): ActivityMatrix {
+  const visitors = useFilteredVisitors();
+  const dateRange = useFilterStore((s) => s.dateRange);
+  return useMemo(() => {
+    const spanDays = dateRange === '7d' ? 14 : dateRange === '30d' ? 30 : dateRange === '90d' ? 90 : 90;
+    const days = daysBack(spanDays);
+    const dayKeys = days.map((d) => dateKey(d.getTime()));
+    const dayIndex = new Map<string, number>();
+    dayKeys.forEach((k, i) => dayIndex.set(k, i));
+
+    const companyCounts = new Map<string, number>();
+    for (const v of visitors) {
+      companyCounts.set(v.company, (companyCounts.get(v.company) || 0) + 1);
+    }
+    const companies = [...companyCounts.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, topN)
+      .map(([c]) => c);
+    const companyIndex = new Map<string, number>();
+    companies.forEach((c, i) => companyIndex.set(c, i));
+
+    const counts: number[][] = companies.map(() => new Array(days.length).fill(0));
+    let max = 0;
+    for (const v of visitors) {
+      const ci = companyIndex.get(v.company);
+      const di = dayIndex.get(dateKey(v.timestamp));
+      if (ci === undefined || di === undefined) continue;
+      const next = counts[ci][di] + 1;
+      counts[ci][di] = next;
+      if (next > max) max = next;
+    }
+    return { companies, days, counts, max };
+  }, [visitors, dateRange, topN]);
 }
 
 export function useByCompany(topN = 8) {

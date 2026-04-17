@@ -17,12 +17,26 @@ export interface Post {
   keyword_cluster: string;
   related_posts: string[];
   reading_time: number;
+  section_titles: string[];
   content: string;
 }
 
 const contentDir = path.join(process.cwd(), '..', 'content', 'blog');
 
 const authorDirs = ['sebastian', 'eli'] as const;
+
+export function extractSectionTitles(content: string, max = 4): string[] {
+  const lines = content.split('\n');
+  const titles: string[] = [];
+  for (const line of lines) {
+    const match = /^##\s+(.+?)\s*$/.exec(line);
+    if (match) {
+      titles.push(match[1].trim());
+      if (titles.length >= max) break;
+    }
+  }
+  return titles;
+}
 
 export function getAllPosts(): Post[] {
   const posts: Post[] = [];
@@ -55,6 +69,7 @@ export function getAllPosts(): Post[] {
         keyword_cluster: data.keyword_cluster || '',
         related_posts: data.related_posts || [],
         reading_time: data.reading_time,
+        section_titles: extractSectionTitles(content),
         content,
       });
     }

@@ -43,6 +43,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://blog.midbound.ai/blog/how-visitor-analytics-actually-work</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://blog.midbound.ai/blog/page-level-visitor-intelligence</loc>
     <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>

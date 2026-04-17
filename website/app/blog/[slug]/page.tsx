@@ -4,6 +4,8 @@ import type { Metadata } from 'next';
 import { getAllPosts, getPostBySlug } from '../../lib/posts';
 import { markdownToHtml } from '../../lib/markdown';
 import AuthorBadge from '../../components/AuthorBadge';
+import ChartAwareContent from '../../components/ChartAwareContent';
+import PostTOC from '../../components/PostTOC';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
@@ -131,7 +133,9 @@ export default async function BlogPostPage({ params }: PageProps) {
           </div>
         </header>
 
-        <div className="prose" dangerouslySetInnerHTML={{ __html: htmlContent }} />
+        <ChartAwareContent html={htmlContent} />
+
+        <PostTOC sections={post.section_titles || []} />
 
         {relatedPosts.length > 0 && (
           <section className="mt-16">

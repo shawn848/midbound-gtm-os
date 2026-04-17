@@ -14,7 +14,21 @@ export interface Playbook {
   seo_description: string;
   keywords: string[];
   related_playbooks: string[];
+  section_titles: string[];
   content: string;
+}
+
+function extractSectionTitles(content: string, max = 4): string[] {
+  const lines = content.split('\n');
+  const titles: string[] = [];
+  for (const line of lines) {
+    const match = /^##\s+(.+?)\s*$/.exec(line);
+    if (match) {
+      titles.push(match[1].trim());
+      if (titles.length >= max) break;
+    }
+  }
+  return titles;
 }
 
 const playbooksDir = path.join(process.cwd(), '..', 'content', 'playbooks');
@@ -58,6 +72,7 @@ export function getAllPlaybooks(): Playbook[] {
       seo_description: data.seo_description,
       keywords: data.keywords || [],
       related_playbooks: data.related_playbooks || [],
+      section_titles: extractSectionTitles(content),
       content,
     });
   }

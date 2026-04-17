@@ -341,10 +341,28 @@
 
 .prose h2 {
   font-size: 1.5rem;
+  border-left: 3px solid var(--primary);
+  padding-left: 0.85rem;
+  scroll-margin-top: 5rem;
 }
 
 .prose h3 {
   font-size: 1.25rem;
+  position: relative;
+  padding-left: 0.9rem;
+  scroll-margin-top: 5rem;
+}
+
+.prose h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 9999px;
+  background-color: var(--primary);
+  box-shadow: 0 0 8px rgba(232, 119, 46, 0.6);
 }
 
 .prose p {
@@ -363,7 +381,7 @@
 
 .prose strong {
   font-weight: 700;
-  color: var(--foreground);
+  color: var(--primary);
 }
 
 .prose ul,

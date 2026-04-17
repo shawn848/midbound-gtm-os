@@ -3,6 +3,8 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { getAllPlaybooks, getPlaybookBySlug, getCategoryLabel } from '../../lib/playbooks';
 import { markdownToHtml } from '../../lib/markdown';
+import ChartAwareContent from '../../components/ChartAwareContent';
+import PostTOC from '../../components/PostTOC';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
@@ -29,12 +31,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     keywords: playbook.keywords,
   };
 }
-
-const difficultyVariant: Record<string, string> = {
-  beginner: 'bg-green-500/10 text-green-400 border-green-500/20',
-  intermediate: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20',
-  advanced: 'bg-red-500/10 text-red-400 border-red-500/20',
-};
 
 export default async function PlaybookPage({ params }: PageProps) {
   const { slug } = await params;
@@ -83,9 +79,6 @@ export default async function PlaybookPage({ params }: PageProps) {
             <Badge variant="secondary" className="text-primary bg-primary/10 border-0">
               {getCategoryLabel(playbook.category)}
             </Badge>
-            <Badge variant="outline" className={difficultyVariant[playbook.difficulty] || ''}>
-              {playbook.difficulty}
-            </Badge>
             <span className="text-sm text-muted-foreground">{playbook.time_to_complete}</span>
           </div>
 
@@ -100,7 +93,9 @@ export default async function PlaybookPage({ params }: PageProps) {
           </div>
         </header>
 
-        <div className="prose" dangerouslySetInnerHTML={{ __html: htmlContent }} />
+        <ChartAwareContent html={htmlContent} />
+
+        <PostTOC sections={playbook.section_titles || []} />
 
         {relatedPlaybooks.length > 0 && (
           <section className="mt-16">
@@ -114,9 +109,6 @@ export default async function PlaybookPage({ params }: PageProps) {
                       <p className="font-medium text-foreground mb-1">{related.title}</p>
                       <p className="text-sm text-muted-foreground line-clamp-2">{related.excerpt}</p>
                       <div className="flex items-center gap-2 mt-2">
-                        <Badge variant="outline" className={`text-[10px] ${difficultyVariant[related.difficulty] || ''}`}>
-                          {related.difficulty}
-                        </Badge>
                         <span className="text-xs text-muted-foreground">{related.time_to_complete}</span>
                       </div>
                     </CardContent>

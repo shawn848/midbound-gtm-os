@@ -68,6 +68,12 @@ Map title to a seniority tier (IC, Manager, Director, VP, C-level). Clay has a p
 **Column F: Competitor footprint**
 Does their company already use a competitor? Check with a tech-stack lookup or a LinkedIn profile text search. If they're on Factors or Snitcher, the angle changes. You're not selling visitor ID as a concept. You're selling person-level over company-level.
 
+Every column in the waterfall has a different fill rate. LinkedIn verification almost always returns. Tech stack hits a little over half the time. Funding data only lands on companies that are VC-backed and reasonably public. The chart below is a representative spread.
+
+<!-- chart:clay-waterfall -->
+
+Use this to set expectations. If your enrichment prompt demands a "funding round" to generate context, 60% of your rows will return SKIP. If your prompt is flexible about which column it uses, the fill rate approaches 95%.
+
 ## Step 4: Generate One Line of Context
 
 Add a Claude or OpenAI column in Clay. This is the AI step, but heavily constrained.

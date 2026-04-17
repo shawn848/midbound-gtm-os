@@ -65,33 +65,34 @@
 
 /* ================================================================
    DARK MODE — PLATFORM (Orange) — DEFAULT
+   True-black canvas to make accent colors pop.
    ================================================================ */
 :root {
   --radius: 0.625rem;
 
-  /* Midbound dark canvas */
-  --background: #0D1117;
-  --foreground: #fafafa;
-  --card: #161B22;
-  --card-foreground: #fafafa;
-  --popover: #161B22;
-  --popover-foreground: #fafafa;
+  /* True-black canvas — matches MidBound app darkness */
+  --background: #050508;
+  --foreground: #F0F0F2;
+  --card: #0B0D12;
+  --card-foreground: #F0F0F2;
+  --popover: #0B0D12;
+  --popover-foreground: #F0F0F2;
 
   /* Orange primary */
   --primary: #E8772E;
   --primary-foreground: #ffffff;
 
-  /* Dark surfaces */
-  --secondary: #1C2128;
-  --secondary-foreground: #e4e4e7;
-  --muted: #21262D;
-  --muted-foreground: #a1a1aa;
+  /* Dark surfaces — barely visible layering */
+  --secondary: #10131A;
+  --secondary-foreground: #E0E0E4;
+  --muted: #14171F;
+  --muted-foreground: #9CA3AF;
   --accent: #E8772E;
   --accent-foreground: #ffffff;
 
   --destructive: #ef4444;
-  --border: #27272a;
-  --input: #27272a;
+  --border: #1A1E28;
+  --input: #1A1E28;
   --ring: #E8772E;
 
   /* Chart colors: orange → purple gradient */
@@ -102,76 +103,77 @@
   --chart-5: #FB923C;
 
   /* Sidebar */
-  --sidebar: #0D1117;
-  --sidebar-foreground: #fafafa;
+  --sidebar: #050508;
+  --sidebar-foreground: #F0F0F2;
   --sidebar-primary: #E8772E;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #1C2128;
-  --sidebar-accent-foreground: #e4e4e7;
-  --sidebar-border: #27272a;
+  --sidebar-accent: #10131A;
+  --sidebar-accent-foreground: #E0E0E4;
+  --sidebar-border: #1A1E28;
   --sidebar-ring: #E8772E;
 
-  /* Legacy tokens (backward compat for existing components) */
-  --color-canvas: #0D1117;
-  --color-surface: #161B22;
-  --color-text-primary: #fafafa;
-  --color-text-secondary: #a1a1aa;
+  /* Legacy tokens */
+  --color-canvas: #050508;
+  --color-surface: #0B0D12;
+  --color-text-primary: #F0F0F2;
+  --color-text-secondary: #9CA3AF;
   --mb-accent: #E8772E;
   --mb-accent-light: #F59E0B;
-  --mb-glow: rgba(232, 119, 46, 0.15);
-  --mb-glow-strong: rgba(232, 119, 46, 0.3);
+  --mb-glow: rgba(232, 119, 46, 0.18);
+  --mb-glow-strong: rgba(232, 119, 46, 0.35);
 }
 
 /* ================================================================
    LIGHT MODE — PLATFORM (Orange)
+   High-contrast text for crisp readability.
    ================================================================ */
 .light,
 [data-theme="light"] {
-  --background: #ffffff;
-  --foreground: #18181b;
-  --card: #fafafa;
-  --card-foreground: #18181b;
-  --popover: #ffffff;
-  --popover-foreground: #18181b;
+  --background: #FAFAFA;
+  --foreground: #09090B;
+  --card: #FFFFFF;
+  --card-foreground: #09090B;
+  --popover: #FFFFFF;
+  --popover-foreground: #09090B;
 
-  --primary: #D4650E;
+  --primary: #C95A0A;
   --primary-foreground: #ffffff;
 
-  --secondary: #f4f4f5;
-  --secondary-foreground: #27272a;
-  --muted: #f4f4f5;
-  --muted-foreground: #71717a;
-  --accent: #D4650E;
+  --secondary: #F0F0F2;
+  --secondary-foreground: #1A1A1E;
+  --muted: #F0F0F2;
+  --muted-foreground: #52525B;
+  --accent: #C95A0A;
   --accent-foreground: #ffffff;
 
   --destructive: #dc2626;
-  --border: #e4e4e7;
-  --input: #e4e4e7;
-  --ring: #D4650E;
+  --border: #D4D4D8;
+  --input: #D4D4D8;
+  --ring: #C95A0A;
 
-  --chart-1: #D4650E;
-  --chart-2: #9333EA;
-  --chart-3: #D97706;
-  --chart-4: #7C3AED;
-  --chart-5: #EA580C;
+  --chart-1: #C95A0A;
+  --chart-2: #7C3AED;
+  --chart-3: #B45309;
+  --chart-4: #6D28D9;
+  --chart-5: #C2410C;
 
-  --sidebar: #fafafa;
-  --sidebar-foreground: #18181b;
-  --sidebar-primary: #D4650E;
+  --sidebar: #F5F5F5;
+  --sidebar-foreground: #09090B;
+  --sidebar-primary: #C95A0A;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #f4f4f5;
-  --sidebar-accent-foreground: #27272a;
-  --sidebar-border: #e4e4e7;
-  --sidebar-ring: #D4650E;
+  --sidebar-accent: #F0F0F2;
+  --sidebar-accent-foreground: #1A1A1E;
+  --sidebar-border: #D4D4D8;
+  --sidebar-ring: #C95A0A;
 
-  --color-canvas: #ffffff;
-  --color-surface: #f4f4f5;
-  --color-text-primary: #18181b;
-  --color-text-secondary: #71717a;
-  --mb-accent: #D4650E;
+  --color-canvas: #FAFAFA;
+  --color-surface: #FFFFFF;
+  --color-text-primary: #09090B;
+  --color-text-secondary: #52525B;
+  --mb-accent: #C95A0A;
   --mb-accent-light: #D97706;
-  --mb-glow: rgba(212, 101, 14, 0.1);
-  --mb-glow-strong: rgba(212, 101, 14, 0.2);
+  --mb-glow: rgba(201, 90, 10, 0.08);
+  --mb-glow-strong: rgba(201, 90, 10, 0.16);
 }
 
 /* ================================================================
@@ -230,6 +232,9 @@
     @apply font-sans;
     color-scheme: dark;
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
   .light,
   [data-theme="light"] {
@@ -237,6 +242,17 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.6;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+  /* Stronger text on dark backgrounds */
+  p, li, td, th, label, span {
+    text-shadow: 0 0 0 transparent;
   }
 }
 

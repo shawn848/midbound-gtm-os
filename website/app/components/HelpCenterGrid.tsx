@@ -5,8 +5,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Separator } from '@/components/ui/separator';
-import { Search, ChevronRight } from 'lucide-react';
+import { Search, ChevronRight, ChevronDown, ChevronUp } from 'lucide-react';
 import type { HelpArticle } from '@/lib/helpCenter';
 
 interface HelpCenterGridProps {
@@ -17,6 +16,7 @@ interface HelpCenterGridProps {
 export default function HelpCenterGrid({ articles, categories }: HelpCenterGridProps) {
   const [search, setSearch] = useState('');
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
 
   const filtered = articles.filter((a) => {
     const matchSearch =
@@ -34,6 +34,26 @@ export default function HelpCenterGrid({ articles, categories }: HelpCenterGridP
   }
 
   const orderedCategories = categories.filter((c) => grouped[c.key]);
+
+  // When searching, expand all sections. Otherwise use toggle state.
+  const isExpanded = (key: string) => {
+    if (search.trim()) return true;
+    // Default: first section expanded
+    if (expandedSections.size === 0 && orderedCategories[0]?.key === key) return true;
+    return expandedSections.has(key);
+  };
+
+  const toggleSection = (key: string) => {
+    setExpandedSections((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) {
+        next.delete(key);
+      } else {
+        next.add(key);
+      }
+      return next;
+    });
+  };
 
   return (
     <div>
@@ -56,49 +76,88 @@ export default function HelpCenterGrid({ articles, categories }: HelpCenterGridP
           size="sm"
           onClick={() => setActiveCategory(null)}
         >
-          All
+          All ({articles.length})
         </Button>
-        {categories.map((cat) => (
-          <Button
-            key={cat.key}
-            variant={activeCategory === cat.key ? 'default' : 'outline'}
-            size="sm"
-            onClick={() => setActiveCategory(cat.key)}
-          >
-            {cat.label}
-          </Button>
-        ))}
+        {categories.map((cat) => {
+          const count = articles.filter((a) => a.category === cat.key).length;
+          return (
+            <Button
+              key={cat.key}
+              variant={activeCategory === cat.key ? 'default' : 'outline'}
+              size="sm"
+              onClick={() => setActiveCategory(activeCategory === cat.key ? null : cat.key)}
+            >
+              {cat.label} ({count})
+            </Button>
+          );
+        })}
       </div>
 
-      {/* Grouped articles */}
-      {orderedCategories.map((cat) => (
-        <section key={cat.key} className="mb-10">
-          <h2 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
-            <span className="h-5 w-1 rounded-full bg-primary" />
-            {cat.label}
-          </h2>
-          <div className="grid gap-3">
-            {grouped[cat.key].map((article) => (
-              <Link key={article.slug} href={`/help-center/${article.slug}`}>
-                <Card className="bg-card border-border hover:border-primary/50 transition-all group">
-                  <CardContent className="p-4 flex items-center justify-between">
-                    <div className="flex-1 min-w-0">
-                      <p className="font-medium text-foreground mb-0.5 group-hover:text-primary transition-colors">
-                        {article.title}
-                      </p>
-                      <p className="text-sm text-muted-foreground line-clamp-1">
-                        {article.short_answer}
-                      </p>
-                    </div>
-                    <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-primary shrink-0 ml-3 transition-colors" />
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
-          </div>
-          <Separator className="mt-8" />
-        </section>
-      ))}
+      {/* Collapsible category sections */}
+      <div className="space-y-3">
+        {orderedCategories.map((cat) => {
+          const expanded = isExpanded(cat.key);
+          const sectionArticles = grouped[cat.key];
+          return (
+            <div
+              key={cat.key}
+              className="rounded-xl border border-border overflow-hidden bg-card/50"
+            >
+              {/* Category header — clickable to expand/collapse */}
+              <button
+                onClick={() => toggleSection(cat.key)}
+                className="w-full flex items-center justify-between p-4 hover:bg-secondary/50 transition-colors text-left"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="h-5 w-1 rounded-full bg-primary shrink-0" />
+                  <span className="font-semibold text-foreground">{cat.label}</span>
+                  <span className="text-xs text-muted-foreground">
+                    {sectionArticles.length} article{sectionArticles.length !== 1 ? 's' : ''}
+                  </span>
+                </div>
+                {expanded ? (
+                  <ChevronUp className="h-4 w-4 text-muted-foreground shrink-0" />
+                ) : (
+                  <ChevronDown className="h-4 w-4 text-muted-foreground shrink-0" />
+                )}
+              </button>
+
+              {/* Expandable content */}
+              {expanded && (
+                <div className="px-4 pb-4 space-y-2">
+                  {sectionArticles.map((article, i) => (
+                    <Link
+                      key={article.slug}
+                      href={`/help-center/${article.slug}`}
+                      className="animate-in fade-in slide-in-from-bottom-2"
+                      style={{
+                        animationDelay: `${i * 50}ms`,
+                        animationFillMode: 'both',
+                        animationDuration: '300ms',
+                        display: 'block',
+                      }}
+                    >
+                      <Card className="bg-card border-border/50 hover:border-primary/50 transition-all group">
+                        <CardContent className="p-4 flex items-center justify-between">
+                          <div className="flex-1 min-w-0">
+                            <p className="font-medium text-foreground mb-0.5 group-hover:text-primary transition-colors">
+                              {article.title}
+                            </p>
+                            <p className="text-sm text-muted-foreground line-clamp-1">
+                              {article.short_answer}
+                            </p>
+                          </div>
+                          <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-primary shrink-0 ml-3 transition-colors" />
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
 
       {filtered.length === 0 && (
         <div className="text-center py-16">

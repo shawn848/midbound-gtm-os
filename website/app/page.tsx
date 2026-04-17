@@ -4,6 +4,7 @@ import { getAllPlaybooks } from './lib/playbooks';
 import { getAllHelpArticles } from './lib/helpCenter';
 import PostCard from './components/PostCard';
 import StatsCard from './components/StatsCard';
+import HomepageCharts from './components/HomepageCharts';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
@@ -14,6 +15,7 @@ import {
   BookA,
   ArrowRight,
   Zap,
+  BarChart3,
 } from 'lucide-react';
 import { buttonVariants } from '@/components/ui/button';
 
@@ -123,6 +125,22 @@ export default function HomePage() {
 
       <Separator />
 
+      {/* Insights — Charts Section */}
+      <section className="py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-2 mb-2">
+            <BarChart3 className="h-5 w-5 text-primary" />
+            <h2 className="text-xl font-semibold text-foreground">Why Person-Level?</h2>
+          </div>
+          <p className="text-sm text-muted-foreground mb-8">
+            The data speaks for itself. See how MidBound compares.
+          </p>
+          <HomepageCharts />
+        </div>
+      </section>
+
+      <Separator />
+
       {/* Latest Posts */}
       <section className="py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -141,12 +159,29 @@ export default function HomePage() {
           </div>
           {posts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {posts.slice(0, 6).map((post) => (
-                <PostCard key={post.slug} post={post} />
+              {posts.slice(0, 3).map((post, i) => (
+                <div
+                  key={post.slug}
+                  className="animate-in fade-in slide-in-from-bottom-4"
+                  style={{ animationDelay: `${i * 100}ms`, animationFillMode: 'both' }}
+                >
+                  <PostCard post={post} />
+                </div>
               ))}
             </div>
           ) : (
             <p className="text-muted-foreground">No posts yet. Check back soon.</p>
+          )}
+          {posts.length > 3 && (
+            <div className="mt-8 text-center">
+              <Link
+                href="/blog"
+                className={buttonVariants({ variant: 'outline', size: 'lg' })}
+              >
+                See all {posts.length} posts
+                <ArrowRight className="h-4 w-4 ml-1" />
+              </Link>
+            </div>
           )}
         </div>
       </section>

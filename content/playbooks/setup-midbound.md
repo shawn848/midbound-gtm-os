@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Set Up MidBound in 10 Minutes"
 slug: "setup-midbound"
 category: "getting-started"

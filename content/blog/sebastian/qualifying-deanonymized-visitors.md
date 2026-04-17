@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Qualifying De-Anonymized Visitors: From Name to Pipeline"
 slug: "qualifying-deanonymized-visitors"
 date: "2026-04-22"

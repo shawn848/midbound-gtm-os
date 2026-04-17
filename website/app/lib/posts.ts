@@ -38,6 +38,8 @@ export function getAllPosts(): Post[] {
       const fileContent = fs.readFileSync(filePath, 'utf-8');
       const { data, content } = matter(fileContent);
 
+      if (data.draft === true) continue;
+
       posts.push({
         title: data.title,
         slug: data.slug,

@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Configure ICP Scoring Criteria"
 slug: "configure-icp-scoring"
 category: "getting-started"

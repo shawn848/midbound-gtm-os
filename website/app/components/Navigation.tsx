@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import { Menu, BookOpen, FileText, HelpCircle, BookA, ExternalLink } from 'lucide-react';
+import { Menu, BookOpen, FileText, ExternalLink } from 'lucide-react';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 import { Separator } from '@/components/ui/separator';
@@ -12,29 +12,27 @@ import ThemeToggle from './ThemeToggle';
 const sections = [
   { href: '/blog', label: 'Blog', icon: FileText },
   { href: '/playbooks', label: 'Playbooks', icon: BookOpen },
-  { href: '/help-center', label: 'Help Center', icon: HelpCircle },
-  { href: '/glossary', label: 'Glossary', icon: BookA },
 ];
 
 function SectionTabs() {
   const pathname = usePathname();
 
   return (
-    <div className="flex items-center rounded-lg border border-border bg-secondary/50 p-1">
+    <div className="flex items-center rounded-full border border-border bg-secondary/50 p-1 shadow-sm">
       {sections.map(({ href, label, icon: Icon }) => {
         const isActive = pathname === href || pathname.startsWith(href + '/');
         return (
           <Link
             key={href}
             href={href}
-            className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium transition-all ${
+            className={`flex items-center gap-2 rounded-full px-5 py-2 text-sm font-medium transition-all ${
               isActive
-                ? 'bg-primary text-primary-foreground shadow-sm'
-                : 'text-muted-foreground hover:text-foreground hover:bg-secondary'
+                ? 'bg-primary text-primary-foreground shadow-[0_0_24px_rgba(232,119,46,0.45)]'
+                : 'text-muted-foreground hover:text-foreground'
             }`}
           >
-            <Icon className="h-3.5 w-3.5" />
-            <span className="hidden lg:inline">{label}</span>
+            <Icon className="h-4 w-4" />
+            <span>{label}</span>
           </Link>
         );
       })}

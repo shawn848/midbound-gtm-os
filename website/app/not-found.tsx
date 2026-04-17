@@ -2,7 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { Card, CardContent } from '@/components/ui/card';
 import { buttonVariants } from '@/components/ui/button';
-import { FileText, BookOpen, HelpCircle, BookA, ArrowRight } from 'lucide-react';
+import { FileText, BookOpen, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Page Not Found',
@@ -12,9 +12,7 @@ export const metadata: Metadata = {
 
 const links = [
   { href: '/blog', label: 'Blog', desc: 'Person-level GTM insights from Sebastian and Eli', icon: FileText },
-  { href: '/playbooks', label: 'Playbooks', desc: 'Step-by-step guides for MidBound setup and workflows', icon: BookOpen },
-  { href: '/help-center', label: 'Help Center', desc: 'Features, integrations, and troubleshooting', icon: HelpCircle },
-  { href: '/glossary', label: 'Glossary', desc: '45+ B2B marketing and visitor identification terms', icon: BookA },
+  { href: '/playbooks', label: 'Playbooks', desc: 'Step-by-step guides for turning visitors into pipeline', icon: BookOpen },
 ];
 
 export default function NotFound() {

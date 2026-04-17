@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "What a Developer Visiting Your Site Tells You (That a VP Visit Doesn't)"
 slug: "role-based-visitor-intelligence"
 date: "2026-05-06"

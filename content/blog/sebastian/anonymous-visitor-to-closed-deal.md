@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "From Anonymous Visitor to Closed Deal: The Complete Workflow"
 slug: "anonymous-visitor-to-closed-deal"
 date: "2026-04-15"

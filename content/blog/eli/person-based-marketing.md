@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Person-Based Marketing: What ABM Always Wanted to Be"
 slug: "person-based-marketing"
 date: "2026-04-21"

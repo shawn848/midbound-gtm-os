@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Your Website is a Party Where 97% of Guests Ghost You"
 slug: "your-website-is-a-party"
 date: "2026-04-07"

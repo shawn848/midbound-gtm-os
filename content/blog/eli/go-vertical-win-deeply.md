@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Go Vertical, Win Deeply, Then Expand"
 slug: "go-vertical-win-deeply"
 date: "2026-05-05"

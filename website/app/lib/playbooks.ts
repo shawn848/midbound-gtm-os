@@ -44,6 +44,8 @@ export function getAllPlaybooks(): Playbook[] {
     const fileContent = fs.readFileSync(filePath, 'utf-8');
     const { data, content } = matter(fileContent);
 
+    if (data.draft === true) continue;
+
     playbooks.push({
       title: data.title,
       slug: data.slug,

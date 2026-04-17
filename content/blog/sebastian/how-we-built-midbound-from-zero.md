@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "How We Built MidBound from Zero"
 slug: "how-we-built-midbound-from-zero"
 date: "2026-04-14"

@@ -1,13 +1,11 @@
-import Link from 'next/link';
 import { getAllPosts } from '../lib/posts';
 import BlogGrid from '../components/BlogGrid';
 import { Badge } from '@/components/ui/badge';
-import { buttonVariants } from '@/components/ui/button';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'All Posts — MidBound Blog',
-  description: 'Browse all MidBound blog posts on person-level identification, ABM evolution, GEO, AEO, B2B sales strategy, and startup growth.',
+  title: 'Blog — Midbound',
+  description: 'Person-level GTM insights from Midbound co-founders Sebastian Obadia and Eli Freedman. ABM, visitor identification, B2B sales strategy.',
 };
 
 export default function BlogIndexPage() {
@@ -17,26 +15,17 @@ export default function BlogIndexPage() {
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
       <div className="mb-12">
         <Badge variant="outline" className="text-primary border-primary/30 mb-3">
-          {posts.length} posts
+          {posts.length} post{posts.length === 1 ? '' : 's'}
         </Badge>
         <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-4">
-          All Posts
+          Blog
         </h1>
-        <p className="text-muted-foreground">
-          Insights on person-level GTM, B2B sales, AEO, GEO, and startup growth.
+        <p className="text-muted-foreground max-w-2xl">
+          Person-level GTM, ABM evolution, and the operational reality of modern B2B sales. From the founders of Midbound.
         </p>
       </div>
 
       <BlogGrid posts={posts} />
-
-      <div className="mt-12 text-center">
-        <Link
-          href="/glossary"
-          className={buttonVariants({ variant: 'outline' })}
-        >
-          Browse Glossary (45+ terms)
-        </Link>
-      </div>
     </div>
   );
 }

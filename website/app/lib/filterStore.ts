@@ -3,6 +3,7 @@
 import { create } from 'zustand';
 import { useMemo } from 'react';
 import { generateMockVisitors, type Visitor, type Seniority } from './mockVisitors';
+import { PAGE_CATEGORIES, categorizePage, type PageCategory } from './pageCategory';
 
 function dateKey(ts: number): string {
   const d = new Date(ts);
@@ -121,7 +122,7 @@ export const useFilterStore = create<FilterState>((set, get) => ({
   },
 }));
 
-const ALL_VISITORS = generateMockVisitors(650, 42);
+const ALL_VISITORS = generateMockVisitors(20000, 42);
 
 export function getAllVisitors(): Visitor[] {
   return ALL_VISITORS;
@@ -327,6 +328,99 @@ export function useBehaviorMatrix() {
       matrix[rowIdx].data[colIdx].y += 1;
     }
     return matrix;
+  }, [visitors]);
+}
+
+const TITLE_PAGE_ROWS: Seniority[] = ['C-level', 'VP', 'Director', 'Manager', 'IC'];
+
+export interface TitlePageMatrix {
+  rows: Seniority[];
+  cols: PageCategory[];
+  counts: number[][];
+  max: number;
+  total: number;
+}
+
+export function useTitlePageMatrix(): TitlePageMatrix {
+  const visitors = useFilteredVisitors();
+  return useMemo(() => {
+    const rows = TITLE_PAGE_ROWS;
+    const cols = PAGE_CATEGORIES;
+    const rowIndex = new Map(rows.map((r, i) => [r, i]));
+    const colIndex = new Map(cols.map((c, i) => [c, i]));
+
+    const counts: number[][] = rows.map(() => new Array(cols.length).fill(0));
+    let max = 0;
+    let total = 0;
+
+    for (const v of visitors) {
+      const ri = rowIndex.get(v.seniority);
+      if (ri === undefined) continue;
+      for (const path of v.pages_viewed) {
+        const cat = categorizePage(path);
+        const ci = colIndex.get(cat);
+        if (ci === undefined) continue;
+        const next = counts[ri][ci] + 1;
+        counts[ri][ci] = next;
+        total += 1;
+        if (next > max) max = next;
+      }
+    }
+
+    return { rows, cols, counts, max, total };
+  }, [visitors]);
+}
+
+interface RegionDef {
+  region: string;
+  countryCodes: string[];
+}
+
+const REGION_DEFS: RegionDef[] = [
+  { region: 'North America', countryCodes: ['US', 'CA', 'MX'] },
+  { region: 'Europe', countryCodes: ['GB', 'DE', 'FR', 'NL', 'IE', 'IT', 'ES', 'PL', 'SE'] },
+  { region: 'Israel', countryCodes: ['IL'] },
+  { region: 'APAC', countryCodes: ['SG', 'IN', 'AU', 'JP', 'KR', 'CN', 'HK'] },
+  { region: 'Other', countryCodes: [] },
+];
+
+export interface RegionRoleBreakdown {
+  region: string;
+  countryCodes: string[];
+  execs: number;
+  mid: number;
+  ic: number;
+  total: number;
+}
+
+export function useRegionRoleBreakdown(): RegionRoleBreakdown[] {
+  const visitors = useFilteredVisitors();
+  return useMemo(() => {
+    const out: Record<string, RegionRoleBreakdown> = {};
+    for (const r of REGION_DEFS) {
+      out[r.region] = {
+        region: r.region,
+        countryCodes: r.countryCodes,
+        execs: 0,
+        mid: 0,
+        ic: 0,
+        total: 0,
+      };
+    }
+    for (const v of visitors) {
+      const match = REGION_DEFS.find(
+        (r) => r.countryCodes.length > 0 && r.countryCodes.includes(v.country_code),
+      );
+      const bucket = out[match?.region || 'Other'];
+      if (!bucket) continue;
+      bucket.total += 1;
+      if (v.seniority === 'C-level' || v.seniority === 'VP') bucket.execs += 1;
+      else if (v.seniority === 'Director' || v.seniority === 'Manager') bucket.mid += 1;
+      else bucket.ic += 1;
+    }
+    return Object.values(out)
+      .filter((r) => r.total > 0)
+      .sort((a, b) => b.total - a.total);
   }, [visitors]);
 }
 

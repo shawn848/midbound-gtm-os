@@ -4,7 +4,8 @@ import { Suspense } from 'react';
 import FilterURLSync from '../components/charts/FilterURLSync';
 import FilterBar from '../components/charts/FilterBar';
 import KpiCards from '../components/charts/KpiCards';
-import VisitorGlobe from '../components/charts/VisitorGlobe';
+import TitlePageMatrix from '../components/charts/TitlePageMatrix';
+import RegionRoleBars from '../components/charts/RegionRoleBars';
 import TopCompaniesBar from '../components/charts/TopCompaniesBar';
 import BehaviorHeatmap from '../components/charts/BehaviorHeatmap';
 import VisitorTrend from '../components/charts/VisitorTrend';
@@ -25,9 +26,8 @@ export default function ChartsPage() {
           Visitor analytics
         </h1>
         <p className="text-muted-foreground max-w-2xl">
-          See the dashboard prospects see on day one. Every visitor below is deanonymized
-          at the person level. Click a country pin, change the date range, or filter by
-          role &mdash; everything updates together.
+          Every visit, who they are, which pages they hit. Filter by role, region, or company
+          &mdash; every chart below redraws from the same set.
         </p>
       </div>
 
@@ -36,17 +36,25 @@ export default function ChartsPage() {
       <div className="mt-8 space-y-8">
         <KpiCards />
 
-        <div className="grid gap-6 lg:grid-cols-5">
-          <div className="lg:col-span-3">
-            <VisitorGlobe />
-          </div>
+        <div className="grid gap-6 lg:grid-cols-3">
           <div className="lg:col-span-2">
-            <TopCompaniesBar />
+            <TitlePageMatrix />
+          </div>
+          <div className="lg:col-span-1">
+            <RegionRoleBars />
           </div>
         </div>
 
-        <BehaviorHeatmap />
-        <VisitorTrend />
+        <div className="grid gap-6 lg:grid-cols-3">
+          <div className="lg:col-span-2">
+            <BehaviorHeatmap />
+          </div>
+          <div className="lg:col-span-1">
+            <VisitorTrend />
+          </div>
+        </div>
+
+        <TopCompaniesBar />
         <VisitorTable />
       </div>
 

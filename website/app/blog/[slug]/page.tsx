@@ -56,16 +56,16 @@ export default async function BlogPostPage({ params }: PageProps) {
     author: { '@type': 'Person', name: post.author_name, jobTitle: post.author_role },
     publisher: { '@type': 'Organization', name: 'MidBound', url: 'https://midbound.ai' },
     keywords: post.keywords.join(', '),
-    mainEntityOfPage: `https://blog.midbound.ai/blog/${post.slug}`,
+    mainEntityOfPage: `https://midbound.ai/blog/blog/${post.slug}`,
   };
 
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://blog.midbound.ai/' },
-      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://blog.midbound.ai/blog' },
-      { '@type': 'ListItem', position: 3, name: post.title, item: `https://blog.midbound.ai/blog/${post.slug}` },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://midbound.ai/blog/' },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://midbound.ai/blog/blog' },
+      { '@type': 'ListItem', position: 3, name: post.title, item: `https://midbound.ai/blog/blog/${post.slug}` },
     ],
   };
 

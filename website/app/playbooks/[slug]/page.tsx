@@ -52,9 +52,9 @@ export default async function PlaybookPage({ params }: PageProps) {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://blog.midbound.ai/' },
-      { '@type': 'ListItem', position: 2, name: 'Playbooks', item: 'https://blog.midbound.ai/playbooks' },
-      { '@type': 'ListItem', position: 3, name: playbook.title, item: `https://blog.midbound.ai/playbooks/${playbook.slug}` },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://midbound.ai/blog/' },
+      { '@type': 'ListItem', position: 2, name: 'Playbooks', item: 'https://midbound.ai/blog/playbooks' },
+      { '@type': 'ListItem', position: 3, name: playbook.title, item: `https://midbound.ai/blog/playbooks/${playbook.slug}` },
     ],
   };
 

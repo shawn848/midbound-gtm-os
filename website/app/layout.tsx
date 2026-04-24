@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   description:
     'Person-level GTM insights from the founders of MidBound. Strategies for B2B sales, ABM evolution, website visitor identification, AEO, and GEO.',
-  metadataBase: new URL('https://blog.midbound.ai'),
+  metadataBase: new URL('https://midbound.ai/blog'),
 };
 
 const themeScript = `

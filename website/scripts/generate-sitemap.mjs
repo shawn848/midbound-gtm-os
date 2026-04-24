@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
-const BASE_URL = 'https://blog.midbound.ai';
+const BASE_URL = 'https://midbound.ai/blog';
 
 function getAllSlugs(contentDir, subDirs) {
   const slugs = [];

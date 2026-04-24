@@ -3,10 +3,5 @@
   "outputDirectory": "website/out",
   "installCommand": "echo 'skip global install'",
   "cleanUrls": true,
-  "trailingSlash": false,
-  "redirects": [
-    { "source": "/blog/midbound-vs-vector", "destination": "/blog/blog/best-visitor-identification-tools-2026", "permanent": true },
-    { "source": "/blog/midbound-vs-rb2b", "destination": "/blog/blog/best-visitor-identification-tools-2026", "permanent": true },
-    { "source": "/blog/midbound-vs-obviously-ai", "destination": "/blog/blog/best-visitor-identification-tools-2026", "permanent": true }
-  ]
+  "trailingSlash": false
 }

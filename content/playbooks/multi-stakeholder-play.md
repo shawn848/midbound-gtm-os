@@ -102,4 +102,4 @@ Build a HubSpot report comparing multi-stakeholder deals vs. single-contact deal
 ## Next Steps
 
 - [Measure your full visitor-to-pipeline conversion](/playbooks/measure-visitor-pipeline) to quantify the ROI of your multi-stakeholder plays
-- [Refine your ICP scoring](/playbooks/configure-icp-scoring) if your multi-stakeholder alerts are too noisy or too quiet
+- Tune your scoring thresholds if multi-stakeholder alerts are too noisy or too quiet

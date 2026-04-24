@@ -10,7 +10,7 @@ tools_needed: ["MidBound", "HubSpot"]
 seo_title: "MidBound + HubSpot Workflow: Automate Identified Visitor Follow-Up"
 seo_description: "Step-by-step guide to building a HubSpot workflow that creates contacts, assigns tasks, and updates lifecycle stages when MidBound identifies high-ICP website visitors."
 keywords: ["hubspot workflow", "midbound hubspot", "crm automation", "visitor follow-up workflow", "contact creation automation", "sales task automation"]
-related_playbooks: ["configure-icp-scoring", "slack-high-intent-alerts", "measure-visitor-pipeline"]
+related_playbooks: ["slack-high-intent-alerts", "measure-visitor-pipeline", "multi-stakeholder-play"]
 ---
 
 # Create a HubSpot Workflow for Identified Visitors

@@ -10,7 +10,7 @@ tools_needed: ["MidBound", "Slack"]
 seo_title: "Set Up High-Intent Visitor Slack Alerts with MidBound"
 seo_description: "Step-by-step guide to building filtered Slack notifications for high-ICP website visitors. Get real-time alerts when decision makers visit your pricing page."
 keywords: ["slack visitor alerts", "high intent alerts", "real-time visitor notifications", "midbound slack", "sales alerts", "buyer intent signals"]
-related_playbooks: ["setup-midbound", "configure-icp-scoring", "multi-stakeholder-play"]
+related_playbooks: ["multi-stakeholder-play", "hubspot-visitor-workflow", "automate-website-visitor-outreach-heyreach"]
 ---
 
 # Build a High-Intent Visitor Slack Alert

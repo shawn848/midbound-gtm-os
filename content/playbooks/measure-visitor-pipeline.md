@@ -10,7 +10,7 @@ tools_needed: ["MidBound", "HubSpot"]
 seo_title: "Measure Visitor-to-Pipeline Conversion Rate with MidBound + HubSpot"
 seo_description: "Step-by-step guide to tracking your MidBound ROI. Calculate cost-per-identified-visitor, visitor-to-meeting rate, and build a weekly dashboard connecting visitor identification to revenue."
 keywords: ["visitor conversion rate", "pipeline metrics", "midbound ROI", "visitor identification analytics", "cost per identified visitor", "sales pipeline tracking"]
-related_playbooks: ["hubspot-visitor-workflow", "configure-icp-scoring", "multi-stakeholder-play"]
+related_playbooks: ["hubspot-visitor-workflow", "slack-high-intent-alerts", "multi-stakeholder-play"]
 ---
 
 # Measure Your Visitor-to-Pipeline Conversion Rate
@@ -91,6 +91,6 @@ After 4 weeks of data, make adjustments:
 
 ## Next Steps
 
-- Revisit [ICP scoring](/playbooks/configure-icp-scoring) to refine based on which scores actually convert
 - Review [Slack alert configuration](/playbooks/slack-high-intent-alerts) to match your optimized thresholds
+- Tighten scoring thresholds to match which scores actually convert based on your data
 - Re-run this measurement process monthly to track improvement

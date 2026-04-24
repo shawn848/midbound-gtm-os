@@ -28,9 +28,13 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 sm:col-span-1">
             <div className="flex items-center gap-2 mb-3">
-              <div className="h-6 w-6 rounded-md bg-primary flex items-center justify-center">
-                <span className="text-[10px] font-bold text-primary-foreground">M</span>
-              </div>
+              <img
+                src="/blog/midbound-mark.png"
+                alt="Midbound"
+                width={24}
+                height={24}
+                className="h-6 w-6 rounded-md"
+              />
               <span className="text-sm font-bold text-foreground">Midbound</span>
             </div>
             <p className="text-xs text-muted-foreground max-w-[200px]">

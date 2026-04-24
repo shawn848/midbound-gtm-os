@@ -44,7 +44,7 @@ A match without confidence scoring is a guess that looks like a fact. That's wor
 | Multi-stakeholder detection | Limited | Full (flags buying committee signals) |
 | UTM re-engagement | No | Yes (ties visitors to campaigns) |
 | Slack alerts | Yes | Yes, filterable by ICP score |
-| HubSpot integration | Yes | Yes, auto-creates contacts + triggers workflows |
+| HubSpot integration | Yes | Yes, auto-creates contacts (HubSpot-side workflows take it from there) |
 | Webhook support | Limited | Full JSON payloads (Clay, Zapier, Make, n8n) |
 | Sequence enrollment | No | Yes, with cool-down rules |
 
@@ -86,11 +86,11 @@ RB2B identifies the visitor but doesn't connect them to the campaign that brough
 
 Both tools push data to Slack and HubSpot. But MidBound's integrations go deeper.
 
-HubSpot: MidBound creates or updates contacts automatically. Custom MidBound fields (visit count, ICP score, last page viewed) populate in the CRM. HubSpot workflows trigger based on MidBound data. If a visitor scores above your ICP threshold and visited pricing, a task gets created for your SDR. Automatically.
+HubSpot: MidBound creates a contact for every identified visitor that matches your audience. From there, HubSpot's own workflows handle the rest — task creation, lifecycle updates, sequence enrollment. The integration doesn't update existing contacts and doesn't push custom MidBound properties; if you want score, visit count, or last page viewed in the CRM, route MidBound's webhook through Zapier or Make to write those properties yourself.
 
 Webhooks: Full JSON payloads to any endpoint. Clay, Zapier, Make, n8n, custom systems. Whatever your ops team needs.
 
-Sequences: Auto-enroll identified visitors into outreach sequences based on behavior and ICP fit. Cool-down rules prevent double-touching. This isn't a bolt-on. It's native.
+Sequences: Native push to Lemlist (email) and HeyReach (LinkedIn) campaigns when an identified visitor matches your audience. The integrations dedupe against existing campaign members, so nobody gets enrolled twice. This isn't a bolt-on. It's native.
 
 ## When RB2B makes sense
 

@@ -44,9 +44,9 @@ And stories close deals.
 
 ## How to structure your CRM for visitor intelligence
 
-The integration between MidBound and HubSpot creates or updates contacts automatically. But the default contact fields don't capture the full value. You need custom properties that turn each contact into an intelligence node.
+The native MidBound-HubSpot integration creates contacts automatically — name, email, company, basic identity. It doesn't update existing contacts (matching emails are skipped) and it doesn't push the deeper behavioral fields you'll want for intelligence work. To get those, you point MidBound's Webhook integration at a Zapier or Make scenario and write the custom properties yourself, on every visit.
 
-Here are the properties to set up:
+That setup is more work than flipping a switch in HubSpot. But the result is what makes the CRM intelligent instead of just full of names. The properties below are what you populate via that webhook path:
 
 **Visit count.** How many times this person has been on your site. A contact with 1 visit is different from a contact with 7 visits. This field alone changes how your reps prioritize.
 
@@ -146,7 +146,7 @@ Accounts don't buy. People do. And your CRM should know who those people are.
 
 ### What custom CRM properties should I create for visitor intelligence?
 
-The core properties: visit count, last page visited, pages visited (list), time on site, ICP score, identification source, first identified date, and multi-stakeholder flag. These transform a standard contact record into a behavioral intelligence profile that updates automatically with each new visit.
+The core properties: visit count, last page visited, pages visited (list), time on site, ICP score, identification source, first identified date, and multi-stakeholder flag. These transform a standard contact record into a behavioral intelligence profile. They aren't populated by MidBound's native HubSpot integration (which only writes basic identity fields) — you populate them by pointing MidBound's Webhook integration at a Zapier or Make scenario that writes each property on every visit.
 
 ### How long does it take for a visitor intelligence database to become valuable?
 

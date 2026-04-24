@@ -16,7 +16,7 @@ MidBound can automatically enroll identified visitors into outreach sequences wh
 
 ## How Sequence Enrollment Works
 
-You define trigger criteria. When a visitor matches, they are enrolled in a sequence through your connected tools (HubSpot workflows, webhook-triggered sequences, etc.).
+MidBound has native sequence enrollment for **Lemlist** (email) and **HeyReach** (LinkedIn) — when an identified visitor matches your audience, the integration adds the lead directly to a campaign. For other email/sequence tools, the standard path is the **Webhook integration** to a Zapier or Make scenario, or HubSpot's native sequence enrollment driven by a HubSpot workflow that fires when MidBound creates the contact.
 
 ### Setting Trigger Criteria
 

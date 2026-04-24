@@ -101,7 +101,7 @@ Your SDR isn't overwhelmed. They're focused.
 
 This is your best visitor. The outreach should be personal, specific, and fast.
 
-"Sarah, I noticed you were looking at our HubSpot integration and pricing. We auto-create contacts and trigger workflows based on visitor behavior. Want me to show you what that looks like for your team?"
+"Sarah, I noticed you were looking at our HubSpot integration and pricing. Identified visitors land as new contacts in HubSpot, and your team's workflows handle the follow-up. Want me to show you what that looks like for your team?"
 
 Reference the specific pages. Reference their role. Make it relevant. Send it the same day, ideally within hours.
 

@@ -3,23 +3,23 @@ title: "Connecting MidBound to HubSpot"
 slug: "hubspot-setup"
 category: "integrations"
 order: 2
-short_answer: "MidBound creates or updates HubSpot contacts automatically when visitors are identified."
+short_answer: "MidBound creates HubSpot contacts when identified visitors match your audience. Existing contacts are left untouched."
 seo_title: "Connect MidBound to HubSpot | MidBound Help Center"
-seo_description: "Step-by-step guide to connecting MidBound to HubSpot for automatic contact creation, visit tracking, and workflow triggers."
-keywords: ["hubspot integration", "CRM integration", "contact creation", "hubspot setup", "hubspot workflows"]
+seo_description: "Step-by-step guide to connecting MidBound to HubSpot for automatic contact creation when website visitors are identified."
+keywords: ["hubspot integration", "CRM integration", "contact creation", "hubspot setup"]
 related_articles: ["slack-setup", "webhooks-setup", "duplicate-contacts-hubspot"]
 ---
 
 # Connecting MidBound to HubSpot
 
-The HubSpot integration creates or updates contacts in your CRM whenever MidBound identifies a website visitor. Visit data, ICP scores, and behavioral context flow directly into HubSpot.
+The HubSpot integration creates contacts in your CRM when MidBound identifies a visitor that matches your audience filter. The integration is one-way (MidBound → HubSpot) and create-only.
 
 ## How to Connect
 
 1. Go to **Settings > Integrations > HubSpot** in your MidBound dashboard
 2. Click **Connect to HubSpot**
 3. Authorize MidBound to access your HubSpot account
-4. Select which HubSpot properties to map (or use the default mapping)
+4. Build the audience and workflow inside MidBound that should push to HubSpot
 
 ## What Happens on Identification
 
@@ -28,48 +28,44 @@ The HubSpot integration creates or updates contacts in your CRM whenever MidBoun
 MidBound creates a new contact with:
 
 - First name, last name
-- Email address (validated)
+- Validated business email (or personal as fallback)
 - Job title
 - Company name
-- LinkedIn profile URL
-- Lead source set to "MidBound"
+- Address fields (when available)
 
-### Returning Visitor (Existing Contact)
+Email is required. Visitors without an email are silently skipped — the action is not retried.
 
-MidBound updates the existing contact with:
+### Returning Visitor (Existing Contact in HubSpot)
 
-- Latest visit data (pages, timestamps)
-- Updated visit count
-- Most recent ICP score (if criteria changed)
+If a contact with the same email address already exists in HubSpot, **the existing contact is left untouched.** MidBound does not update existing records — no new visit data is appended, no properties are overwritten, no enrichment is performed. The deduplication is for skip-create only.
 
-MidBound does not overwrite manually entered data. It appends visit data and updates MidBound-specific properties only.
+If you need to enrich existing HubSpot contacts on every visit (visit count, last page visited, score, etc.), use the **Webhook integration** with Zapier or Make as the intermediary, and write the upsert logic there.
 
 ## Custom MidBound Properties
 
-The integration creates custom properties in HubSpot:
+The native HubSpot integration does **not** create or populate custom MidBound properties (`midbound_visit_count`, `midbound_icp_score`, `midbound_last_page`, etc.). The integration writes only the standard identity fields listed above.
 
-| Property | Description |
-|----------|-------------|
-| `midbound_visit_count` | Total number of identified visits |
-| `midbound_last_page` | Last page the visitor viewed |
-| `midbound_icp_score` | Current ICP score (1-10) |
-| `midbound_confidence` | Match confidence level |
-| `midbound_source` | How MidBound identified them |
-| `midbound_first_seen` | Date of first identified visit |
-| `midbound_last_seen` | Date of most recent visit |
-| `midbound_utm_source` | UTM source from their visit |
-| `midbound_utm_campaign` | UTM campaign from their visit |
+To get behavioral fields like visit count or ICP score into HubSpot, you have two options:
 
-## Triggering HubSpot Workflows
+1. **Webhook + Zapier/Make.** Point MidBound's Webhook integration at a Zapier or Make scenario. The scenario calls HubSpot's API to create or update the contact and populate any custom property you want.
+2. **HubSpot-side computation.** Use HubSpot's own logic (lifecycle stages, lead source counting, deal association rules) to derive what you need from the contacts MidBound creates, without depending on properties MidBound doesn't push.
 
-Use MidBound properties to trigger HubSpot workflows. Common examples:
+## Triggering Workflows
 
-- **High-intent sequence:** When `midbound_icp_score` >= 8 AND `midbound_last_page` contains "pricing", enroll in a sales outreach workflow
-- **Re-engagement:** When `midbound_visit_count` >= 3 AND contact has no open deal, trigger a re-engagement sequence
-- **Routing:** When `midbound_icp_score` >= 7, assign to a sales rep based on territory or account ownership
+The MidBound integration does not trigger HubSpot workflows directly. Instead, the standard pattern is:
+
+1. MidBound creates a contact in HubSpot.
+2. A HubSpot workflow uses **"Contact created"** as its enrollment trigger (filtered to contacts where `Original source` or your custom `MidBound Lead Source` property matches).
+3. Subsequent actions — task creation, lifecycle changes, sequence enrollment, deal creation — all run inside HubSpot's automation.
+
+This means everything past contact-create is configured in HubSpot, not in MidBound. Common workflow patterns:
+
+- **High-intent task assignment:** When the contact is created and the lead source is MidBound, create a task for the assigned rep within the same day.
+- **Lifecycle update:** Move the contact to Marketing Qualified Lead automatically.
+- **Multi-stakeholder deal creation:** When a company has 2+ MidBound-sourced contacts and no open deal, create a new deal record.
 
 ## Deduplication Logic
 
-Before creating a new contact, MidBound checks for an existing contact by email address. If a match is found, the existing record is updated instead. This prevents duplicate contacts in most cases.
+Before creating a new contact, MidBound checks for an existing HubSpot contact with the same email address. If a match is found, the create action is **skipped silently** — the existing record is not modified. If no match is found, a new contact is created.
 
-If you are seeing duplicates, see [Duplicate Contacts in HubSpot](/help-center/troubleshooting/duplicate-contacts-hubspot).
+If you are seeing duplicates anyway, see [Duplicate Contacts in HubSpot](/help-center/troubleshooting/duplicate-contacts-hubspot).

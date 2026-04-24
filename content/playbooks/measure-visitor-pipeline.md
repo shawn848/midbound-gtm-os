@@ -1,96 +1,109 @@
 ---
 draft: false
-title: "Measure Your Visitor-to-Pipeline Conversion Rate"
+title: "Measure Visitor-to-Pipeline Conversion (Honestly)"
 slug: "measure-visitor-pipeline"
 category: "analytics"
-excerpt: "Track ROI from visitor identification to closed revenue. Set up the metrics, reports, and dashboard to prove what's working."
+excerpt: "Track ROI from identified visitor to closed revenue using MidBound's dashboard plus the HubSpot lead-source attribution you can actually wire up."
 difficulty: "intermediate"
-time_to_complete: "1 hour"
+time_to_complete: "45 minutes"
 tools_needed: ["MidBound", "HubSpot"]
-seo_title: "Measure Visitor-to-Pipeline Conversion Rate with MidBound + HubSpot"
-seo_description: "Step-by-step guide to tracking your MidBound ROI. Calculate cost-per-identified-visitor, visitor-to-meeting rate, and build a weekly dashboard connecting visitor identification to revenue."
-keywords: ["visitor conversion rate", "pipeline metrics", "midbound ROI", "visitor identification analytics", "cost per identified visitor", "sales pipeline tracking"]
+seo_title: "Measure Visitor-to-Pipeline Conversion with MidBound + HubSpot"
+seo_description: "How to track MidBound ROI using the MidBound dashboard for visitor-side metrics and HubSpot's lead-source attribution for pipeline-side metrics. No custom property mapping required."
+keywords: ["visitor conversion rate", "pipeline metrics", "midbound ROI", "visitor identification analytics", "lead source attribution"]
 related_playbooks: ["hubspot-visitor-workflow", "slack-high-intent-alerts", "multi-stakeholder-play"]
 ---
 
-# Measure Your Visitor-to-Pipeline Conversion Rate
+# Measure Visitor-to-Pipeline Conversion (Honestly)
 
-You're identifying visitors. Your team is reaching out. But is it working? This playbook builds the measurement layer so you can track exactly how identified visitors turn into pipeline and revenue.
+Most "measure your ROI" playbooks pretend you can plug everything into one dashboard and read the answer off. That's not how this stack actually works. MidBound knows the visitor side of the funnel. HubSpot knows the pipeline side. The honest measurement plan uses each for what it's good at and stops there.
 
 ## What You'll Have When Done
 
-A set of defined metrics, a HubSpot reporting setup, and a weekly dashboard that shows the full funnel from identified visitor to closed revenue. You'll know your cost-per-identified-visitor, your visitor-to-meeting rate, and which ICP scores and page patterns convert best.
+A simple measurement setup that splits the funnel cleanly. MidBound's dashboard shows everything from visitor identified through outreach handoff. HubSpot reports show everything from lead-source-tagged contact through closed-won. You'll know your visitor-to-meeting rate, your meeting-to-opportunity rate, and your cost-per-identified-visitor — without inventing custom properties that the integration doesn't actually push.
 
 ---
 
-## Step 1: Define Your Metrics
+## Step 1: Decide What's MidBound's Job and What's HubSpot's Job
 
-The funnel you're measuring:
+The visitor-side metrics live in MidBound:
 
-| Metric | Definition |
-|--------|-----------|
-| **Identified Visitors** | Total visitors MidBound identified in a given period |
-| **Qualified Visitors** | Identified visitors with ICP score of 7+ |
-| **Outreach Sent** | Qualified visitors your team contacted |
-| **Meetings Booked** | Meetings scheduled from identified visitor outreach |
-| **Opportunities Created** | Deals opened from identified visitors |
-| **Revenue Closed** | Closed-won revenue from MidBound-identified visitors |
+- **Visitors identified** — total count
+- **ICP-fit visitors** — how many matched your audience filters
+- **High-intent visitors** — how many hit pricing / demo / integration pages
+- **Multi-stakeholder accounts** — how many companies sent 2+ visitors
 
-Key conversion rates: Identification-to-qualified rate, outreach rate, visitor-to-meeting rate, meeting-to-opportunity rate, opportunity-to-close rate.
+You read these in MidBound's own visitor table and audience views. Don't try to recreate them in HubSpot.
 
-## Step 2: Set Up HubSpot Reporting
+The pipeline-side metrics live in HubSpot:
 
-In HubSpot, create a custom report that tracks contacts identified by MidBound through your pipeline.
+- **Contacts created from MidBound** — counted by lead source
+- **MQLs / SQLs** — using HubSpot's lifecycle stage
+- **Opportunities** — deals where the primary contact's lead source = MidBound
+- **Closed-won revenue attributed to MidBound**
 
-**Report 1: MidBound Source Funnel.** Go to **Reports > Create Report > Custom Report Builder**. Build a funnel: Contacts where Lead Source = "MidBound Identified Visitor" through MQL, SQL, Deal Created, and Closed-Won stages. This shows the full funnel and where the biggest drop-off happens.
+You build these from HubSpot's standard reporting. The only thing you have to set up: a clean lead-source tag on every MidBound-sourced contact.
 
-**Report 2: Contacts by ICP Score.** Bar chart of contact count grouped by MidBound ICP Score, with "Associated Deal Amount" as a secondary metric. This tells you which scores actually generate pipeline.
+## Step 2: Tag MidBound-Sourced Contacts with a Lead Source
 
-**Report 3: Top Converting Pages.** Table of contacts with MidBound source, grouped by Last Page Viewed, with columns for contact count, deal count, and deal amount. If `/case-studies` visitors convert at 3x the rate of `/blog` visitors, that's actionable for both sales and marketing.
+In your HubSpot workflow that fires on MidBound contact creation (see the [HubSpot Workflow playbook](/playbooks/hubspot-visitor-workflow)), include this action:
 
-## Step 3: Calculate Cost-Per-Identified-Visitor
+- Set **Original Source** or a custom property called **MidBound Lead Source** to `"MidBound Identified Visitor"`.
+
+Why a custom property if HubSpot already tracks "Original Source"? Because if a contact later fills out a form, HubSpot may overwrite Original Source. A dedicated "MidBound Lead Source" property is sticky — it persists no matter what other touches happen later.
+
+This is the only HubSpot property you need to add manually. The MidBound integration doesn't push it for you, so the workflow does.
+
+## Step 3: Build Three Reports in HubSpot
+
+**Report 1 — MidBound Funnel.** Custom report builder. Filter: contacts where MidBound Lead Source = "MidBound Identified Visitor." Group by lifecycle stage. Show counts at each stage and the conversion rate between stages. This is your end-to-end pipeline view.
+
+**Report 2 — Deals by MidBound Source.** Filter deals where the primary contact's MidBound Lead Source matches. Show count, amount, and stage. This is your revenue view.
+
+**Report 3 — Top Converting Pages (manual).** This one needs the Webhook integration if you want it automated. Without the webhook: ask reps to log "the page that triggered the alert" in the task description and pull it via a CRM filter. Imperfect but workable.
+
+## Step 4: Calculate Cost-Per-Identified-Visitor
 
 ```
 Cost per identified visitor = Monthly MidBound cost / Total identified visitors
-Cost per qualified visitor = Monthly MidBound cost / Qualified visitors (ICP 7+)
-Cost per meeting = Monthly MidBound cost / Meetings booked from MidBound outreach
+Cost per ICP-fit visitor    = Monthly MidBound cost / ICP-fit visitors
+Cost per meeting            = Monthly MidBound cost / Meetings booked from MidBound contacts
 ```
 
-Compare these to your other channels (paid ads, outbound SDRs, events). MidBound-sourced meetings typically cost a fraction of other channels because the visitors already showed intent.
+Compare against your other channels — paid, content, outbound SDR, events. The interesting number is usually cost-per-meeting, because warmth varies wildly across channels and that flattens out by the time you're in a calendar invite.
 
-## Step 4: Calculate Visitor-to-Meeting Rate
+## Step 5: Calculate Visitor-to-Meeting Rate
 
 ```
-Visitor-to-meeting rate = Meetings booked / Qualified visitors contacted
+Visitor-to-meeting rate = Meetings booked / ICP-fit visitors contacted
 ```
 
-If your rate is below 5%, check outreach speed (same-day performs best), message relevance (reference the pages they viewed), and ICP scoring accuracy. Above 15% means you can consider lowering your ICP threshold to increase volume.
+Two things to look for if the rate is below 5%:
 
-## Step 5: Build a Weekly Dashboard
+- **Speed.** Same-day outreach beats next-day by a wide margin. If your team is reaching out 24+ hours after the visit, that's the first lever.
+- **Relevance.** The outreach should reference the page they viewed. Generic outreach to identified visitors converts barely better than cold outbound. The whole point of identification is the context.
 
-In HubSpot, create a dashboard called "MidBound Performance" with:
+If the rate is above 15%, you can probably loosen your audience filter and pick up more volume without diluting quality.
 
-1. **Single value widgets**: Visitors identified, qualified visitors, outreach sent, meetings booked, opportunities created.
-2. **Funnel Report** (Report 1): Conversion through each stage.
-3. **ICP Score Distribution** (Report 2): Which scores generate pipeline.
-4. **Top Converting Pages** (Report 3): Which pages drive the best visitors.
-5. **Trend Line** (rolling 8 weeks): Identified visitors, meetings, and pipeline over time.
+## Step 6: Review on a Cadence That Matches Your Volume
 
-Share this with sales and marketing every Monday.
+For most teams: monthly. Pull the funnel, check rates, adjust the audience filter or page targeting if the numbers warrant it. Don't change too much at once. Move one knob, see what happens, then move the next.
 
-## Step 6: Optimize Based on What Converts
+For higher-volume teams (200+ identified visitors a week): bi-weekly is fine. Anything more frequent is noise.
 
-After 4 weeks of data, make adjustments:
+---
 
-- **Low meeting conversion?** Check outreach speed and message relevance. Reps should contact visitors the same day and reference the pages they viewed.
-- **Meetings not becoming opportunities?** Look at which page patterns correlate with deals. Pricing + case studies visitors may convert better than pricing-only visitors.
-- **One ICP bracket outperforms?** If 9-10 scores convert at 20% but 7-8 convert at 3%, raise your Slack threshold and route lower scores to nurture workflows.
-- **Certain pages drive disproportionate pipeline?** Invest more in those pages. Adjust Slack page filters to prioritize them.
+## What This Playbook Does Not Try To Do
+
+- **Build a fancy dashboard.** A good HubSpot funnel report and a quick weekly export beats any custom-built dashboard you'd construct on top of incomplete data. Use what HubSpot gives you.
+- **Push MidBound's ICP score into HubSpot for reporting.** The integration doesn't do this. If you want score-based reporting, route via Webhook + Zapier/Make and write the score into a custom HubSpot property yourself.
+- **Calculate per-page or per-campaign ROI without webhook setup.** Native MidBound → HubSpot doesn't push the page or UTM context. You'll need the webhook path for that.
+
+The honest version of this playbook is small. The dishonest version invents a complete BI layer on top of integration capabilities that don't exist. Stay on the honest side and the numbers stay trustworthy.
 
 ---
 
 ## Next Steps
 
-- Review [Slack alert configuration](/playbooks/slack-high-intent-alerts) to match your optimized thresholds
-- Tighten scoring thresholds to match which scores actually convert based on your data
-- Re-run this measurement process monthly to track improvement
+- [Wire up the HubSpot workflow](/playbooks/hubspot-visitor-workflow) if you haven't yet — that's where the lead-source tagging lives
+- [Tighten the Slack alert thresholds](/playbooks/slack-high-intent-alerts) once you see which audience filters actually convert
+- [Run the multi-stakeholder play](/playbooks/multi-stakeholder-play) on the accounts that matter most

@@ -61,10 +61,10 @@ Do not write "just circling back." Do not write "did my last email get buried?" 
 
 In MidBound, go to **Integrations > Webhooks** and create a new webhook:
 
-- ICP score >= 7
+- Visitor matches your high-intent audience (ICP filters in the MidBound UI)
 - Visited page includes `/demo`, `/pricing`, `/solutions`, or high-intent content
-- Has validated business email (MidBound returns this for ~80% of US B2B visitors)
-- Excludes anyone in an active Lemlist campaign (Lemlist's API can check this)
+- Has a validated business email on file. Email is the required field for the Lemlist push — visitors without one are skipped on Lemlist's side.
+- Excludes anyone in an active Lemlist campaign (Lemlist's API can check this; the native integration also dedupes against existing campaign members)
 
 Route to a Zapier or Make scenario that calls Lemlist's "Add Lead to Campaign" endpoint.
 
@@ -120,7 +120,7 @@ MidBound identifies business visitors in a business context. The Lemlist sequenc
 
 If someone asks where you got their email: answer plainly. "You visited our website, we identify business visitors, I reached out because it looked like a fit."
 
-Respect unsubscribes. Immediately. If someone opts out of Lemlist, also suppress them in MidBound (MidBound has an opt-out list you can push to).
+Respect unsubscribes. Immediately. If someone opts out of Lemlist, suppress them at the audience level in MidBound so they don't re-enter the workflow on a later visit.
 
 ---
 

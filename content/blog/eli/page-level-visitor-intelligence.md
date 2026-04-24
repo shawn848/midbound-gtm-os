@@ -95,7 +95,7 @@ The first 5 patterns all include the pricing page. That's not a coincidence. The
 
 Don't get me wrong though. Knowing what pages they visited is only valuable if you use it.
 
-The difference between generic outreach and page-informed outreach is the difference between "Hey, I noticed you visited our website" and "Hey, I saw you were looking at how we integrate with HubSpot. We auto-create contacts and trigger workflows. Want me to show you what that looks like?"
+The difference between generic outreach and page-informed outreach is the difference between "Hey, I noticed you visited our website" and "Hey, I saw you were looking at how we integrate with HubSpot. Identified visitors land as new contacts in HubSpot, and your team's HubSpot workflows take it from there. Want me to show you what that looks like?"
 
 The first is a lazy use of good data. The second is a conversation with context.
 

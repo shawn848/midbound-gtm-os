@@ -17,8 +17,10 @@ Load the voice system in this order. Do not skip steps.
    - `knowledge/how-deanonymization-works.md` -- Technical overview
    - `knowledge/person-vs-company-level.md` -- Core differentiator
    - `knowledge/competitor-landscape.md` -- Competitive positioning
-   - `knowledge/integrations.md` -- HubSpot, Slack, webhooks
+   - `knowledge/integrations.md` -- Quick-reference for the 9 native integrations
    - `knowledge/use-cases.md` -- Target segments and applications
+
+4b. **Integrations Source-of-Truth** -- Before making ANY claim about HubSpot / Slack / Clay / HeyReach / Lemlist / Pipedrive / Constant Contact / Google Sheets / Webhook, load `knowledge/integrations-docs-snapshot-2026-04-24.md` (or the latest dated snapshot in that folder). The snapshot is pulled directly from `https://midbound.ai/docs/integrations/*`. If a capability isn't documented there, drop the claim or mark it as future capability — never write it as current product. Common overclaims to avoid: "MidBound updates HubSpot contacts," "MidBound pushes custom properties (ICP score, visit count) to HubSpot," "MidBound triggers HubSpot workflows," "MidBound integrates with Salesforce / Marketo / Outreach / Salesloft / Apollo / 6sense" — none of those are accurate as of 2026-04-24.
 
 5. **Platform Playbook** -- Load the relevant context playbook:
    - LinkedIn: `skills/tier-2-context-playbooks/linkedin.md`
@@ -81,13 +83,16 @@ The GTM-OS skeleton lives at `gtm-os/`. This contains ICP definitions, positioni
 
 7. **Handle the privacy objection thoughtfully.** MidBound identifies website visitors. Some people find this uncomfortable. Follow Eli's framing: "It's not invasive; it's responsive. It's not cold; it's warm." Never be dismissive about privacy concerns.
 
+8. **No CLI, no API, no Salesforce/Marketo/Outreach/Salesloft/Apollo/6sense as native integrations.** Per Eli (2026-04-24): MidBound is not prioritizing a CLI; an API is on the roadmap but pending customer feedback. The CRMs and sequencers in this rule are NOT supported as native integrations. They are reachable only as Webhook destinations via Zapier / Make / n8n — content must always frame them that way ("route via webhook to [tool]"), never as a direct MidBound integration. Same applies to any other tool not in `knowledge/integrations-docs-snapshot-*.md`.
+
 ## Product Quick Reference
 
 - **What:** Person-level website visitor identification
 - **How:** AI matches visitors to LinkedIn profiles in real-time
 - **Output:** Name, title, company, validated email, LinkedIn profile, pages visited, time on site
-- **Integrations:** Slack, HubSpot, webhooks, sequences
+- **Integrations (9 native, all unidirectional outbound):** HubSpot, Slack, Clay, Lemlist, HeyReach, Pipedrive, Constant Contact, Google Sheets, Webhook. NOT native: Salesforce / Marketo / Outreach / Salesloft / Apollo / 6sense (webhook-routable only via Zapier/Make).
 - **Key features:** ICP matching, UTM re-engagement, multi-stakeholder detection
+- **No CLI, no API yet** (2026-04-24) — API on roadmap pending customer feedback.
 - **Differentiator:** Competitors (Snitcher, Factors, Clearbit) only do company-level ID. MidBound does person-level.
 - **Traction:** 6 figures in under 5 months, $0 CAC, team of 3
 - **Trial:** 14-day free trial, no CC required, midbound.ai/register

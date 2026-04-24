@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import { Menu, BookOpen, FileText, LineChart, ExternalLink } from 'lucide-react';
+import { Menu, BookOpen, FileText, ExternalLink } from 'lucide-react';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 import { Separator } from '@/components/ui/separator';
@@ -12,7 +12,6 @@ import ThemeToggle from './ThemeToggle';
 const sections = [
   { href: '/blog', label: 'Blog', icon: FileText },
   { href: '/playbooks', label: 'Playbooks', icon: BookOpen },
-  { href: '/charts', label: 'Charts', icon: LineChart },
 ];
 
 function SectionTabs() {

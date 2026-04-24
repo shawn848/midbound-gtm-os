@@ -1,106 +1,109 @@
 ---
 draft: false
-title: "Create a HubSpot Workflow for Identified Visitors"
+title: "Wire MidBound-Identified Visitors Into HubSpot"
 slug: "hubspot-visitor-workflow"
 category: "crm-setup"
-excerpt: "Automate contact creation, property mapping, and task assignment when MidBound identifies a high-value visitor."
+excerpt: "Pipe identified visitors from MidBound into HubSpot as contacts, then build the rest of the follow-up workflow on the HubSpot side where it belongs."
 difficulty: "intermediate"
 time_to_complete: "30 minutes"
 tools_needed: ["MidBound", "HubSpot"]
-seo_title: "MidBound + HubSpot Workflow: Automate Identified Visitor Follow-Up"
-seo_description: "Step-by-step guide to building a HubSpot workflow that creates contacts, assigns tasks, and updates lifecycle stages when MidBound identifies high-ICP website visitors."
-keywords: ["hubspot workflow", "midbound hubspot", "crm automation", "visitor follow-up workflow", "contact creation automation", "sales task automation"]
-related_playbooks: ["slack-high-intent-alerts", "measure-visitor-pipeline", "multi-stakeholder-play"]
+seo_title: "MidBound + HubSpot: Identified Visitors Into the CRM"
+seo_description: "How to push MidBound-identified visitors into HubSpot as contacts and use HubSpot's native workflow tools to handle follow-up, tasks, and lifecycle stages."
+keywords: ["hubspot workflow", "midbound hubspot", "crm automation", "visitor follow-up workflow", "contact creation automation"]
+related_playbooks: ["slack-high-intent-alerts", "multi-stakeholder-play", "personalize-engagement-clay"]
 ---
 
-# Create a HubSpot Workflow for Identified Visitors
+# Wire MidBound-Identified Visitors Into HubSpot
 
-This playbook builds a HubSpot workflow that automatically creates contacts, maps MidBound data to custom properties, and assigns follow-up tasks to reps when high-value visitors are identified.
+The MidBound-HubSpot integration does one thing: it creates contacts in HubSpot when an identified visitor matches your audience filter. That's the whole job. Everything you want to happen next — tasks, lifecycle changes, sequences, deal creation — is built on the HubSpot side using HubSpot's own automation. This playbook walks through both halves: the MidBound side that pushes the contact in, and the HubSpot-side workflow that takes over.
 
 ## What You'll Have When Done
 
-A workflow that fires when MidBound identifies a high-ICP visitor on a key page. The contact gets created in HubSpot with full visitor data, a task gets assigned to the right rep, and return visitors get handled differently from first-time visitors.
+A live setup where any identified visitor that matches your ICP audience lands as a HubSpot contact within minutes. A HubSpot workflow that uses "contact created" as its trigger then assigns a task, sets the lead source, and routes the contact to the right rep — all using HubSpot's native automation, not anything MidBound is doing.
 
 ---
 
 ## Step 1: Connect MidBound to HubSpot
 
-In the MidBound dashboard, go to **Integrations > HubSpot**.
+In the MidBound dashboard, go to **Integrations > HubSpot** and authorize the connection.
 
-Click **Connect** and authorize MidBound to access your HubSpot portal. MidBound needs permission to create contacts, update properties, and trigger workflows.
+What this gives you: MidBound can create contacts in your HubSpot portal, and it checks for an existing contact by email before each create — so duplicates get skipped silently.
 
-Once connected, MidBound will automatically check for existing contacts before creating new ones, so you won't get duplicates.
+Two important things this does *not* give you, even though the integration page might suggest otherwise:
 
-## Step 2: Create Custom MidBound Properties in HubSpot
+1. **No updates to existing contacts.** If MidBound identifies a returning visitor whose email already exists in HubSpot, it leaves that contact untouched. No new visit data appended. No property updates. The integration's lookup is for deduplication, not enrichment.
+2. **No custom MidBound properties.** The integration writes the standard identity fields it has (name, email, phone, title, company, address). It does not push an "ICP Score" property, a "Last Page Viewed" property, a "Visit Count" property, or any of the other MidBound-specific fields you might want in HubSpot.
 
-In HubSpot, go to **Settings > Properties > Contact Properties**. Create these custom properties:
+If you want those fields in HubSpot, the only path today is the **Webhook integration** — point a webhook at Zapier or Make, and have that intermediary write whatever properties you want. That's a separate playbook.
 
-| Property Name | Field Type | Description |
-|--------------|------------|-------------|
-| MidBound ICP Score | Number | Visitor's ICP fit score (1-10) |
-| MidBound Visit Count | Number | Total number of identified visits |
-| MidBound Last Page Viewed | Single-line text | Last page the visitor viewed |
-| MidBound Identification Source | Dropdown | How the visitor was identified (direct, paid, organic, referral) |
-| MidBound First Seen | Date | Date of first identified visit |
-| MidBound Last Seen | Date | Date of most recent visit |
-| MidBound Pages Viewed | Multi-line text | List of pages viewed across sessions |
+## Step 2: Build the MidBound-Side Audience
 
-Group these under a custom property group called "MidBound Visitor Data" so they're easy to find on contact records.
+In MidBound, create the audience that should land in HubSpot. Filter on whatever signals matter:
 
-Back in MidBound's HubSpot integration settings, map each MidBound data field to the corresponding HubSpot property.
+- Job title or seniority
+- Pages visited (e.g., `/pricing`, `/demo`, `/integrations`)
+- Session duration
+- Visitor count from the same company (multi-stakeholder)
+- Has a validated business email (required — visitors without an email are silently skipped by the HubSpot action)
 
-## Step 3: Build the Workflow Trigger
+Then build a workflow with the HubSpot action attached. Every visitor that enters the audience triggers a contact create.
 
-In HubSpot, go to **Automation > Workflows** and create a new contact-based workflow.
+A reasonable filter for most B2B teams: "ICP-fit visitors who hit a high-intent page and have a business email." Keep it tight in week one. You can broaden once you see what's landing.
 
-Set the enrollment trigger with these conditions (AND logic):
+## Step 3: Set Up the HubSpot-Side Workflow
 
-- **MidBound ICP Score** is greater than **8**
-- **MidBound Last Page Viewed** contains **/pricing** OR **/demo** OR **/integrations**
+This is where the actual automation lives. In HubSpot, go to **Automation > Workflows** and create a contact-based workflow.
 
-This means the workflow only fires for high-fit visitors who looked at pages that signal buying intent. An ICP 9 visitor who only read a blog post won't trigger it. An ICP 9 visitor who hit the pricing page will.
+**Enrollment trigger:**
+- Contact source = your MidBound source (HubSpot auto-tags contacts created via integrations; verify your contact source value by inspecting one of the contacts MidBound creates).
 
-## Step 4: Set Workflow Actions
+That's the only enrollment criterion you need. MidBound's audience filter already qualified the visitor; the HubSpot workflow's job is to act on the result, not re-filter.
 
-Add these actions in sequence:
+**Actions:**
 
-**Action 1: Update Lifecycle Stage**
-Set the contact's lifecycle stage to **Marketing Qualified Lead**. This distinguishes MidBound-identified visitors from other lead sources in your reporting.
+- **Set Lead Source** to "MidBound Identified Visitor" (create this as a lead source option if it doesn't exist). This is what makes downstream reporting possible.
+- **Set Lifecycle Stage** to Marketing Qualified Lead (or whatever stage matches your funnel).
+- **Create a Task** for the assigned rep:
+  - Title: "Follow up: {{contact.firstname}} from {{contact.company}}"
+  - Type: To-do
+  - Priority: High
+  - Due: same day
+  - Assigned to: rep by territory, round-robin, or account ownership rule.
+- **Send a Slack notification** (optional) — if you've already wired the Slack alert from MidBound directly, skip this. Two notifications for the same visitor is noise.
 
-**Action 2: Set Lead Source**
-Set the contact's lead source property to "MidBound Identified Visitor" (create this as a lead source option if it doesn't exist).
+If you want pages-visited or session-duration context in the task, you'll need to capture that via the Webhook integration into a separate property, since MidBound's HubSpot integration doesn't push those fields. For now, the rep can pull that detail from the MidBound dashboard.
 
-**Action 3: Create a Task for the Rep**
-Create a task with:
-- **Title**: "Follow up: [Contact Name] visited pricing page"
-- **Type**: To-do
-- **Priority**: High
-- **Due date**: Same day
-- **Assigned to**: The rep who owns the territory or account. Use HubSpot's round-robin assignment if you don't have territory rules.
-- **Notes**: "Identified by MidBound. ICP Score: [score]. Visited: [pages]. Check their LinkedIn profile and reach out today."
+## Step 4: Test End-to-End
 
-## Step 5: Add a Return Visitor Branch
+1. Set the HubSpot workflow to **draft mode**.
+2. From outside your network, visit a page that matches your audience filter.
+3. Wait a minute. Verify a new contact lands in HubSpot.
+4. Verify the workflow enrolls and the task gets created.
+5. Switch the HubSpot workflow to **live**.
 
-After the trigger, add an **if/then branch**:
+If the contact doesn't land in HubSpot:
+- Check that MidBound captured an email (no email = no HubSpot push).
+- Check that the visitor matched your audience filter.
+- Check that the contact didn't already exist in HubSpot (the integration silently skips dupes).
 
-**If MidBound Visit Count > 1:** Return visitor. Add a task note: "Return visitor, visit #[Visit Count]." If there's an existing deal, update the deal's last activity. Upgrade to **Sales Qualified Lead** if they've visited 3+ times.
+## Step 5: Don't Try to Build the Whole Customer Journey Inside the Integration
 
-**If MidBound Visit Count = 1:** First-time visitor. Standard actions from Step 4.
+This is where teams over-invest. The MidBound-HubSpot integration is a one-way pipe: visitor → contact. Everything else — sequence enrollment, deal creation, multi-step automations, sales-rep handoff rules — belongs in HubSpot's own workflow tools, not in MidBound configuration.
 
-Return visitors on your pricing page are a stronger signal than first-time visitors. Your team should know the difference.
+When in doubt: if the question is "should MidBound do X to HubSpot?", the answer is almost certainly no. MidBound creates the contact. HubSpot does the rest.
 
-## Step 6: Test End-to-End
+---
 
-1. Set the workflow to **draft/test mode**.
-2. Create a test contact with ICP score 9 and last page "/pricing".
-3. Enroll and verify: lifecycle stage updated, task created, branch logic works.
-4. Delete test contact and switch to **live**.
+## What This Playbook Does Not Cover
 
-Monitor the first week. Adjust the ICP score threshold based on volume and conversion.
+- **Custom MidBound properties in HubSpot.** Use the Webhook integration + Zapier/Make if you need this.
+- **Pushing visitor data to existing HubSpot contacts.** The native integration doesn't update; if you need to enrich existing records, route via Webhook + a downstream tool that handles upserts.
+- **Salesforce, Pipedrive, or other CRMs.** Pipedrive has its own native integration with slightly different behavior (it does update Organizations); Salesforce is webhook-only.
 
 ---
 
 ## Next Steps
 
-- [Set up the multi-stakeholder play](/playbooks/multi-stakeholder-play) to handle buying committee signals
-- [Measure your visitor-to-pipeline conversion](/playbooks/measure-visitor-pipeline) to track ROI
+- [Set up the Slack alert](/playbooks/slack-high-intent-alerts) so reps see qualified visitors before the contact even hits HubSpot
+- [Run the multi-stakeholder play](/playbooks/multi-stakeholder-play) when several visitors from the same company show up
+- [Use Clay for context-rich outreach](/playbooks/personalize-engagement-clay) when basic CRM creation isn't enough

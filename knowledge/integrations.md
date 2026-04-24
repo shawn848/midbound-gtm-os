@@ -1,79 +1,56 @@
 # Integrations
 
-## Overview
+> **Source of truth:** `knowledge/integrations-docs-snapshot-2026-04-24.md`. That file is pulled directly from `https://midbound.ai/docs/integrations/*`. Always read it before writing anything that names an integration. The summary below is shorthand — the snapshot is the contract.
 
-MidBound pushes identified visitor data to the tools sales and marketing teams already use. The goal is zero context-switching -- visitor intelligence shows up where teams already work.
+## What MidBound integrates with (9 native, all unidirectional outbound)
 
-## Slack Integration
+MidBound writes identified-visitor data out to your GTM stack. Every native integration is one-way: MidBound → tool. None pull data back. None bidirectionally sync. Workflows are audience-based — when an identified visitor matches your audience filter, the integration fires.
 
-**What it does:** Sends real-time notifications to a Slack channel when identified visitors match ICP criteria.
+| Integration | What it does | Required field | Dedup |
+|---|---|---|---|
+| **HubSpot** | Creates a contact. **Does not update existing contacts.** No companies, no deals, no custom objects. | Email | Yes (silent skip if exists) |
+| **Slack** | Posts a Block Kit notification to a channel. Not threads, not DMs. | — | n/a |
+| **Clay** | Pushes the full visitor JSON to a Clay webhook. | — | None on MidBound's side |
+| **Lemlist** | Adds the lead to a Lemlist campaign. | Email | Yes (existing campaign members skipped) |
+| **HeyReach** | Adds the lead to a HeyReach campaign or list for LinkedIn outreach. **Does not send LinkedIn messages itself.** | LinkedIn URL (warning if missing) | None on MidBound's side |
+| **Pipedrive** | Creates Person + Organization + Lead. Updates Organizations only. **No deals, no activities.** | Email | Yes (email lookup, plus org-name match) |
+| **Constant Contact** | Creates a contact. Does not update. | Email | Yes (silent skip if exists) |
+| **Google Sheets** | Appends one row of visitor data per workflow firing. **Append-only — never updates rows.** | — | None |
+| **Webhook** | POSTs the full visitor JSON to any URL. URL-based auth only. | — | None |
 
-**Typical setup:**
-- Dedicated channel (e.g., #midbound-visitors or #high-intent-visitors)
-- Notifications include: visitor name, title, company, pages visited, time on site, ICP score
-- Can filter by ICP score threshold (e.g., only notify on 7+ score)
-- Can filter by page (e.g., only notify when someone hits the pricing page)
+## What MidBound does NOT integrate with directly
 
-**Why it matters:** Sales teams live in Slack. When a high-ICP visitor hits the pricing page, the rep sees it immediately and can reach out the same day.
+- **Salesforce, Marketo, Outreach, Salesloft, Apollo, 6sense.** None of these are native integrations. They can be reached as Webhook destinations via Zapier / Make / n8n. When the blog or a playbook mentions one of these tools, it must say "route via Webhook + Zapier/Make to [tool]" — never "MidBound integrates with [tool]."
 
-## HubSpot Integration
+## Things people commonly assume MidBound does that it doesn't
 
-**What it does:** Creates or updates contacts in HubSpot when visitors are identified.
+- ❌ Update existing HubSpot contacts (it doesn't — existing = skipped)
+- ❌ Create HubSpot deals or companies (only contacts)
+- ❌ Push custom MidBound properties (ICP Score, Visit Count, Last Page Viewed, etc.) into HubSpot or any other CRM (it doesn't — only the documented identity fields flow)
+- ❌ Trigger native HubSpot workflows from MidBound (workflows are HubSpot-side; the trigger is HubSpot's "contact created," not anything MidBound exposes)
+- ❌ Send LinkedIn messages directly (HeyReach handles outreach; MidBound only routes leads)
+- ❌ Sync data bidirectionally with any tool (all native integrations are unidirectional)
+- ❌ Provide a CLI or public API as of 2026-04-24 (per Eli: API is roadmapped pending customer feedback; CLI is not prioritized)
 
-**Typical setup:**
-- New visitors create a new contact with all available data
-- Returning visitors update the existing contact with new visit data
-- Custom properties for MidBound-specific fields: visit count, last page visited, ICP score, identification source
-- Can trigger HubSpot workflows based on MidBound data (e.g., enroll in sequence when ICP score > 8 and pricing page visited)
-
-**Why it matters:** The CRM becomes the single source of truth. Sales reps see visitor behavior alongside deal history, email engagement, and everything else already in HubSpot.
-
-## Webhooks
-
-**What it does:** Sends raw visitor identification data to any endpoint via HTTP POST.
-
-**Typical setup:**
-- Configure a webhook URL
-- MidBound sends a JSON payload on each identification event
-- Payload includes all available visitor data
-- Can be routed to Clay, Zapier, Make, n8n, or custom backends
-
-**Why it matters:** Maximum flexibility. Any team with a technical resource can pipe MidBound data into any workflow.
-
-## Sequences
-
-**What it does:** Automatically enrolls identified visitors into outreach sequences based on behavior and ICP fit.
-
-**Typical setup:**
-- Define trigger criteria (ICP score threshold + page visited + time on site)
-- Map to a specific sequence or outreach cadence
-- Sequences run through existing email tooling
-- Cool-down rules to prevent over-contacting
-
-**Why it matters:** Speed to lead. The highest-intent visitors get outreach within hours, not days.
-
-## CRM Sync
-
-**What it does:** Bidirectional sync with CRM systems to avoid duplicate outreach and keep records current.
-
-**Key behaviors:**
-- Checks for existing contacts before creating new ones
-- Appends visit data to existing records
-- Respects existing ownership and routing rules
-- Does not overwrite manually entered data
-
-## Integration Architecture
+## Activation flow (architectural)
 
 ```
-Website Visitor
+Website visitor
     |
     v
-MidBound (identifies person)
+MidBound — identification + audience filter + workflow
     |
-    +---> Slack (real-time alert)
-    +---> HubSpot (contact created/updated)
-    +---> Webhooks (raw data to any system)
-    +---> Sequences (automated outreach)
+    +---> Slack channel notification (real-time alert)
+    +---> HubSpot / Pipedrive / Constant Contact (contact create only)
+    +---> Lemlist / HeyReach (lead added to campaign)
+    +---> Clay / Webhook (raw JSON to downstream tooling)
+    +---> Google Sheets (one row appended)
 ```
 
-All integrations fire in real-time. There is no batch processing delay.
+All firings are event-driven on workflow trigger. No batch mode is documented.
+
+## When updating this file
+
+- If the docs change → re-pull the snapshot (new dated file), then update this digest.
+- If a new integration ships → add a row to the table; update the architectural flow.
+- Never edit this file in a way that contradicts the snapshot. The snapshot is the contract.

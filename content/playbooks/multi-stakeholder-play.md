@@ -33,15 +33,13 @@ MidBound flags when 2+ identified visitors from the same company visit your site
 
 Three people from Brightpath. Different roles. All on evaluation pages. A single visitor might be casually browsing. Multiple visitors from one company is intentional research.
 
-## Step 2: Set Up Multi-Stakeholder Slack Alerts
+## Step 2: Build a Multi-Stakeholder Audience and Route It to Slack
 
-In MidBound, go to **Integrations > Slack** and configure the multi-stakeholder alert:
+In MidBound, build an audience that filters for company-level engagement: visitors from companies that already have one or more other identified visitors in a recent window. The audience surface is where this lives, not a separate "alert" toggle.
 
-1. Set the **minimum stakeholders** threshold to **2** (alert when 2+ people from the same company are identified).
-2. Set the **time window** (default is 7 days).
-3. Direct these alerts to a dedicated channel like `#midbound-accounts` or your existing `#midbound-high-intent` channel.
+Then build a workflow on that audience that pushes to Slack. Send those notifications to a dedicated channel like `#midbound-accounts` or fold them into your existing `#midbound-high-intent` channel.
 
-The alert will look different from a single-visitor notification. It groups all identified individuals from the same company:
+A typical multi-stakeholder notification ends up looking like a sequence of individual visitor notifications from the same company arriving close together. If you want them visually grouped, do that in Slack with a thread or pinned summary message — the integration itself posts one channel notification per workflow firing, not a grouped digest:
 
 > **Multi-Stakeholder Signal: Brightpath (3 visitors this week)**
 >
@@ -57,9 +55,9 @@ Different roles on a buying committee care about different things. Prepare messa
 
 **VP/Executive** (Rachel): Lead with business outcomes. "Noticed your team has been evaluating us. Happy to share how marketing leaders in your space use visitor identification to tie ad spend to pipeline."
 
-**Director/Practitioner** (James): Lead with implementation. He visited the HubSpot page, so: "Saw you were checking out our HubSpot integration. Takes about 15 minutes to set up and auto-creates contacts with ICP scores."
+**Director/Practitioner** (James): Lead with implementation. He visited the HubSpot page, so: "Saw you were checking out our HubSpot integration. Takes about 15 minutes to set up — identified visitors land as new contacts in HubSpot, then your existing workflows take over."
 
-**Ops/Technical** (Mia): Lead with specifics. "The integration pushes data to custom HubSpot properties automatically. No manual imports, no CSV uploads."
+**Ops/Technical** (Mia): Lead with specifics. "The integration creates a contact in HubSpot for every identified visitor that matches your audience. No manual CSV imports — your HubSpot side handles enrichment, lifecycle, and routing."
 
 ## Step 4: Run the Account-Level Play
 
@@ -75,15 +73,16 @@ When a multi-stakeholder alert fires, your rep should:
 
 In HubSpot, create a workflow that triggers when:
 
-- **Company has 2+ contacts** with the MidBound Identification Source property set
-- **At least one contact** has an ICP score above 7
+- **Company has 2+ contacts** whose Lead Source = "MidBound Identified Visitor" (the property you set in the [HubSpot workflow playbook](/playbooks/hubspot-visitor-workflow))
 - **No existing open deal** for this company
 
 When triggered:
 1. Create a new deal in the pipeline (stage: "Prospect" or your equivalent).
-2. Associate all identified contacts from that company with the deal.
+2. Associate all MidBound-sourced contacts from that company with the deal.
 3. Assign the deal to the rep who owns the territory or the rep who received the first Slack alert.
-4. Add a deal note: "Created from multi-stakeholder signal. [X] visitors identified this week."
+4. Add a deal note: "Created from multi-stakeholder signal. [X] MidBound contacts identified this week."
+
+A note on what the MidBound integration pushes vs. doesn't: the native HubSpot integration creates the contact with standard identity fields. It does not push an ICP score, a "MidBound Identification Source" property, or a "visit count" property into HubSpot. If your trigger needs any of those, route via the Webhook integration + Zapier/Make to write them yourself, or use HubSpot's own logic (lead-source counting, lifecycle stage thresholds) as the trigger condition. The Lead-Source-based trigger above works without any custom property setup beyond the one you'd already add as part of the HubSpot workflow playbook.
 
 This ensures multi-stakeholder signals get tracked as pipeline from day one.
 

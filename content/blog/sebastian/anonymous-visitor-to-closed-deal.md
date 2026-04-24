@@ -108,7 +108,7 @@ MidBound pushes identified visitors to Slack, HubSpot, or webhooks. All in real 
 
 The rep doesn't open a dashboard. They don't check a report. The visitor comes to them, in the app they already have open.
 
-**HubSpot:** MidBound creates or updates a contact automatically. Custom properties for visit count, last page viewed, ICP score, identification source. Now HubSpot workflows can trigger based on visitor behavior. "If ICP score > 8 and pricing page visited, create a task for the assigned rep."
+**HubSpot:** MidBound creates a contact for every identified visitor that matches your audience filter. HubSpot-side workflows take it from there — task creation, lifecycle updates, the rest of the funnel. If you want behavioral fields like visit count or last page visited inside HubSpot for trigger conditions, route MidBound's Webhook through Zapier or Make to write those custom properties yourself; the native HubSpot integration only writes basic identity fields.
 
 **Webhooks:** Full JSON payload to any endpoint. Clay, Zapier, Make, n8n, custom backend. Whatever your ops team needs.
 
@@ -124,7 +124,7 @@ The context is the advantage. Use it.
 
 Your Slack alert says: "Rachel Torres, Director of Revenue Operations at Stripe, spent 4 minutes on your pricing page and viewed the HubSpot integration docs."
 
-Your outreach: "Rachel, I noticed you were looking at how we connect with HubSpot. We actually auto-create contacts and trigger workflows based on visitor behavior. Want me to show you what that looks like for RevOps teams specifically?"
+Your outreach: "Rachel, I noticed you were looking at how we connect with HubSpot. Identified visitors land as new contacts, and your existing HubSpot workflows take it from there. Want me to show you what that looks like for RevOps teams specifically?"
 
 That's not a cold email. That's not even a warm email. That's a conversation with context.
 

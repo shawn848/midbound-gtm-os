@@ -32,7 +32,7 @@ Vector combines identification with contact-level advertising. Their pitch is "b
 ### Where MidBound Wins
 - **Confidence scoring:** MidBound provides confidence scores on every match. Vector emphasizes "verified contacts" but doesn't highlight per-match confidence levels.
 - **Multi-stakeholder detection:** MidBound automatically flags buying committee signals when multiple people from the same company visit. Vector focuses on individual contact identification.
-- **Workflow automation depth:** MidBound auto-creates HubSpot contacts, triggers workflows, enrolls in sequences with cool-down rules. Vector's integrations focus on ad audience activation.
+- **Sales activation depth:** MidBound has native push integrations to Lemlist (email) and HeyReach (LinkedIn) for sequence enrollment, alongside contact creation in HubSpot/Pipedrive/Constant Contact. Vector's integrations focus on ad audience activation rather than direct outbound enrollment.
 - **Pricing accessibility:** MidBound is priced for SMB-to-mid-market. Vector's $399/mo+ quarterly billing is 2-3x higher.
 - **Focus:** MidBound is built for sales activation (identify → qualify → outreach). Vector is built for marketing activation (identify → build ad audience → retarget).
 
@@ -111,8 +111,8 @@ Name, title, company, LinkedIn profile, validated business email (Pro+ tier), pa
 ### Where MidBound Wins
 - **Confidence scoring:** MidBound provides confidence scores on every match, so reps know the difference between a high-confidence identification and a "maybe." RB2B does not emphasize per-match confidence levels.
 - **Multi-stakeholder detection:** MidBound automatically flags buying committee signals when multiple people from the same company visit within a defined window. RB2B shows individual visitors without connecting the dots across an account.
-- **CRM automation depth:** MidBound auto-creates HubSpot contacts, populates custom properties, and triggers workflows based on visitor behavior. RB2B integrates with HubSpot but the native workflow depth is less mature.
-- **Sequence enrollment with cool-down rules:** MidBound enrolls visitors into outreach sequences based on ICP + behavior with built-in cool-down rules to prevent over-contacting. RB2B relies on third-party tools (Zapier, Apollo) for sequence automation.
+- **CRM creation, cleanly handed off to HubSpot automation:** MidBound creates HubSpot contacts on identification, then HubSpot's own workflows handle enrichment, lifecycle, and routing. For deeper custom-property workflows (visit count, last page, ICP score), MidBound's Webhook integration routes through Zapier or Make. RB2B integrates with HubSpot but the activation path is more limited.
+- **Native sequence enrollment for Lemlist + HeyReach:** MidBound has direct push integrations into Lemlist (email) and HeyReach (LinkedIn) campaigns when an identified visitor matches your audience. Built-in dedup against existing campaign members. RB2B relies on third-party tools (Zapier, Apollo) for sequence automation.
 
 ### Where RB2B Has an Advantage
 - **Brand awareness:** Adam Robinson has 125K+ LinkedIn followers. RB2B is the most recognized name in person-level identification.

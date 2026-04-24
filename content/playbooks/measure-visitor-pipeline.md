@@ -1,5 +1,5 @@
 ---
-draft: true
+draft: false
 title: "Measure Your Visitor-to-Pipeline Conversion Rate"
 slug: "measure-visitor-pipeline"
 category: "analytics"

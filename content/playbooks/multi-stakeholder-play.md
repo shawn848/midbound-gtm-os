@@ -1,5 +1,5 @@
 ---
-draft: true
+draft: false
 title: "Multi-Stakeholder Account Play: Step by Step"
 slug: "multi-stakeholder-play"
 category: "outreach-workflows"

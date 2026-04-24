@@ -1,5 +1,5 @@
 ---
-draft: true
+draft: false
 title: "Build a High-Intent Visitor Slack Alert"
 slug: "slack-high-intent-alerts"
 category: "outreach-workflows"

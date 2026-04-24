@@ -51,9 +51,13 @@ export default function Navigation() {
         <div className="flex h-14 items-center justify-between gap-4">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 shrink-0">
-            <div className="h-7 w-7 rounded-md bg-primary flex items-center justify-center">
-              <span className="text-xs font-bold text-primary-foreground">M</span>
-            </div>
+            <img
+              src="/blog/midbound-mark.png"
+              alt="Midbound"
+              width={28}
+              height={28}
+              className="h-7 w-7 rounded-md"
+            />
             <span className="text-base font-bold tracking-tight text-foreground">
               Midbound
             </span>

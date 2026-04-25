@@ -44,9 +44,9 @@ And stories close deals.
 
 ## How to structure your CRM for visitor intelligence
 
-The native MidBound-HubSpot integration creates contacts automatically — name, email, company, basic identity. It doesn't update existing contacts (matching emails are skipped) and it doesn't push the deeper behavioral fields you'll want for intelligence work. To get those, you point MidBound's Webhook integration at a Zapier or Make scenario and write the custom properties yourself, on every visit.
+The native MidBound-HubSpot integration creates contacts as visitors are identified — name, email, company, basic identity. To turn each contact into an intelligence node — visit count, last page viewed, ICP score, audience tags — pair the HubSpot integration with MidBound's Webhook integration. The webhook fires on every workflow trigger; route it through Zapier or Make and write whatever custom properties you want onto the matching HubSpot contact, every time.
 
-That setup is more work than flipping a switch in HubSpot. But the result is what makes the CRM intelligent instead of just full of names. The properties below are what you populate via that webhook path:
+That's the setup that turns the CRM from a list of names into a behavioral record. The properties below are what most teams populate through that path:
 
 **Visit count.** How many times this person has been on your site. A contact with 1 visit is different from a contact with 7 visits. This field alone changes how your reps prioritize.
 
@@ -146,7 +146,7 @@ Accounts don't buy. People do. And your CRM should know who those people are.
 
 ### What custom CRM properties should I create for visitor intelligence?
 
-The core properties: visit count, last page visited, pages visited (list), time on site, ICP score, identification source, first identified date, and multi-stakeholder flag. These transform a standard contact record into a behavioral intelligence profile. They aren't populated by MidBound's native HubSpot integration (which only writes basic identity fields) — you populate them by pointing MidBound's Webhook integration at a Zapier or Make scenario that writes each property on every visit.
+The core properties: visit count, last page visited, pages visited (list), time on site, ICP score, identification source, first identified date, and multi-stakeholder flag. These transform a standard contact record into a behavioral intelligence profile. The standard way to populate them is to pair MidBound's HubSpot integration with the Webhook integration — the webhook fires on every visit and a Zapier or Make scenario writes each property onto the contact.
 
 ### How long does it take for a visitor intelligence database to become valuable?
 

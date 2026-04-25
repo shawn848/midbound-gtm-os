@@ -86,7 +86,7 @@ RB2B identifies the visitor but doesn't connect them to the campaign that brough
 
 Both tools push data to Slack and HubSpot. But MidBound's integrations go deeper.
 
-HubSpot: MidBound creates a contact for every identified visitor that matches your audience. From there, HubSpot's own workflows handle the rest — task creation, lifecycle updates, sequence enrollment. The integration doesn't update existing contacts and doesn't push custom MidBound properties; if you want score, visit count, or last page viewed in the CRM, route MidBound's webhook through Zapier or Make to write those properties yourself.
+HubSpot: MidBound creates a contact for every identified visitor that matches your audience. From there, HubSpot's own workflows handle the rest — task creation, lifecycle updates, sequence enrollment. Pair the HubSpot integration with the Webhook integration to write custom properties (score, visit count, last page) onto each contact on every visit, and HubSpot workflows can key off any of them.
 
 Webhooks: Full JSON payloads to any endpoint. Clay, Zapier, Make, n8n, custom systems. Whatever your ops team needs.
 

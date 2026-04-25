@@ -151,7 +151,7 @@ When Person A from a company visits pricing on Monday and Person B from the same
 
 ### Can MidBound detect return visits from stalled pipeline contacts?
 
-Yes. MidBound flags the return visit and your workflow alerts sales. This is a pipeline recovery signal. Something changed that brought them back. Your rep can re-engage at the exact right moment with context from both the original conversation and the new visit data. (Note: the native HubSpot integration doesn't update the existing contact record — to enrich it with the new visit data, route MidBound's Webhook output through Zapier or Make.)
+Yes. MidBound flags the return visit and your workflow alerts sales. This is a pipeline recovery signal. Something changed that brought them back. Your rep can re-engage at the exact right moment with context from both the original conversation and the new visit data.
 
 ### How fast should teams respond to repeat visitor signals?
 

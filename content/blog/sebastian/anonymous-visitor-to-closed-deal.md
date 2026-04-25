@@ -108,7 +108,7 @@ MidBound pushes identified visitors to Slack, HubSpot, or webhooks. All in real 
 
 The rep doesn't open a dashboard. They don't check a report. The visitor comes to them, in the app they already have open.
 
-**HubSpot:** MidBound creates a contact for every identified visitor that matches your audience filter. HubSpot-side workflows take it from there — task creation, lifecycle updates, the rest of the funnel. If you want behavioral fields like visit count or last page visited inside HubSpot for trigger conditions, route MidBound's Webhook through Zapier or Make to write those custom properties yourself; the native HubSpot integration only writes basic identity fields.
+**HubSpot:** MidBound creates a contact for every identified visitor that matches your audience filter. HubSpot-side workflows take it from there — task creation, lifecycle updates, the rest of the funnel. Pair the HubSpot integration with the Webhook integration to land richer context on each contact (visit count, last page visited, ICP score), and HubSpot workflows can key off those fields directly.
 
 **Webhooks:** Full JSON payload to any endpoint. Clay, Zapier, Make, n8n, custom backend. Whatever your ops team needs.
 

@@ -63,7 +63,7 @@ In MidBound, go to **Integrations > Webhooks**. Create a new webhook with these 
 - Visitor matches your high-intent audience (ICP filters in the MidBound UI)
 - Visited page includes `/pricing`, `/demo`, or `/compare`
 - Session duration >= 30 seconds
-- Has a LinkedIn URL on file. HeyReach matches leads by LinkedIn profile, so without one the action is logged but the lead can't be enrolled in a campaign reliably.
+- Has a LinkedIn URL on file (HeyReach uses the LinkedIn profile to match the lead to a campaign)
 
 Set the webhook destination to a Zapier or Make scenario that takes the MidBound payload and calls HeyReach's "Add Lead to Campaign" API.
 

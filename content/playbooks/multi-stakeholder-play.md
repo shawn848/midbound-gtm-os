@@ -82,7 +82,7 @@ When triggered:
 3. Assign the deal to the rep who owns the territory or the rep who received the first Slack alert.
 4. Add a deal note: "Created from multi-stakeholder signal. [X] MidBound contacts identified this week."
 
-A note on what the MidBound integration pushes vs. doesn't: the native HubSpot integration creates the contact with standard identity fields. It does not push an ICP score, a "MidBound Identification Source" property, or a "visit count" property into HubSpot. If your trigger needs any of those, route via the Webhook integration + Zapier/Make to write them yourself, or use HubSpot's own logic (lead-source counting, lifecycle stage thresholds) as the trigger condition. The Lead-Source-based trigger above works without any custom property setup beyond the one you'd already add as part of the HubSpot workflow playbook.
+If you want the deal record to carry richer context — visit count, last page viewed, ICP score per contact — pair MidBound's HubSpot integration with the Webhook integration. The webhook writes custom properties on every visit; HubSpot workflows can then trigger off any of them. The lead-source-based trigger above is the simplest version and works as soon as your HubSpot workflow tags MidBound-sourced contacts.
 
 This ensures multi-stakeholder signals get tracked as pipeline from day one.
 

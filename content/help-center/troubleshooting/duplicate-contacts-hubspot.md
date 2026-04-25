@@ -18,10 +18,10 @@ MidBound is designed to prevent duplicates by checking for existing contacts bef
 
 Before creating a new HubSpot contact, MidBound checks whether a contact with the same email address already exists.
 
-- **If a match is found:** MidBound skips the create action silently. The existing contact is left untouched — no new visit data is appended.
+- **If a match is found:** MidBound skips the create action so the same person doesn't land twice.
 - **If no match is found:** MidBound creates a new contact.
 
-This email-based check prevents duplicate creates in most cases. If you need to enrich existing HubSpot contacts with each new visit (visit count, last page, score), use the Webhook integration + Zapier/Make as the intermediary.
+This email-based check prevents duplicate creates in most cases. To enrich existing HubSpot contacts with new visit data (visit count, last page, score), pair the HubSpot integration with the Webhook integration + a Zapier or Make scenario.
 
 ## Common Causes of Duplicates
 

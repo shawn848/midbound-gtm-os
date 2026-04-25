@@ -1,80 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://blog.midbound.ai/</loc>
-    <lastmod>2026-04-18</lastmod>
+    <loc>https://midbound.ai/blog/</loc>
+    <lastmod>2026-04-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://blog.midbound.ai/blog</loc>
-    <lastmod>2026-04-18</lastmod>
+    <loc>https://midbound.ai/blog/blog</loc>
+    <lastmod>2026-04-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://blog.midbound.ai/playbooks</loc>
-    <lastmod>2026-04-18</lastmod>
+    <loc>https://midbound.ai/blog/playbooks</loc>
+    <lastmod>2026-04-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://blog.midbound.ai/blog/person-level-intent-abm-upgrade</loc>
-    <lastmod>2026-05-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://blog.midbound.ai/blog/stop-boxing-your-icp</loc>
-    <lastmod>2026-04-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://blog.midbound.ai/blog/what-success-actually-means</loc>
-    <lastmod>2026-04-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://blog.midbound.ai/blog/best-visitor-identification-tools-2026</loc>
+    <loc>https://midbound.ai/blog/blog/midbound-vs-obviously-ai</loc>
     <lastmod>2026-04-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://blog.midbound.ai/blog/how-visitor-analytics-actually-work</loc>
-    <lastmod>2026-04-17</lastmod>
+    <loc>https://midbound.ai/blog/blog/midbound-vs-rb2b</loc>
+    <lastmod>2026-04-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://blog.midbound.ai/blog/page-level-visitor-intelligence</loc>
-    <lastmod>2026-05-13</lastmod>
+    <loc>https://midbound.ai/blog/blog/midbound-vs-vector</loc>
+    <lastmod>2026-04-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://blog.midbound.ai/blog/sales-is-diagnosis-not-control</loc>
+    <loc>https://midbound.ai/blog/blog/person-level-intent-abm-upgrade</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://midbound.ai/blog/blog/stop-boxing-your-icp</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://midbound.ai/blog/blog/what-success-actually-means</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://blog.midbound.ai/playbooks/automate-website-visitor-outreach-heyreach</loc>
-    <lastmod>2026-04-18</lastmod>
+    <loc>https://midbound.ai/blog/blog/best-visitor-identification-tools-2026</loc>
+    <lastmod>2026-04-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://blog.midbound.ai/playbooks/automate-website-visitor-outreach-lemlist</loc>
-    <lastmod>2026-04-18</lastmod>
+    <loc>https://midbound.ai/blog/blog/how-visitor-analytics-actually-work</loc>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://blog.midbound.ai/playbooks/personalize-engagement-clay</loc>
-    <lastmod>2026-04-18</lastmod>
+    <loc>https://midbound.ai/blog/blog/page-level-visitor-intelligence</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://midbound.ai/blog/blog/sales-is-diagnosis-not-control</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://midbound.ai/blog/playbooks/automate-website-visitor-outreach-heyreach</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://midbound.ai/blog/playbooks/automate-website-visitor-outreach-lemlist</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://midbound.ai/blog/playbooks/hubspot-visitor-workflow</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://midbound.ai/blog/playbooks/measure-visitor-pipeline</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://midbound.ai/blog/playbooks/multi-stakeholder-play</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://midbound.ai/blog/playbooks/personalize-engagement-clay</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://midbound.ai/blog/playbooks/slack-high-intent-alerts</loc>
+    <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

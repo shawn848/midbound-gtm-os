@@ -50,10 +50,18 @@ The active calendar is at `calendar/content-calendar.md`. Reference it when aske
 
 ## Workflows
 
-- Blog to social pipeline: `workflows/content-creation.md`
+- Blog → social pipeline: `workflows/content-creation.md`
+- **Reddit → blog pipeline (active daily flow):** `workflows/reddit-to-blog.md` — take a Reddit post (drafted or live) and turn it into a long-form blog post + LinkedIn + X derivatives. Reddit body is the source of truth for voice and claims; do not invent numbers or customers not in the source.
 - Self-critique loop: `workflows/self-critique.md` -- run after writing, before slop filter
 - AI slop filter: `workflows/slop-filter-check.md` -- systematic anti-slop scan
 - Call recording to blog: `workflows/transcript-to-blog.md` (Phase 2)
+
+## Active content arcs
+
+- **Eli — Reddit Arc 1 (2026 Q2):** 12 posts, Tue + Thu, drafted at `content/reddit/eli-arc-1-2026-Q2/`. INDEX.md has the schedule and ground rules. The cross-platform calendar is `calendar/content-calendar.md`.
+- **Sebastian — Arc 1:** TBD.
+
+When asked to repurpose a Reddit arc post, follow `workflows/reddit-to-blog.md`.
 
 ## Content Quality Pipeline (run in order)
 

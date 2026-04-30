@@ -100,3 +100,28 @@ Each subreddit has its own rules. Before posting:
 - "AMA" format unless genuinely prepared to answer everything for several hours
 - Cross-posting the same content to multiple subreddits simultaneously
 - Deleting and reposting if the first post doesn't perform
+
+---
+
+## r/Midbound arc — operating rules
+
+When writing or repurposing content for the **r/Midbound** subreddit (Eli's 6-week arc and any future arcs run on the founder's own sub), these rules override the general defaults above.
+
+1. **Disclosure on every post.** First line or bio: "co-founder at midbound, writing in my own voice." Reddit will forgive almost anything except hidden affiliation.
+
+2. **No external links in post body.** Comments OK if someone explicitly asks. Bio always OK. External links in-body cut reach significantly even on a sub you own.
+
+3. **Comment cadence between essays.** Daily on 3–4 external subs — r/GTMbuilders, r/sales, r/SaaS, r/marketing. 90% genuine help, 10% product mention. This is what compounds the sub's growth between posts.
+
+4. **Pin a "what are you building this week" Monday thread.** Ten seconds to post; gives the sub a pulse on non-essay days.
+
+5. **Cap at 2 posts/week on the home sub.** 3+ reads as desperate even when the content is good. Tue + Thu, 8–10am ET is the cadence Eli's arc 1 uses.
+
+6. **Voice on the home sub is looser than cross-posts.** Lowercase-leaning, occasional intentional typos, longer paragraphs. When cross-posting to r/SaaS / r/sales / r/GTMbuilders, tighten formatting modestly to match those subs' expectations — but don't sand off the voice.
+
+7. **CTAs go in the bio + the close.** No "→ link in bio" arrows mid-post. The close should invite a conversation ("dm me", "drop your stack in the comments") not a click.
+
+8. **Cross-posts are advisory.** The arc works without them. Skip any cross-post that feels off for a given week's tone or current events on that sub.
+
+The active arc and full ground rules: [`content/reddit/eli-arc-1-2026-Q2/INDEX.md`](../../content/reddit/eli-arc-1-2026-Q2/INDEX.md).
+The Reddit → blog repurpose pipeline: [`workflows/reddit-to-blog.md`](../../workflows/reddit-to-blog.md).

@@ -1,159 +1,81 @@
-# Content Calendar -- 5-Week Rollout
+# Content Calendar
 
-## Overview
-
-5 weeks of scheduled content starting April 7, 2026. Each week has a Monday blog + LinkedIn from one founder and a Wednesday blog + LinkedIn from the other. Friday both founders post X threads. The following Monday both post adapted versions on Reddit.
-
-The blog is written first. LinkedIn is derived from the blog. X threads are condensed from the blog. Reddit posts are adapted for community norms.
+> Single active source of truth for what's being posted, where, and when. Updated when an arc is added, retired, or rescheduled.
 
 ---
 
-## Week 1: Apr 7-13 -- Launch Week
+## Active arcs
 
-### Monday Apr 7
-**Sebastian** -- Pillar: Contrarian Takes
-- **Blog:** "Company-Level Identification Is Dead"
-  - Thesis: Company-level ID tools (Snitcher, Factors, Clearbit) solve the wrong problem. Person-level is the future.
-  - Load: `sebastian-voice.md`, `contrarian-takes.md`, `person-vs-company-level.md`
-- **LinkedIn:** Condensed version of the blog. Open with "company-level ID is a scam."
+### Eli — Reddit Arc 1 (2026 Q2)
 
-### Wednesday Apr 9
-**Eli** -- Pillar: Product Education
-- **Blog:** "The Website Party Problem: 97% of Your Visitors Are Ghosts"
-  - Thesis: The party analogy. 100 people show up, 97 leave without a word. Person-level ID changes the equation.
-  - Load: `eli-voice.md`, `product-education.md`, `how-deanonymization-works.md`
-- **LinkedIn:** Party analogy condensed. Open with the analogy hook.
+**6-week r/Midbound essay arc.** Tue + Thu, 8–10am ET. Full drafts and ground rules at [`content/reddit/eli-arc-1-2026-Q2/INDEX.md`](../content/reddit/eli-arc-1-2026-Q2/INDEX.md).
 
-### Friday Apr 11
-- **Sebastian X thread:** Condensed "Company-Level ID Is Dead" -- 5 tweets
-- **Eli X thread:** Condensed "Website Party" -- 6 tweets
+**Ground rules (apply to every post):**
+1. Disclosure on every post — first line or bio
+2. No external links in post body (comments or bio only)
+3. 90/10 comment cadence on r/GTMbuilders, r/sales, r/SaaS, r/marketing between posts
+4. Pin a "what are you building this week" Monday thread
+5. Cap at 2 posts/week — daily reads as desperate
 
-### Monday Apr 14 (Reddit for W1 content)
-- **Sebastian on r/SaaS or r/startups:** Adapted contrarian take. Lead with the problem, mention MidBound naturally.
-- **Eli on r/marketing:** Adapted party analogy. Lead with the 97% stat.
+| Wk | Day | # | Title | Cross-post | Status |
+|---|---|---|---|---|---|
+| 1 | Tue | 1 | why we called it midbound | r/GTMbuilders | drafted |
+| 1 | Thu | 2 | pure intent, defined | r/SaaS, r/sales | drafted |
+| 2 | Tue | 3 | deterministic vs probabilistic (the match rate lie) | r/GTMbuilders, r/sales | drafted |
+| 2 | Thu | 4 | we filter bot traffic before it hits the counter | own sub only | drafted |
+| 3 | Tue | 5 | heyreach ran us on their own site for 3 months | r/GTMbuilders, r/sales | drafted |
+| 3 | Thu | 6 | the improvado cross-reference (anonymized) | r/SaaS, r/startups | drafted |
+| 4 | Tue | 7 | this isn't the right tool for everyone | r/GTMbuilders | drafted |
+| 4 | Thu | 8 | what happens after identification | r/sales, r/SaaS | drafted |
+| 5 | Tue | 9 | we built the wrong thing first | r/startups, r/SaaS | drafted |
+| 5 | Thu | 10 | what we don't have yet | r/startups | drafted |
+| 6 | Tue | 11 | pure intent consolidates into the CRM | r/SaaS, r/GTMbuilders | drafted |
+| 6 | Thu | 12 | where midbound goes next | r/GTMbuilders | drafted |
 
----
+**Repurposing:** every Reddit post can become a blog (long-form) + LinkedIn (short-form) + X (thread). The pipeline is documented at [`workflows/reddit-to-blog.md`](../workflows/reddit-to-blog.md). Reddit body stays clean (no in-body links); the blog post is where backlinks live.
 
-## Week 2: Apr 14-20 -- Origin + ABM
+### Sebastian — Arc 1
 
-### Monday Apr 14
-**Sebastian** -- Pillar: Origin Stories
-- **Blog:** "Built from Zero: Cold Calling 10 Founders a Day"
-  - Story: Venezuela to Israel to startups. The grind. The F&F round. The pivots. How MidBound found PMF.
-  - Load: `sebastian-voice.md`, `origin-stories.md`, `what-is-midbound.md`
-- **LinkedIn:** Condensed origin story. Open with "I cold called 10 founders a day."
-
-### Wednesday Apr 16
-**Eli** -- Pillar: ABM Evolution
-- **Blog:** "ABM Is Flying Blind Without Person-Level Data"
-  - Thesis: ABM got the targeting right but stopped at company-level. PBM is the evolution.
-  - Load: `eli-voice.md`, `abm-evolution.md`, `person-vs-company-level.md`
-- **LinkedIn:** ABM to PBM thesis condensed. Open with "accounts don't buy. People do."
-
-### Friday Apr 18
-- **Sebastian X thread:** Condensed origin story -- 5 tweets
-- **Eli X thread:** Condensed ABM evolution -- 6 tweets
-
-### Monday Apr 21 (Reddit for W2 content)
-- **Sebastian on r/startups:** "We pivoted twice before finding PMF" story
-- **Eli on r/B2B_Marketing or r/marketing:** ABM limitations discussion
+**Status:** TBD. Sebastian's first formal arc is unwritten. When ready, mirror Eli's structure: drafts in `content/reddit/sebastian-arc-1-YYYY-QN/` with an INDEX, then add a row block here.
 
 ---
 
-## Week 3: Apr 21-27 -- ICP + PBM Deep Dive
+## How content flows through the engine
 
-### Monday Apr 21
-**Sebastian** -- Pillar: Contrarian Takes
-- **Blog:** "Stop Boxing Your ICP So Tight You Kill Your Own Pipeline"
-  - Thesis: Companies over-constrain their ICP and miss real buyers. Person-level data shows you who's actually interested.
-  - Load: `sebastian-voice.md`, `contrarian-takes.md`, `use-cases.md`
-- **LinkedIn:** Condensed ICP argument. Open with "I see companies box their ICP so tight they kill their own pipeline."
+```
+   pick a Reddit post                  pick a blog idea
+        │                                    │
+        ▼                                    ▼
+   write Reddit (Eli)                   write blog post
+        │                                    │
+        ├─ post to r/Midbound + cross-post   ├─ ship to content/blog/{author}/
+        │                                    │   (basePath /blog → midbound.ai/blog)
+        ▼                                    │
+   repurpose                                 ▼
+        │                              derive social
+        ├─ blog (long-form)                  │
+        ├─ LinkedIn (short-form)             ├─ LinkedIn
+        └─ X (thread)                        ├─ X thread
+                                             └─ Reddit (separate angle, not a copy)
+```
 
-### Wednesday Apr 23
-**Eli** -- Pillar: ABM Evolution
-- **Blog:** "Person-Based Marketing: The Next Evolution of ABM"
-  - Deep dive: What PBM looks like in practice. The building analogy. How MidBound enables it.
-  - Load: `eli-voice.md`, `abm-evolution.md`, `competitor-landscape.md`
-- **LinkedIn:** PBM thesis with the building analogy. "ABM is sending a letter to a building. PBM is sending a letter to a person."
-
-### Friday Apr 25
-- **Sebastian X thread:** Condensed ICP argument -- 4 tweets
-- **Eli X thread:** Condensed PBM deep dive -- 6 tweets
-
-### Monday Apr 28 (Reddit for W3 content)
-- **Sebastian on r/sales:** ICP discussion -- "Are you boxing your ICP too tight?"
-- **Eli on r/marketing:** PBM concept introduction
+The backbone today is Reddit → blog → LinkedIn/X (Eli's arc). Blog-first → social is still supported (the older flow at [`workflows/content-creation.md`](../workflows/content-creation.md)) — use whichever direction matches the source material.
 
 ---
 
-## Week 4: Apr 28 - May 4 -- Metrics + Sales Process
+## Already-shipped (reference, not scheduled)
 
-### Monday Apr 28
-**Sebastian** -- Pillar: Product Education
-- **Blog:** "The Metrics That Actually Matter for Website Visitor ID"
-  - Focus: What to measure, what's vanity, how to think about identification ROI.
-  - Load: `sebastian-voice.md`, `product-education.md`, `how-deanonymization-works.md`
-- **LinkedIn:** Condensed metrics argument. Open with a stat or contrarian claim about vanity metrics.
+These were authored on the previous calendar and are live or staged on midbound.ai/blog:
 
-### Wednesday Apr 30
-**Eli** -- Pillar: Founder Lessons
-- **Blog:** "Sales Should Work Like a Doctor: Diagnose Before You Prescribe"
-  - The doctor analogy: Diagnose the buyer's situation before pitching. Person-level data enables diagnosis.
-  - Load: `eli-voice.md`, `founder-lessons.md`, `use-cases.md`
-- **LinkedIn:** Doctor analogy condensed. Open with the analogy setup.
+- Eli — `abm-without-person-level-data-is-blind`, `your-website-is-a-party`, `person-based-marketing`, `sales-is-diagnosis-not-control`, `go-vertical-win-deeply`, `repeat-visitors-buying-signals`, `how-visitor-analytics-actually-work`, `page-level-visitor-intelligence`, `visitor-intelligence-database-crm`, `best-visitor-identification-tools-2026`, `deterministic-vs-probabilistic-visitor-data`
+- Sebastian — `company-level-id-is-dead`, `how-we-built-midbound-from-zero`, `stop-boxing-your-icp`, `person-level-intent-abm-upgrade`, `what-success-actually-means`
 
-### Friday May 2
-- **Sebastian X thread:** Condensed metrics post -- 5 tweets
-- **Eli X thread:** Condensed doctor analogy -- 6 tweets
-
-### Monday May 5 (Reddit for W4 content)
-- **Sebastian on r/SaaS:** Metrics discussion for early-stage SaaS
-- **Eli on r/sales:** Sales as diagnosis concept
+To find current state of any post: `ls ~/midbound/blog/content/blog/{eli,sebastian}/` and check the `draft:` field in frontmatter (`draft: true` = staged, not yet live).
 
 ---
 
-## Week 5: May 5-11 -- Upgrade + Go Vertical
+## When to update this file
 
-### Monday May 5
-**Sebastian** -- Pillar: Product Education
-- **Blog:** "Your ABM Stack Needs a Person-Level Upgrade"
-  - How to add person-level ID to an existing ABM stack. Practical, integration-focused.
-  - Load: `sebastian-voice.md`, `product-education.md`, `integrations.md`
-- **LinkedIn:** Condensed upgrade argument. Open with a challenge to the reader's current stack.
-
-### Wednesday May 7
-**Eli** -- Pillar: Founder Lessons
-- **Blog:** "Go Vertical, Win Deeply: What Our VC Trip Taught Us"
-  - VC learnings applied to GTM strategy. Focus beats breadth.
-  - Load: `eli-voice.md`, `founder-lessons.md`, `what-is-midbound.md`
-- **LinkedIn:** Condensed VC learnings. Open with a reflection on focus vs. ambition.
-
-### Friday May 9
-- **Sebastian X thread:** Condensed ABM upgrade -- 5 tweets
-- **Eli X thread:** Condensed go vertical -- 5 tweets
-
-### Monday May 12 (Reddit for W5 content)
-- **Sebastian on r/SaaS:** ABM upgrade practical discussion
-- **Eli on r/startups:** VC trip learnings
-
----
-
-## Cadence Summary
-
-| Day | Activity | Platform |
-|-----|----------|----------|
-| Monday | Founder A blog + LinkedIn | Blog, LinkedIn |
-| Wednesday | Founder B blog + LinkedIn | Blog, LinkedIn |
-| Friday | Both founders X threads | X |
-| Following Monday | Both founders Reddit | Reddit |
-
-Founders alternate weeks on Monday/Wednesday to keep both voices active and prevent audience fatigue.
-
-## Production Workflow
-
-For each piece of content, follow `workflows/content-creation.md`:
-1. Write the blog first
-2. Derive LinkedIn from the blog
-3. Derive X thread from the blog
-4. Adapt for Reddit (different tone, community norms)
-5. Run pre-publish checklist on each piece
+- New arc starts → add a section, link the INDEX
+- Arc post publishes → tick `status` in this table and in the arc's INDEX (and update `blog_repurposed`/`linkedin_repurposed`/`x_repurposed` in the post's frontmatter when derivatives ship)
+- Arc retires → move its block to the bottom under an "Archived arcs" header and date the retirement

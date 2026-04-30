@@ -6,15 +6,19 @@ The foundation. Everything needed to produce consistent, on-voice content at cad
 
 **Delivered:**
 - Voice DNA profiles for Sebastian and Eli
-- Product knowledge base (6 files covering what MidBound is, how it works, competitive landscape)
+- Product knowledge base (12+ files: what MidBound is, how it works, competitive landscape, integrations snapshot, GEO/AEO references)
 - Anti-slop detection adapted for both founders
 - Platform playbooks: LinkedIn, X, Reddit, Blog
 - 5 content pillars with templates
 - Pre-publish checklist and substance requirements
-- 5-week content calendar starting April 7
-- Content creation workflow (blog to LinkedIn to X to Reddit pipeline)
+- Live cross-platform content calendar
+- **Live Next.js blog at midbound.ai/blog** (rendering `content/blog/{eli,sebastian}/`)
+- Initial run of published blog posts by both founders (16+ live or staged)
+- Content creation workflow (blog → LinkedIn → X → Reddit)
+- **Reddit-to-blog repurpose workflow** (`workflows/reddit-to-blog.md`) — the active daily flow
+- **Eli's r/Midbound 6-week content arc** — 12 essay-style posts drafted, Tue/Thu cadence, ground rules + cross-post plan (`content/reddit/eli-arc-1-2026-Q2/`)
 
-**Outcome:** Sebastian and Eli can open Claude Code, ask for a post, and get something that sounds like them -- not like ChatGPT. The calendar keeps cadence. The checklist catches slop.
+**Outcome:** Sebastian and Eli can open Claude Code, ask for a post (fresh or repurposed from Reddit), and get something that sounds like them. The calendar keeps cadence. The checklist catches slop. The blog is live and accepting new posts.
 
 ---
 
